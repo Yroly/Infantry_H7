@@ -1,0 +1,54 @@
+.cache
+# =========================================
+# 构建产物
+# =========================================
+build/
+*.o
+*.obj
+*.elf
+*.map
+*.bin
+*.hex
+*.lst
+*.d
+
+# =========================================
+# CMake 相关
+# =========================================
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+*.cmake
+
+# =========================================
+# VSCode 配置（保留 settings.json 可选）
+.vscode/
+!.vscode/settings.json
+!.vscode/extensions.json
+
+# =========================================
+# CLion / JetBrains
+.idea/
+cmake-build-*/
+
+# =========================================
+# 临时文件
+*.tmp
+*.log
+*.bak
+*.swp
+*.DS_Store
+Thumbs.db
+
+# =========================================
+# STM32CubeMX 生成文件（可选）
+# *.ioc
+# *.s
+*.ld
+.mxproject
+# =========================================
+# 备份文件
+*.old
+*.save
+*.orig
