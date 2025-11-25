@@ -1,6 +1,6 @@
 # AT INFANTRY
 
-![actor_thinker](Infantry_H7\docs\actor_thinker.png)
+![actor_thinker](docs/actor_thinker.png)
 
 RoboMaster Infantry Based On Stm32H7
 
