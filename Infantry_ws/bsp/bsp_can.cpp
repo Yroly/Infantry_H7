@@ -10,7 +10,6 @@ uint8_t g_Can2RxData[64];
 uint8_t canx_send_data(FDCAN_HandleTypeDef *hfdcan, uint16_t id, uint8_t *data, uint32_t len)
 {
 	FDCAN_TxHeaderTypeDef TxHeader;
-	assert_param(hfdcan != NULL);
 	
 	TxHeader.Identifier = id;
   TxHeader.IdType =  FDCAN_STANDARD_ID ;        
@@ -23,25 +22,28 @@ uint8_t canx_send_data(FDCAN_HandleTypeDef *hfdcan, uint16_t id, uint8_t *data, 
   TxHeader.TxEventFifoControl =  FDCAN_NO_TX_EVENTS;  
   TxHeader.MessageMarker = 0;
 
-	return HAL_FDCAN_AddMessageToTxFifoQ(hfdcan, &TxHeader, data);
+	 HAL_FDCAN_AddMessageToTxFifoQ(hfdcan, &TxHeader, data);
+	 return 0;
 }
-extern "C" void HAL_FDCAN_RxFifo0Callback(FDCAN_HandleTypeDef *hfdcan,uint32_t RxFifo0ITs)
-{
-	if((RxFifo0ITs&FDCAN_IT_RX_FIFO0_NEW_MESSAGE)!=RESET)
-	{
-		if(hfdcan->Instance == FDCAN1)
-		{
-			memset(g_Can1RxData, 0, sizeof(g_Can1RxData));
-			HAL_FDCAN_GetRxMessage(hfdcan, FDCAN_RX_FIFO0, &RxHeader1, g_Can1RxData);
+extern "C" void HAL_FDCAN_RxFifo0Callback(FDCAN_HandleTypeDef *hfdcan, uint32_t RxFifo0ITs)
+{ 
+  if((RxFifo0ITs & FDCAN_IT_RX_FIFO0_NEW_MESSAGE) != RESET)
+  {
+    if(hfdcan->Instance == FDCAN1)
+    {
+      /* Retrieve Rx messages from RX FIFO0 */
+			memset(g_Can1RxData, 0, sizeof(g_Can1RxData));	//½ӊՇ°ψǥ¿Պýש	
+      HAL_FDCAN_GetRxMessage(hfdcan, FDCAN_RX_FIFO0, &RxHeader1, g_Can1RxData);
+			
 			switch(RxHeader1.Identifier)
 			{
-				case 3 :DM_Class.DM4310_fbdata(&Chassis.Joint_Motor[0], g_Can1RxData,RxHeader1.DataLength);break;
-				case 4 :DM_Class.DM4310_fbdata(&Chassis.Joint_Motor[1], g_Can1RxData,RxHeader1.DataLength);break;	         	
+        case 3 :DM_Class.DM4310_fbdata(&Chassis.Joint_Motor[0], g_Can1RxData,RxHeader1.DataLength);break;
+        case 4 :DM_Class.DM4310_fbdata(&Chassis.Joint_Motor[1], g_Can1RxData,RxHeader1.DataLength);break;	         	
 				case 0 :DM_Class.DM6215_fbdata(&Chassis.Wheel_Motor[0], g_Can1RxData,RxHeader1.DataLength);break;
 				default: break;
 			}			
-		}		
-	}
+	  }
+  }
 }
 
 extern "C" void HAL_FDCAN_RxFifo1Callback(FDCAN_HandleTypeDef *hfdcan, uint32_t RxFifo1ITs)

@@ -82,6 +82,13 @@ const osThreadAttr_t buzzertask_attributes = {
   .stack_size = 128 * 4,
   .priority = (osPriority_t) osPriorityLow,
 };
+/* Definitions for remotetask */
+osThreadId_t remotetaskHandle;
+const osThreadAttr_t remotetask_attributes = {
+  .name = "remotetask",
+  .stack_size = 128 * 4,
+  .priority = (osPriority_t) osPriorityLow,
+};
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
@@ -93,6 +100,7 @@ void INS_Task(void *argument);
 void Chassis_Task(void *argument);
 void PS2_Task(void *argument);
 void Buzzer_Task(void *argument);
+void Remote_Task(void *argument);
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
@@ -137,6 +145,9 @@ void MX_FREERTOS_Init(void) {
 
   /* creation of buzzertask */
   buzzertaskHandle = osThreadNew(Buzzer_Task, NULL, &buzzertask_attributes);
+
+  /* creation of remotetask */
+  remotetaskHandle = osThreadNew(Remote_Task, NULL, &remotetask_attributes);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -236,6 +247,24 @@ __weak void Buzzer_Task(void *argument)
     osDelay(1);
   }
   /* USER CODE END Buzzer_Task */
+}
+
+/* USER CODE BEGIN Header_Remote_Task */
+/**
+* @brief Function implementing the remotetask thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_Remote_Task */
+__weak void Remote_Task(void *argument)
+{
+  /* USER CODE BEGIN Remote_Task */
+  /* Infinite loop */
+  for(;;)
+  {
+    osDelay(1);
+  }
+  /* USER CODE END Remote_Task */
 }
 
 /* Private application code --------------------------------------------------*/

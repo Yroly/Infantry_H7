@@ -1,5 +1,11 @@
 #include "Chassis_Task.h"
-
+/*
+关节电机4310
+左腿1，3（前后）右腿2，4（前后）
+3 4
+1 2
+ 头
+*/
 Chassis_Class Chassis;
 DM_Motor_Class DM_Class;
 VMC_Class VMC;
@@ -75,21 +81,19 @@ void Chassis_Class::Chassis_Init(void){
 	DM_Class.Joint_Motor_Init(&Chassis.Joint_Motor[2],6,MIT_MODE);
 	DM_Class.Joint_Motor_Init(&Chassis.Joint_Motor[3],8,MIT_MODE);
 	DM_Class.Wheel_Motor_Init(&Chassis.Wheel_Motor[1],1,MIT_MODE);
-	if(Joint_Motor[0].para.state != 1 || Joint_Motor[1].para.state != 1 || Joint_Motor[2].para.state != 1 || Joint_Motor[3].para.state != 1){
+	for(int j=0;j<10;j++){
 	  DM_Class.enable_motor_mode(&hfdcan1,Chassis.Joint_Motor[1].para.id,Chassis.Joint_Motor[1].mode);
-	  osDelay(5);
+	  osDelay(3);
 	  DM_Class.enable_motor_mode(&hfdcan1,Chassis.Joint_Motor[0].para.id,Chassis.Joint_Motor[0].mode);
-	  osDelay(5);	
-	  DM_Class.enable_motor_mode(&hfdcan2,Chassis.Joint_Motor[3].para.id,Chassis.Joint_Motor[3].mode);
-	  osDelay(5);
-		DM_Class.enable_motor_mode(&hfdcan2,Chassis.Joint_Motor[2].para.id,Chassis.Joint_Motor[2].mode);
-	  osDelay(5);
-	}
-	if(Wheel_Motor[0].para.state != 1 || Wheel_Motor[1].para.state != 1){
+	  osDelay(3);	
     DM_Class.enable_motor_mode(&hfdcan1,Chassis.Wheel_Motor[0].para.id,Chassis.Wheel_Motor[0].mode);// 右边轮毂电机
-	  osDelay(2);			
+	  osDelay(3);
+	  DM_Class.enable_motor_mode(&hfdcan2,Chassis.Joint_Motor[3].para.id,Chassis.Joint_Motor[3].mode);
+	  osDelay(3);
+		DM_Class.enable_motor_mode(&hfdcan2,Chassis.Joint_Motor[2].para.id,Chassis.Joint_Motor[2].mode);
+	  osDelay(3);
     DM_Class.enable_motor_mode(&hfdcan2,Chassis.Wheel_Motor[1].para.id,Chassis.Wheel_Motor[1].mode);//左边轮毂电机
-	  osDelay(2);	
+	  osDelay(3);	
 	}
 
 	

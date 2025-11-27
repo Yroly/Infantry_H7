@@ -77,14 +77,14 @@ public:
 void DM4310_fbdata(Joint_Motor_t *motor, uint8_t *rx_data,uint32_t data_len);
 void DM6215_fbdata(Wheel_Motor_t *motor, uint8_t *rx_data,uint32_t data_len);
 
-void enable_motor_mode(hcan_t* hcan, uint16_t motor_id, uint16_t mode_id);
-void disable_motor_mode(hcan_t* hcan, uint16_t motor_id, uint16_t mode_id);
+void enable_motor_mode(hfdcan_t* hfdcan, uint16_t motor_id, uint16_t mode_id);
+void disable_motor_mode(hfdcan_t* hfdcan, uint16_t motor_id, uint16_t mode_id);
 
-void mit_ctrl(hcan_t* hcan, uint16_t motor_id, float pos, float vel,float kp, float kd, float torq);
-void pos_speed_ctrl(hcan_t* hcan,uint16_t motor_id, float pos, float vel);
-void speed_ctrl(hcan_t* hcan,uint16_t motor_id, float _vel);
+void mit_ctrl(hfdcan_t* hfdcan, uint16_t motor_id, float pos, float vel,float kp, float kd, float torq);
+void pos_speed_ctrl(hfdcan_t* hfdcan,uint16_t motor_id, float pos, float vel);
+void speed_ctrl(hfdcan_t* hfdcan,uint16_t motor_id, float _vel);
 
-void mit_ctrl2(hcan_t* hcan, uint16_t motor_id, float pos, float vel,float kp, float kd, float torq);
+void mit_ctrl2(hfdcan_t* hfdcan, uint16_t motor_id, float pos, float vel,float kp, float kd, float torq);
 
 void Joint_Motor_Init(Joint_Motor_t *motor,uint16_t id,uint16_t mode);
 void Wheel_Motor_Init(Wheel_Motor_t *motor,uint16_t id,uint16_t mode);
@@ -96,7 +96,7 @@ float uint_to_float(int x_int, float x_min, float x_max, int bits);
 int float_to_uint(float x_float, float x_min, float x_max, int bits);		
 };
 
-extern void enable_motor_mode(hcan_t* hcan, uint16_t motor_id, uint16_t mode_id);
+extern void enable_motor_mode(hfdcan_t* hfdcan, uint16_t motor_id, uint16_t mode_id);
 extern DM_Motor_Class DM_Class;
 
 #ifdef __cplusplus

@@ -67,7 +67,7 @@ void DM_Motor_Class::DM6215_fbdata(Wheel_Motor_t *motor, uint8_t *rx_data,uint32
 	  motor->para.Tcoil = (float)(rx_data[7]);
 	}
 }
-void DM_Motor_Class::enable_motor_mode(hcan_t* hcan, uint16_t motor_id, uint16_t mode_id)
+void DM_Motor_Class::enable_motor_mode(hfdcan_t* hfdcan, uint16_t motor_id, uint16_t mode_id)
 {
 	uint8_t data[8];
 	uint16_t id = motor_id + mode_id;
@@ -81,9 +81,9 @@ void DM_Motor_Class::enable_motor_mode(hcan_t* hcan, uint16_t motor_id, uint16_t
 	data[6] = 0xFF;
 	data[7] = 0xFC;
 
-	canx_send_data(hcan, id, data, 8);
+	canx_send_data(hfdcan, id, data, 8);
 }
-void DM_Motor_Class::disable_motor_mode(hcan_t* hcan, uint16_t motor_id, uint16_t mode_id)
+void DM_Motor_Class::disable_motor_mode(hfdcan_t* hfdcan, uint16_t motor_id, uint16_t mode_id)
 {
 	uint8_t data[8];
 	uint16_t id = motor_id + mode_id;
@@ -97,9 +97,9 @@ void DM_Motor_Class::disable_motor_mode(hcan_t* hcan, uint16_t motor_id, uint16_
 	data[6] = 0xFF;
 	data[7] = 0xFD;
 	
-	canx_send_data(hcan, id, data, 8);
+	canx_send_data(hfdcan, id, data, 8);
 }
-void DM_Motor_Class::mit_ctrl(hcan_t* hcan, uint16_t motor_id, float pos, float vel,float kp, float kd, float torq)
+void DM_Motor_Class::mit_ctrl(hfdcan_t* hfdcan, uint16_t motor_id, float pos, float vel,float kp, float kd, float torq)
 {
 	uint8_t data[8];
 	uint16_t pos_tmp,vel_tmp,kp_tmp,kd_tmp,tor_tmp;
@@ -120,9 +120,9 @@ void DM_Motor_Class::mit_ctrl(hcan_t* hcan, uint16_t motor_id, float pos, float 
 	data[6] = ((kd_tmp&0xF)<<4)|(tor_tmp>>8);
 	data[7] = tor_tmp;
 	
-	canx_send_data(hcan, id, data, 8);
+	canx_send_data(hfdcan, id, data, 8);
 }
-void DM_Motor_Class::pos_speed_ctrl(hcan_t* hcan,uint16_t motor_id, float pos, float vel)
+void DM_Motor_Class::pos_speed_ctrl(hfdcan_t* hfdcan,uint16_t motor_id, float pos, float vel)
 {
 	uint16_t id;
 	uint8_t *pbuf, *vbuf;
@@ -142,9 +142,9 @@ void DM_Motor_Class::pos_speed_ctrl(hcan_t* hcan,uint16_t motor_id, float pos, f
 	data[6] = *(vbuf+2);
 	data[7] = *(vbuf+3);
 	
-	canx_send_data(hcan, id, data, 8);
+	canx_send_data(hfdcan, id, data, 8);
 }
-void DM_Motor_Class::speed_ctrl(hcan_t* hcan,uint16_t motor_id, float vel)
+void DM_Motor_Class::speed_ctrl(hfdcan_t* hfdcan,uint16_t motor_id, float vel)
 {
 	uint16_t id;
 	uint8_t *vbuf;
@@ -158,9 +158,9 @@ void DM_Motor_Class::speed_ctrl(hcan_t* hcan,uint16_t motor_id, float vel)
 	data[2] = *(vbuf+2);
 	data[3] = *(vbuf+3);
 	
-	canx_send_data(hcan, id, data, 4);
+	canx_send_data(hfdcan, id, data, 4);
 }
-void DM_Motor_Class::mit_ctrl2(hcan_t* hcan, uint16_t motor_id, float pos, float vel,float kp, float kd, float torq)
+void DM_Motor_Class::mit_ctrl2(hfdcan_t* hfdcan, uint16_t motor_id, float pos, float vel,float kp, float kd, float torq)
 {
 	uint8_t data[8];
 	uint16_t pos_tmp,vel_tmp,kp_tmp,kd_tmp,tor_tmp;
@@ -181,5 +181,5 @@ void DM_Motor_Class::mit_ctrl2(hcan_t* hcan, uint16_t motor_id, float pos, float
 	data[6] = ((kd_tmp&0xF)<<4)|(tor_tmp>>8);
 	data[7] = tor_tmp;
 	
-	canx_send_data(hcan, id, data, 8);
+	canx_send_data(hfdcan, id, data, 8);
 }
