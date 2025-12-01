@@ -2,6 +2,8 @@
 #include "fdcan.h"
 #include "arm_math.h"
 
+DM_Motor_Class DM_Class;
+
 float DM_Motor_Class::Hex_To_Float(uint32_t *Byte,int num)
 {
 	return *((float*)Byte);
@@ -99,6 +101,38 @@ void DM_Motor_Class::disable_motor_mode(hfdcan_t* hfdcan, uint16_t motor_id, uin
 	
 	canx_send_data(hfdcan, id, data, 8);
 }
+void DM_Motor_Class::set_motor_zero(hfdcan_t* hfdcan, uint16_t motor_id, uint16_t mode_id)
+{
+	uint8_t data[8];
+	uint16_t id = motor_id + mode_id;
+	
+	data[0] = 0xFF;
+	data[1] = 0xFF;
+	data[2] = 0xFF;
+	data[3] = 0xFF;
+	data[4] = 0xFF;
+	data[5] = 0xFF;
+	data[6] = 0xFF;
+	data[7] = 0xFE;
+	
+	canx_send_data(hfdcan, id, data, 8);
+}void DM_Motor_Class::clear_motor_error(hfdcan_t* hfdcan, uint16_t motor_id, uint16_t mode_id)
+{
+	uint8_t data[8];
+	uint16_t id = motor_id + mode_id;
+	
+	data[0] = 0xFF;
+	data[1] = 0xFF;
+	data[2] = 0xFF;
+	data[3] = 0xFF;
+	data[4] = 0xFF;
+	data[5] = 0xFF;
+	data[6] = 0xFF;
+	data[7] = 0xFB;
+	
+	canx_send_data(hfdcan, id, data, 8);
+}
+
 void DM_Motor_Class::mit_ctrl(hfdcan_t* hfdcan, uint16_t motor_id, float pos, float vel,float kp, float kd, float torq)
 {
 	uint8_t data[8];

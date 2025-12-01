@@ -1,6 +1,6 @@
 #include "Mpc.h"
 #include "LQR.h"
-#include "Leg.h"
+#include "Legs.h"
 #include "app_preference.h"
 
 MpcClass MPC_Ctrl;

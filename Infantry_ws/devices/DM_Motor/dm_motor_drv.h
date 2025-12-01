@@ -79,7 +79,8 @@ void DM6215_fbdata(Wheel_Motor_t *motor, uint8_t *rx_data,uint32_t data_len);
 
 void enable_motor_mode(hfdcan_t* hfdcan, uint16_t motor_id, uint16_t mode_id);
 void disable_motor_mode(hfdcan_t* hfdcan, uint16_t motor_id, uint16_t mode_id);
-
+void set_motor_zero(hfdcan_t* hfdcan,uint16_t motor_id,uint16_t mode_id);
+void clear_motor_error(hfdcan_t* hfdcan,uint16_t motor_id,uint16_t mode_id);
 void mit_ctrl(hfdcan_t* hfdcan, uint16_t motor_id, float pos, float vel,float kp, float kd, float torq);
 void pos_speed_ctrl(hfdcan_t* hfdcan,uint16_t motor_id, float pos, float vel);
 void speed_ctrl(hfdcan_t* hfdcan,uint16_t motor_id, float _vel);

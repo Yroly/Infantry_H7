@@ -339,7 +339,7 @@
               <MiscControls></MiscControls>
               <Define>USE_PWR_LDO_SUPPLY,USE_HAL_DRIVER,STM32H723xx</Define>
               <Undefine></Undefine>
-              <IncludePath>../Core/Inc;../Drivers/STM32H7xx_HAL_Driver/Inc;../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy;../Middlewares/Third_Party/FreeRTOS/Source/include;../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2;../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F;../Drivers/CMSIS/Device/ST/STM32H7xx/Include;../Drivers/CMSIS/Include;../Middlewares/ST/ARM/DSP/Inc;../Infantry_ws;../Infantry_ws/bsp;../Infantry_ws/Lib;../Infantry_ws/devices/DM_Motor;../Infantry_ws/devices/BMI088;../Infantry_ws/Controller;../Infantry_ws/task;../Infantry_ws/Algorithm;../Infantry_ws/Algorithm/EKF;../Infantry_ws/Algorithm/kalman;../Infantry_ws/Algorithm/mahony;../Infantry_ws/Algorithm/PID;../Infantry_ws/Algorithm/VMC;../Infantry_ws/app;../Infantry_ws/Leg;../Infantry_ws/middlewares/io/buzzer;../Infantry_ws/middlewares/io/plotter;../Infantry_ws/middlewares/io/dbus;../Infantry_ws/middlewares/io/watchdog</IncludePath>
+              <IncludePath>../Core/Inc;../Drivers/STM32H7xx_HAL_Driver/Inc;../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy;../Middlewares/Third_Party/FreeRTOS/Source/include;../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2;../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F;../Drivers/CMSIS/Device/ST/STM32H7xx/Include;../Drivers/CMSIS/Include;../Middlewares/ST/ARM/DSP/Inc;../Infantry_ws;../Infantry_ws/bsp;../Infantry_ws/Lib;../Infantry_ws/devices/DM_Motor;../Infantry_ws/devices/BMI088;../Infantry_ws/Controller;../Infantry_ws/task;../Infantry_ws/Algorithm;../Infantry_ws/Algorithm/EKF;../Infantry_ws/Algorithm/kalman;../Infantry_ws/Algorithm/mahony;../Infantry_ws/Algorithm/PID;../Infantry_ws/Algorithm/VMC;../Infantry_ws/app;../Infantry_ws/Leg;../Infantry_ws/middlewares/io/buzzer;../Infantry_ws/middlewares/io/plotter;../Infantry_ws/middlewares/io/dbus;../Infantry_ws/middlewares/io/watchdog;../Infantry_ws/middlewares/io/bmi088;../Infantry_ws/middlewares/tools/math_tools;../Infantry_ws/middlewares/tools/mahony;../Infantry_ws/middlewares/tools/low_pass_filter;../Infantry_ws/middlewares/tools/pid;..\Infantry_ws\middlewares\motor</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -419,11 +419,6 @@
           <GroupName>bsp</GroupName>
           <Files>
             <File>
-              <FileName>bsp_PWM.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Infantry_ws\bsp\bsp_PWM.c</FilePath>
-            </File>
-            <File>
               <FileName>bsp_dwt.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>..\Infantry_ws\bsp\bsp_dwt.cpp</FilePath>
@@ -453,6 +448,11 @@
               <FileType>8</FileType>
               <FilePath>..\Infantry_ws\devices\DM_Motor\dm_motor_drv.cpp</FilePath>
             </File>
+            <File>
+              <FileName>drv_dji_motor.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\Infantry_ws\middlewares\motor\drv_dji_motor.cpp</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -469,16 +469,6 @@
               <FilePath>..\Infantry_ws\Algorithm\kalman\kalman_filter.c</FilePath>
             </File>
             <File>
-              <FileName>mahony_filter.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Infantry_ws\Algorithm\mahony\mahony_filter.c</FilePath>
-            </File>
-            <File>
-              <FileName>VMC_calc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Infantry_ws\Algorithm\VMC\VMC_calc.c</FilePath>
-            </File>
-            <File>
               <FileName>pid.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>..\Infantry_ws\Algorithm\PID\pid.cpp</FilePath>
@@ -488,16 +478,16 @@
               <FileType>8</FileType>
               <FilePath>..\Infantry_ws\Algorithm\kalman\algorithm_kalman.cpp</FilePath>
             </File>
+            <File>
+              <FileName>mahony_filter.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Infantry_ws\Algorithm\mahony\mahony_filter.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
           <GroupName>Leg</GroupName>
           <Files>
-            <File>
-              <FileName>Leg.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\Infantry_ws\Leg\Leg.cpp</FilePath>
-            </File>
             <File>
               <FileName>LQR.cpp</FileName>
               <FileType>8</FileType>
@@ -512,6 +502,16 @@
               <FileName>VMC.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>..\Infantry_ws\Leg\VMC.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Legs.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\Infantry_ws\Leg\Legs.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Leg.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\Infantry_ws\Leg\Leg.cpp</FilePath>
             </File>
           </Files>
         </Group>
@@ -1128,6 +1128,21 @@
               <FileName>watchdog.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>..\Infantry_ws\middlewares\io\watchdog\watchdog.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>bmi088.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\Infantry_ws\middlewares\io\bmi088\bmi088.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>mahony.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\Infantry_ws\middlewares\tools\mahony\mahony.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>math_tools.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\Infantry_ws\middlewares\tools\math_tools\math_tools.cpp</FilePath>
             </File>
           </Files>
         </Group>

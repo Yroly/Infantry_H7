@@ -162,7 +162,7 @@ void MX_FDCAN3_Init(void)
 {
 
   /* USER CODE BEGIN FDCAN3_Init 0 */
-
+	FDCAN_FilterTypeDef FDCAN3_RXFilter;
   /* USER CODE END FDCAN3_Init 0 */
 
   /* USER CODE BEGIN FDCAN3_Init 1 */
@@ -179,13 +179,13 @@ void MX_FDCAN3_Init(void)
   hfdcan3.Init.NominalTimeSeg1 = 14;
   hfdcan3.Init.NominalTimeSeg2 = 5;
   hfdcan3.Init.DataPrescaler = 5;
-  hfdcan3.Init.DataSyncJumpWidth = 1;
+  hfdcan3.Init.DataSyncJumpWidth = 5;
   hfdcan3.Init.DataTimeSeg1 = 14;
   hfdcan3.Init.DataTimeSeg2 = 5;
   hfdcan3.Init.MessageRAMOffset = 1709;
   hfdcan3.Init.StdFiltersNbr = 5;
   hfdcan3.Init.ExtFiltersNbr = 5;
-  hfdcan3.Init.RxFifo0ElmtsNbr = 2;
+  hfdcan3.Init.RxFifo0ElmtsNbr = 16;
   hfdcan3.Init.RxFifo0ElmtSize = FDCAN_DATA_BYTES_8;
   hfdcan3.Init.RxFifo1ElmtsNbr = 0;
   hfdcan3.Init.RxFifo1ElmtSize = FDCAN_DATA_BYTES_8;
@@ -193,7 +193,7 @@ void MX_FDCAN3_Init(void)
   hfdcan3.Init.RxBufferSize = FDCAN_DATA_BYTES_8;
   hfdcan3.Init.TxEventsNbr = 0;
   hfdcan3.Init.TxBuffersNbr = 0;
-  hfdcan3.Init.TxFifoQueueElmtsNbr = 3;
+  hfdcan3.Init.TxFifoQueueElmtsNbr = 8;
   hfdcan3.Init.TxFifoQueueMode = FDCAN_TX_FIFO_OPERATION;
   hfdcan3.Init.TxElmtSize = FDCAN_DATA_BYTES_8;
   if (HAL_FDCAN_Init(&hfdcan3) != HAL_OK)
@@ -201,7 +201,18 @@ void MX_FDCAN3_Init(void)
     Error_Handler();
   }
   /* USER CODE BEGIN FDCAN3_Init 2 */
-
+	FDCAN3_RXFilter.IdType=FDCAN_STANDARD_ID;
+	FDCAN3_RXFilter.FilterIndex=0;
+	FDCAN3_RXFilter.FilterType=FDCAN_FILTER_MASK;
+	FDCAN3_RXFilter.FilterConfig=FDCAN_FILTER_TO_RXFIFO0;
+	FDCAN3_RXFilter.FilterID1=0x0000;
+	FDCAN3_RXFilter.FilterID2=0x0000;
+	if(HAL_FDCAN_ConfigFilter(&hfdcan3,&FDCAN3_RXFilter)!=HAL_OK)
+	{
+		Error_Handler();
+	}
+	HAL_FDCAN_Start(&hfdcan3);
+	HAL_FDCAN_ActivateNotification(&hfdcan3,FDCAN_IT_RX_FIFO0_NEW_MESSAGE,0);
   /* USER CODE END FDCAN3_Init 2 */
 
 }

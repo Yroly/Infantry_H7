@@ -1,35 +1,8 @@
 #include "vmc.h"
 
-leg_class leg;
+VMC_Class VMC;
 
-leg_class::leg_class()
-{
-  stand.Stand_Speed = 0.0f;
-  stand.L0Speed = 0.0f;
-  stand.Stand_Angle = 0.0f;
-  stand.Stand_Sign[0] = 0;
-  stand.Stand_Sign[1] = 0;
-  wheel_T[0] = 0;
-  wheel_T[1] = 0;
-
-  leg_flag.Blance_flag = false;
-  leg_flag.Stand_flag = false;
-  leg_flag.Revolve_flag_L = false;
-  leg_flag.Revolve_flag_R = false;
-
-  vmc[0].five_link.L1 =vmc[1].five_link.L1 = 0.29025f;  
-  vmc[0].five_link.L2 =vmc[1].five_link.L2 = 0.34830f;
-  vmc[0].five_link.L3 =vmc[1].five_link.L3 = 0.34830f;
-  vmc[0].five_link.L4 =vmc[1].five_link.L4 = 0.29025f;
-  vmc[0].five_link.L5 =vmc[1].five_link.L5 = 0.0f;
-
-  leg_set.L0_set_max = 0.57f;
-  leg_set.L0_set_middle = 0.25;
-  leg_set.L0_set_min = 0.23;
-}
-
-void VMC_Class::vmc_calc(float pitch, float pitch_Gyro, float dt, float Joint_motor_front_vel, float Joint_motor_rear_vel)
-{
+void VMC_Class::vmc_calc(float pitch, float pitch_Gyro, float dt, float Joint_motor_front_vel, float Joint_motor_rear_vel){
 	kinematics_forward();
 	point.d_phi0 = jacobi.j12 * Joint_motor_front_vel + jacobi.j22 * Joint_motor_rear_vel;
 
@@ -44,8 +17,7 @@ void VMC_Class::vmc_calc(float pitch, float pitch_Gyro, float dt, float Joint_mo
 
 	point.last_d_L0 = point.d_L0;
 }
-void VMC_Class::kinematics_forward()
-{
+void VMC_Class::kinematics_forward(){
 	point.xD = five_link.L5 + five_link.L4 * cos(point.phi4);
 	point.yD = five_link.L4 * sin(point.phi4);
 	
@@ -73,21 +45,18 @@ void VMC_Class::kinematics_forward()
 	jacobi.j21 = (five_link.L4 * sin(point.phi0 - point.phi2) * sin(point.phi3 - point.phi4))/sin(point.phi3 - point.phi2);
 	jacobi.j22 = (five_link.L4 * cos(point.phi0 - point.phi2) * sin(point.phi3 - point.phi4))/(point.L0 * sin(point.phi3 - point.phi2));
 }
-void VMC_Class::vmc_forward()
-{
+void VMC_Class::vmc_forward(){
 	torque_set[0] = jacobi.j11 * F0 + jacobi.j12 * Tp;
 	torque_set[1] = jacobi.j21 * F0 + jacobi.j22 * Tp;
 }
 
-void VMC_Class::vmc_reverse()
-{
+void VMC_Class::vmc_reverse(){
 	
 }
 float VMC_Class::LQR_K_Calc(float *coe,float len){
   return coe[0]*len*len*len+coe[1]*len*len+coe[2]*len+coe[3];	
 }
-void Limit_min_max(float *in,float min,float max)
-{
+void Limit_min_max(float *in,float min,float max){
   if(*in < min)
   {
     *in = min;

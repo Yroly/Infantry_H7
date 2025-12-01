@@ -1,7 +1,6 @@
 #include "INS_Task.h"
 #include "controller.h"
 #include "QuaternionEKF.h"
-#include "bsp_PWM.h"
 #include "mahony_filter.h"
 
 INS_t INS;

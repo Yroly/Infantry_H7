@@ -109,45 +109,6 @@ public:
 	
 	uint8_t leg_flag;
 };
-
-typedef struct{
-	float Stand_Speed;//起立旋转速度
-	float L0Speed;		//起立收腿速度
-	float Stand_Angle;//起身关节角度
-	/*
-	起立旋转方向，面向车头，从左顺为-1正为1
-	*/
-	int8_t Stand_Sign[2];
-}Stand_t;
-typedef struct{
-	float L0_set_max;
-	float L0_set_middle;
-	float L0_set_min;
-	float L0_set;
-	float L0_set_final;
-}leg_set_t;
-typedef struct
-{
-	bool Blance_flag;
-	bool Revolve_flag_L;
-	bool Revolve_flag_R;
-	uint8_t Stand_flag;
-}leg_flag_t;
-
-class leg_class
-{
-public:
-	Stand_t stand;
-	float stand_delay_time;
-	float wheel_T[2];
-	leg_flag_t leg_flag;
-	VMC_Class vmc[2];
-	leg_set_t leg_set;
-	void leg_data_clear(uint8_t count);
-	leg_class();
-};
-extern leg_class leg;
-
 void Limit_min_max(float *in,float min,float max);
 
 extern VMC_Class VMC;

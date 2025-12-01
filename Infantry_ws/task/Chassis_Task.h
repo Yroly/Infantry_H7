@@ -7,9 +7,10 @@
 #include "cmsis_os2.h"
 #include "bsp_dwt.h"
 #include "VMC.h"
-#include "Leg.h"
 #include "pid.h"
 #include "app_preference.h"
+#include "Legs.h"
+#include "Leg.h"
 
 #define TP_PID_KP 10.0f
 #define TP_PID_KI 0.0f 
@@ -29,8 +30,37 @@
 #define ROLL_PID_MAX_OUT  100.0f//轮毂电机的额定扭矩
 #define ROLL_PID_MAX_IOUT 0.0f
 
+typedef struct{
+	fp32 vx;
+	fp32 vy;
+	fp32 wz;
+	fp32 vx_set;
+	fp32 vy_set;
+	fp32 wz_set;
+	
+	fp32 MIN_Torque;
+	fp32 MAX_Torque;
+	
+	uint8_t Gear;
+	fp32 Speed;
+	fp32 Speed_Set;
+	fp32 Vx_Set_Last;
+	fp32 Speed_Set_Last;
+}Chassis_Velocity_t;
 class Chassis_Class{
 public:
+	/*PID*/
+	PidTypeDef Leg_Roll_Pid;
+	PidTypeDef Gyro_X_Pid;
+	PidTypeDef Leg_Angle0_err_Pid;
+	PidTypeDef Leg_L0_Pid[2];
+	PidTypeDef Leg_L0_Speed_Pid[2];
+	PidTypeDef Stand_Position_Pid[2];
+	PidTypeDef Stand_Speed_Pid[2];
+	PidTypeDef L0_Speed_Pid[2];
+
+	float x_fdb;
+
 	float Chassis_DWT_dt;
 	uint32_t Chassis_DWT_Count;
 	Joint_Motor_t Joint_Motor[4];
@@ -39,6 +69,26 @@ public:
 	fp32 Chassis_Q;
 	fp32 Chassis_R1;
 	fp32 Chassis_R0;
+	fp32 ROLL_set;
+	fp32 Blance_Turn_Kp;
+	fp32 ROLL_MAX_set;
+
+	fp32 L0_Leg_KP, L1_Leg_KP;
+	fp32 L0_Leg_Speed_KP;
+	fp32 Power_Set_KP;
+	fp32 Power_Set_err;
+	fp32 ramp_period;
+
+	fp32 Init_Lout_M;
+	fp32 Wheel_Init_Lout;
+	fp32 Init_Lout;
+
+	fp32 LITTLE_TOP_V;
+
+	fp32 MPC_errms, MPC_MS, Last_MPC_MS;
+
+	fp32 V_COLLAPSE;
+	fp32 FN_max;
 
 	float v_set;
 	float v_target;
@@ -83,12 +133,14 @@ public:
 	uint8_t jump_status_r;
 	uint8_t jump_status_l;
 	
+	Chassis_Velocity_t Velocity;
+	
 	void Chassis_Init(void);
 	void Leg_Init();
+	void Decide_Mode(void);
 	void Feedback_Update(void);
 	void Chassis_Control(void);
 	void Chassis_Control_Loop(void);
-	void mySaturate(float *in,float min,float max);
 	void slope_following(float *target,float *set,float acc);
 };
 

@@ -1,18 +1,7 @@
-/*
- * @Description: 腿的类
- */
-#ifndef _LEG_H
-#define _LEG_H
+#pragma once
+
 #include "arm_math.h"
-
-#ifdef __cplusplus
-extern "C" {
-#endif
 #include "bsp_dwt.h"
-
-#ifdef __cplusplus
-}
-#endif
 #include "algorithm_kalman.h"
 
 /*
@@ -165,9 +154,8 @@ public:
 	void Absolute_Speed_KF_Forecast();
 	void Absolute_Speed_KF_Init();
 	void KF_Feedback_Update();
-
 };
-
+/*---------------------------------------------------------------*/
 class LegClass
 {
 private:
@@ -195,6 +183,3 @@ public:
 };
 
 extern LegClass Leg_Ctrl;
-
-#endif
-

@@ -1,8 +1,6 @@
-#ifndef __LQR_H
-#define __LQR_H
+#pragma once
 
 #include "arm_math.h"
-
 #include "Leg.h"
 
 #ifdef __cplusplus
@@ -81,5 +79,3 @@ class LQRClass
 };
 
 extern LQRClass LQR_Ctrl;
-
-#endif

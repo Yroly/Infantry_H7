@@ -1,5 +1,4 @@
 #include "PS2_Task.h"
-
 PS2_Class PS2;
 
 extern "C" void PS2_Task(){
@@ -67,7 +66,7 @@ void PS2_Class::PS2_Data_Process(float dt){
 
 		Jump();
 
-		Chassis.mySaturate(&Chassis.leg_set,0.065f,0.18f);
+		Limit_min_max(&Chassis.leg_set,0.065f,0.18f);
 
 		if(fabsf(Chassis.last_leg_set-Chassis.leg_set)>0.0001f || fabsf(Chassis.last_leg_right_set-Chassis.leg_right_set)>0.0001f)
 		{
