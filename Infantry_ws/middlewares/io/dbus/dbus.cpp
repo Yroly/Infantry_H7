@@ -20,13 +20,10 @@ DBus::DBus(UART_HandleTypeDef * huart, bool use_dma)
 : huart_(huart), use_dma_(use_dma), has_read_(false)
 {
 }
-
-void DBus::request()
-{
+void DBus::request(){
   if (use_dma_) {
     // dismiss return
     HAL_UARTEx_ReceiveToIdle_DMA(huart_, buff_, DBUS_BUFF_SIZE);
-
     // ref: https://github.com/HNUYueLuRM/basic_framework/blob/master/bsp/usart/bsp_usart.c
     __HAL_DMA_DISABLE_IT(huart_->hdmarx, DMA_IT_HT);
   }

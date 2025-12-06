@@ -1,7 +1,6 @@
 #pragma once
 
 #include "usart.h"
-
 namespace at{
 constexpr size_t DBUS_BUFF_SIZE  = 18;
 enum class DBusSwitchMode{

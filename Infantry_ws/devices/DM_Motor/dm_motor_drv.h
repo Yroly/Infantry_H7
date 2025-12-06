@@ -34,11 +34,6 @@ extern "C"{
 #define KD_MAX2 5.0f
 #define T_MIN2 -18.0f
 #define T_MAX2 18.0f
-typedef  union  
-{
-	float fdata;
-	int   Idata;
-}int16_float;
 typedef struct 
 {
 	uint16_t id;
@@ -48,9 +43,9 @@ typedef struct
 	int t_int;
 	int kp_int;
 	int kd_int;
-	int16_float POS;
-	int16_float VEL;
-	int16_float Torque;
+	float POS;
+	float VEL;
+	float Torque;
 	float Kp;
 	float Kd;
 	float Tmos;

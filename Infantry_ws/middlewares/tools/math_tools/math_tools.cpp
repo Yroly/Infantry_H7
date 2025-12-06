@@ -1,7 +1,6 @@
 #include "math_tools.h"
 
-namespace at
-{
+namespace at{
 float limit_angle(float angle)
 {
   while (angle > PI) angle -= 2 * PI;
@@ -39,5 +38,4 @@ uint32_t float_to_uint(float input, float min, float max, size_t bits)
 }
 
 int8_t sgn(float input) { return (input > 0) - (input < 0); }
-
-}// namespace at
+} 

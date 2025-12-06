@@ -57,12 +57,10 @@ float VMC_Class::LQR_K_Calc(float *coe,float len){
   return coe[0]*len*len*len+coe[1]*len*len+coe[2]*len+coe[3];	
 }
 void Limit_min_max(float *in,float min,float max){
-  if(*in < min)
-  {
+  if(*in < min){
     *in = min;
   }
-  else if(*in > max)
-  {
+  else if(*in > max){
     *in = max;
   }
 }

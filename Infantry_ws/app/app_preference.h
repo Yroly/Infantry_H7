@@ -98,20 +98,17 @@
 #define FDCAN2_Buffer_Size 70
 #define FDCAN3_Buffer_Size 70
 
-#define g_HENGYANG  9.7907f//ºâÑô
-#define g_WUHAN     9.7936f//Îäºº
-#define g_CHANGSHA  9.7915f//³¤É³
-
+#define g_SHIJIAZHUANG 9.79973
 
 //Ñ¡ÔñÒ£¿ØÆ÷¿ØÖÆÄ£Ê½(Èýµ²Î»¹¦ÄÜÈçÏÂ0:²»¸úËæ ¸úËæ Ð¡ÍÓÂÝ 1:²»¸úËæ ÊÓ¾õ ÊÓ¾õ·¢µ¯)
 #define Gimbal_RC_CONTRAL_MODE       1
 #define Chassis_RC_CONTRAL_MODE      0
 //²¦µ¯Á¬·¢(¿É¸ÄÐ´°´¼ü)
 #define AUTOSHOOT 1
-//yaw£¬pitch½Ç¶ÈÓëÒ£¿ØÆ÷ÊäÈë±ÈÀý
+//yaw pitch 角度和遥控器输入比例
 #define Yaw_RC_SEN   0.0003f
 #define Pitch_RC_SEN 0.00015f
-//yaw,pitch½Ç¶ÈºÍÊó±êÊäÈëµÄ±ÈÀý
+//yaw pitch 角度和鼠标输入比例
 #define Yaw_Mouse_SEN    0.00035f
 #define Pitch_Mouse_SEN  0.0004f
 #define L0_SET_G_SEN     0.0008f
@@ -414,51 +411,71 @@
 #define Vy_Set_Frame_Period 0.07
 #define TOP_Frame_Period    0.07
 
-/*ROLLÖá²¹³¥PID*/
-#define LEG_ROLL_PID_KP       500.0f
+/*Roll轴补偿PID*/
+#define LEG_ROLL_PID_KP       0.0f
 #define LEG_ROLL_PID_KI       0.0f
 #define LEG_ROLL_PID_KD       0.0f
-#define LEG_ROLL_PID_MAX_OUT  400.0f
-#define LEG_ROLL_PID_MAX_IOUT 20.0f
-#define LEG_ROLL_PID_BAND_I   30.0f
-/*ROLLÖá²¹³¥ËÙ¶ÈPID*/
-#define LEG_GYRO_X_PID_KP       10.0f//5.0f
+#define LEG_ROLL_PID_MAX_OUT  90.0f
+#define LEG_ROLL_PID_MAX_IOUT 0.0f
+#define LEG_ROLL_PID_BAND_I   0.0f
+/*ROLL轴补偿速度PID*/
+#define LEG_GYRO_X_PID_KP       0.0f//5.0f
 #define LEG_GYRO_X_PID_KI       0.0f
 #define LEG_GYRO_X_PID_KD       0.0f
-#define LEG_GYRO_X_PID_MAX_OUT  200.0f
-#define LEG_GYRO_X_PID_MAX_IOUT 6.0f
-#define LEG_GYRO_X_PID_BAND_I   30.0f
+#define LEG_GYRO_X_PID_MAX_OUT  90.0f
+#define LEG_GYRO_X_PID_MAX_IOUT 0.0f
+#define LEG_GYRO_X_PID_BAND_I   0.0f
 
 
-/*Angle0·ÀÅü²æ¿ØÖÆPID*/
-#define LEG_ANGLE0_ERR_PID_KP       40.0f
+/*Angle0防劈叉PID*/
+#define LEG_ANGLE0_ERR_PID_KP       0.0f
 #define LEG_ANGLE0_ERR_PID_KI       0.0f
 #define LEG_ANGLE0_ERR_PID_KD       0.0f
-#define LEG_ANGLE0_ERR_PID_MAX_OUT  500.0f
-#define LEG_ANGLE0_ERR_PID_MAX_IOUT 10.0f
-#define LEG_ANGLE0_ERR_PID_BAND_I   0.06f
-
-/*ÍÈ³¤L0¿ØÖÆPID*/
-#define LEG_L0_PID_KP             400//600.0f
+#define LEG_ANGLE0_ERR_PID_MAX_OUT  90.0f
+#define LEG_ANGLE0_ERR_PID_MAX_IOUT 0.0f
+#define LEG_ANGLE0_ERR_PID_BAND_I   0.0f
+/*起立腿部旋转位置控制PID*/
+#define LEG_Position_PID_KP       0.0f
+#define LEG_Position_PID_KI       0.0f
+#define LEG_Position_PID_KD       0.0f
+#define LEG_Position_PID_MAX_OUT  3.0f
+#define LEG_Position_PID_MAX_IOUT 1.0f
+#define LEG_Position_PID_BAND_I   0.0f
+/*起立腿部旋转速度控制PID*/
+#define LEG_Speed_PID_KP       0.0f
+#define LEG_Speed_PID_KI       0.0f
+#define LEG_Speed_PID_KD       0.0f
+#define LEG_Speed_PID_MAX_OUT  3.0f
+#define LEG_Speed_PID_MAX_IOUT 1.0f
+#define LEG_Speed_PID_BAND_I   0.0f
+/*起立腿部收腿速度控制PID*/
+#define LEG_L0Speed_PID_KP       0.0f
+#define LEG_L0Speed_PID_KI       0.0f
+#define LEG_L0Speed_PID_KD       0.0f
+#define LEG_L0Speed_PID_MAX_OUT  90.0f
+#define LEG_L0Speed_PID_MAX_IOUT 0.0f
+#define LEG_L0Speed_PID_BAND_I   0.0f
+/*腿长L0控制PID*/
+#define LEG_L0_PID_KP             0.0f//600.0f
 #define LEG_L0_PID_KI             0  //0.0f
 #define LEG_L0_PID_KD             0  //300
-#define LEG_L0_PID_MAX_OUT        200.0f
-#define LEG_L0_PID_MAX_IOUT       30.0f
-#define LEG_L0_PID_BAND_I         0.04f
-/*ÍÈ³¤L0¿ØÖÆPID*/
-#define LEG_L1_PID_KP             400//600.0f
+#define LEG_L0_PID_MAX_OUT        90.0f
+#define LEG_L0_PID_MAX_IOUT       0.0f
+#define LEG_L0_PID_BAND_I         0.0f
+/*腿长L0控制PID*/
+#define LEG_L1_PID_KP             0.0f//600.0f
 #define LEG_L1_PID_KI             0  //0.0f
 #define LEG_L1_PID_KD             0  //300
-#define LEG_L1_PID_MAX_OUT        200.0f
-#define LEG_L1_PID_MAX_IOUT       30.0f
-#define LEG_L1_PID_BAND_I         0.04f
-/*ÍÈ³¤L0¿ØÖÆËÙ¶ÈPID*/
-#define LEG_L0_SPEED_PID_KP         120.0f
+#define LEG_L1_PID_MAX_OUT        90.0f
+#define LEG_L1_PID_MAX_IOUT       0.0f
+#define LEG_L1_PID_BAND_I         0.0f
+/*腿长L0控制速度PID*/
+#define LEG_L0_SPEED_PID_KP         0.0f
 #define LEG_L0_SPEED_PID_KI         0.0f
 #define LEG_L0_SPEED_PID_KD         0.0f
-#define LEG_L0_SPEED_PID_MAX_OUT  200.0f
-#define LEG_L0_SPEED_PID_MAX_IOUT 120.0f
-#define LEG_L0_SPEED_PID_BAND_I   100.0f
+#define LEG_L0_SPEED_PID_MAX_OUT  90.0f
+#define LEG_L0_SPEED_PID_MAX_IOUT 0.0f
+#define LEG_L0_SPEED_PID_BAND_I   0.0f
 
 
 

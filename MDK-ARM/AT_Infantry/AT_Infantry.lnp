@@ -4,7 +4,6 @@
 "at_infantry\plotter_task.o"
 "at_infantry\buzzer_task.o"
 "at_infantry\remote_task.o"
-"at_infantry\ps2_task.o"
 "at_infantry\bsp_dwt.o"
 "at_infantry\bsp_can.o"
 "at_infantry\bmi088middleware.o"
@@ -72,11 +71,11 @@
 "..\Drivers\CMSIS\DSP\Lib\ARM\arm_cortexM7lfdp_math.lib"
 "at_infantry\buzzer.o"
 "at_infantry\plotter.o"
-"at_infantry\dbus.o"
 "at_infantry\watchdog.o"
 "at_infantry\bmi088.o"
 "at_infantry\mahony.o"
 "at_infantry\math_tools.o"
+"at_infantry\sbus.o"
 --strict --scatter "AT_Infantry\AT_Infantry.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

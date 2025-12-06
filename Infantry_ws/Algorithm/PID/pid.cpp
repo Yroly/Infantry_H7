@@ -14,16 +14,15 @@ PID_Ctrl PID;
         }                      \
     }
 
-void PID_Ctrl::Init(PidTypeDef *pid,PidMode mode,const fp32 PID[3],fp32 max_out,fp32 max_Iout,fp32 I_band)
+void PID_Ctrl::Init(PidTypeDef *pid,PidMode mode,fp32 Kp, fp32 Ki, fp32 Kd,fp32 max_out,fp32 max_Iout,fp32 I_band)
 {
-    if (pid == NULL || PID == NULL)
-    {
+    if (pid == NULL){
         return;
     }
     pid->mode = mode;
-    pid->Kp = PID[0];
-    pid->Ki = PID[1];
-    pid->Kd = PID[2];
+    pid->Kp = Kp;
+    pid->Ki = Ki;
+    pid->Kd = Kd;
     pid->max_out = max_out;
     pid->max_Iout = max_Iout;
 		pid->I_band = I_band;

@@ -31,15 +31,15 @@ void INS_Task(void)
 
     BMI088_Read(&BMI088);
 
-    INS.Accel[X] = BMI088.Accel[X];
-    INS.Accel[Y] = BMI088.Accel[Y];
-    INS.Accel[Z] = BMI088.Accel[Z];
+    INS.Accel[0] = BMI088.Accel[0];
+    INS.Accel[1] = BMI088.Accel[1];
+    INS.Accel[2] = BMI088.Accel[2];
 	  Accel.x=BMI088.Accel[0];
 	  Accel.y=BMI088.Accel[1];
 		Accel.z=BMI088.Accel[2];
-    INS.Gyro[X] = BMI088.Gyro[X];
-    INS.Gyro[Y] = BMI088.Gyro[Y];
-    INS.Gyro[Z] = BMI088.Gyro[Z];
+    INS.Gyro[0] = BMI088.Gyro[0];
+    INS.Gyro[1] = BMI088.Gyro[1];
+    INS.Gyro[2] = BMI088.Gyro[2];
   	Gyro.x=BMI088.Gyro[0];
 		Gyro.y=BMI088.Gyro[1];
 		Gyro.z=BMI088.Gyro[2];

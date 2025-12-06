@@ -1,25 +1,9 @@
-/**
- ******************************************************************************
- * @file    ins_task.h
- * @author  Wang Hongxi
- * @version V2.0.0
- * @date    2022/2/23
- * @brief
- ******************************************************************************
- * @attention
- *
- ******************************************************************************
- */
 #ifndef __INS_TASK_H
 #define __INS_TASK_H
 
 #include "stdint.h"
 #include "BMI088driver.h"
 #include "QuaternionEKF.h"
-
-#define X 0
-#define Y 1
-#define Z 2
 
 #define INS_TASK_PERIOD 1
 

@@ -117,11 +117,11 @@ float float_deadband(float Value, float minValue, float maxValue);
 // int26死区
 int16_t int16_deadline(int16_t Value, int16_t minValue, int16_t maxValue);
 //限幅函数
-float float_constrain(float Value, float minValue, float maxValue);
+extern float float_constrain(float Value, float minValue, float maxValue);
 //限幅函数
 int16_t int16_constrain(int16_t Value, int16_t minValue, int16_t maxValue);
 //循环限幅函数
-float loop_float_constrain(float Input, float minValue, float maxValue);
+extern float loop_float_constrain(float Input, float minValue, float maxValue);
 //角度 °限幅 180 ~ -180
 float theta_format(float Ang);
 

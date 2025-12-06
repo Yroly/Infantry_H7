@@ -41,7 +41,7 @@ typedef struct
 class PID_Ctrl
 {
 public:
-    void Init(PidTypeDef *pid, PidMode mode,const fp32 PID[3],fp32 max_out,fp32 max_Iout,fp32 I_band);
+    void Init(PidTypeDef *pid, PidMode mode,fp32 Kp, fp32 Ki, fp32 Kd,fp32 max_out,fp32 max_Iout,fp32 I_band);
     fp32 Calc(PidTypeDef *pid, fp32 measure, fp32 target);
     void Clear(PidTypeDef *pid);
 };

@@ -339,7 +339,7 @@
               <MiscControls></MiscControls>
               <Define>USE_PWR_LDO_SUPPLY,USE_HAL_DRIVER,STM32H723xx</Define>
               <Undefine></Undefine>
-              <IncludePath>../Core/Inc;../Drivers/STM32H7xx_HAL_Driver/Inc;../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy;../Middlewares/Third_Party/FreeRTOS/Source/include;../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2;../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F;../Drivers/CMSIS/Device/ST/STM32H7xx/Include;../Drivers/CMSIS/Include;../Middlewares/ST/ARM/DSP/Inc;../Infantry_ws;../Infantry_ws/bsp;../Infantry_ws/Lib;../Infantry_ws/devices/DM_Motor;../Infantry_ws/devices/BMI088;../Infantry_ws/Controller;../Infantry_ws/task;../Infantry_ws/Algorithm;../Infantry_ws/Algorithm/EKF;../Infantry_ws/Algorithm/kalman;../Infantry_ws/Algorithm/mahony;../Infantry_ws/Algorithm/PID;../Infantry_ws/Algorithm/VMC;../Infantry_ws/app;../Infantry_ws/Leg;../Infantry_ws/middlewares/io/buzzer;../Infantry_ws/middlewares/io/plotter;../Infantry_ws/middlewares/io/dbus;../Infantry_ws/middlewares/io/watchdog;../Infantry_ws/middlewares/io/bmi088;../Infantry_ws/middlewares/tools/math_tools;../Infantry_ws/middlewares/tools/mahony;../Infantry_ws/middlewares/tools/low_pass_filter;../Infantry_ws/middlewares/tools/pid;..\Infantry_ws\middlewares\motor</IncludePath>
+              <IncludePath>../Core/Inc;../Drivers/STM32H7xx_HAL_Driver/Inc;../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy;../Middlewares/Third_Party/FreeRTOS/Source/include;../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2;../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F;../Drivers/CMSIS/Device/ST/STM32H7xx/Include;../Drivers/CMSIS/Include;../Middlewares/ST/ARM/DSP/Inc;../Infantry_ws;../Infantry_ws/bsp;../Infantry_ws/Lib;../Infantry_ws/devices/DM_Motor;../Infantry_ws/devices/BMI088;../Infantry_ws/Controller;../Infantry_ws/task;../Infantry_ws/Algorithm;../Infantry_ws/Algorithm/EKF;../Infantry_ws/Algorithm/kalman;../Infantry_ws/Algorithm/mahony;../Infantry_ws/Algorithm/PID;../Infantry_ws/Algorithm/VMC;../Infantry_ws/app;../Infantry_ws/Leg;../Infantry_ws/middlewares/io/buzzer;../Infantry_ws/middlewares/io/plotter;../Infantry_ws/middlewares/io/dbus;../Infantry_ws/middlewares/io/watchdog;../Infantry_ws/middlewares/io/bmi088;../Infantry_ws/middlewares/tools/math_tools;../Infantry_ws/middlewares/tools/mahony;../Infantry_ws/middlewares/tools/low_pass_filter;../Infantry_ws/middlewares/tools/pid;../Infantry_ws/middlewares/motor;../Infantry_ws/middlewares/io/sbus</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -407,11 +407,6 @@
               <FileName>remote_task.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>..\Infantry_ws\task\remote_task.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>PS2_Task.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\Infantry_ws\task\PS2_Task.cpp</FilePath>
             </File>
           </Files>
         </Group>
@@ -519,9 +514,9 @@
           <GroupName>Lib</GroupName>
           <Files>
             <File>
-              <FileName>user_lib.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Infantry_ws\Lib\user_lib.c</FilePath>
+              <FileName>user_lib.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\Infantry_ws\Lib\user_lib.cpp</FilePath>
             </File>
           </Files>
         </Group>
@@ -1120,11 +1115,6 @@
               <FilePath>..\Infantry_ws\middlewares\io\plotter\plotter.cpp</FilePath>
             </File>
             <File>
-              <FileName>dbus.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\Infantry_ws\middlewares\io\dbus\dbus.cpp</FilePath>
-            </File>
-            <File>
               <FileName>watchdog.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>..\Infantry_ws\middlewares\io\watchdog\watchdog.cpp</FilePath>
@@ -1143,6 +1133,11 @@
               <FileName>math_tools.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>..\Infantry_ws\middlewares\tools\math_tools\math_tools.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>sbus.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\Infantry_ws\middlewares\io\sbus\sbus.cpp</FilePath>
             </File>
           </Files>
         </Group>

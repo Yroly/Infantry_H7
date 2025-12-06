@@ -3,6 +3,7 @@
 
 #include "main.h"
 #include "dm_motor_drv.h"
+#include "drv_dji_motor.h"
 #include "INS_Task.h"
 #include "cmsis_os2.h"
 #include "bsp_dwt.h"
@@ -11,6 +12,9 @@
 #include "app_preference.h"
 #include "Legs.h"
 #include "Leg.h"
+#include "user_lib.h"
+#include "remote_task.h"
+#include "bsp_can.h"
 
 #define TP_PID_KP 10.0f
 #define TP_PID_KI 0.0f 
@@ -29,7 +33,11 @@
 #define ROLL_PID_KD 0.0f
 #define ROLL_PID_MAX_OUT  100.0f//轮毂电机的额定扭矩
 #define ROLL_PID_MAX_IOUT 0.0f
-
+typedef enum{
+	CHASSIS_STOP = 0,
+	CHASSIS_RUN,
+	CHASSIS_GYROSCOPE,
+}chassis_mode_t;
 typedef struct{
 	fp32 vx;
 	fp32 vy;
@@ -47,6 +55,31 @@ typedef struct{
 	fp32 Vx_Set_Last;
 	fp32 Speed_Set_Last;
 }Chassis_Velocity_t;
+typedef struct
+{
+	bool Spin_Flag;
+	bool RC_Flag;
+	bool Visual_Flag;
+	bool Energy_Flag;
+	bool Looding_Flag;
+	bool Fric_Flag;
+	bool Shoot_Flag;
+	bool Shoot_Reversal_Flag;
+	bool Speed_Up_Flag;
+	bool Velocity_Clac_Flag;
+	
+	bool Collapse_Flag;
+	bool Start_Jump_Flag;
+	bool Jump_Flag;
+	bool Jump_MAX_Flag;
+	bool Jump_shrink_Flag;
+	bool Recovery_Leg_Flag;
+	bool Model_Flag;
+	bool Wheel_Leg_Model_Flag;
+	bool Liftoff_Flag[2];//离地标志位
+	bool jump_Flag;
+
+} Chassis_Ctrl_Flags_t;
 class Chassis_Class{
 public:
 	/*PID*/
@@ -60,11 +93,17 @@ public:
 	PidTypeDef L0_Speed_Pid[2];
 
 	float x_fdb;
+	chassis_mode_t Mode;
+	chassis_mode_t Last_Mode;
+	Chassis_Ctrl_Flags_t Flags;
 
-	float Chassis_DWT_dt;
+	uint32_t Chassis_Task_DWT_Count;
+	float Chassis_Task_DWT_dt;
 	uint32_t Chassis_DWT_Count;
+	float Chassis_DWT_dt;
+
 	Joint_Motor_t Joint_Motor[4];
-	Wheel_Motor_t Wheel_Motor[2];
+	RM3508_TypeDef Wheel_Motor[2];
 	
 	fp32 Chassis_Q;
 	fp32 Chassis_R1;
@@ -137,13 +176,19 @@ public:
 	
 	void Chassis_Init(void);
 	void Leg_Init();
-	void Decide_Mode(void);
+	void Behaviour_Mode(void);
 	void Feedback_Update(void);
-	void Chassis_Control(void);
-	void Chassis_Control_Loop(void);
+	void Control(void);
+	void Control_Loop(void);
 	void slope_following(float *target,float *set,float acc);
+private:
+	void Behaviour_Control(fp32 *vx_set, fp32 *vy_set, fp32 *angle_set);
+	void RC_to_Control(fp32 *vx_set, fp32 *vy_set);
+	void Key_to_Control(fp32 *vx_set, fp32 *vy_set);
+	void Flag_Control();
 };
 
 extern Chassis_Class Chassis;
+extern fp32 ramp_float( fp32  final, fp32  now, fp32  ramp );
 
 #endif  /*__CHASSIS_TASK_H__*/

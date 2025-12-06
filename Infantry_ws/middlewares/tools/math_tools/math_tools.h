@@ -4,8 +4,7 @@
 #include "math.h"
 #include "stdint.h"
 
-namespace at
-{
+namespace at{
 constexpr float PI = 3.14159265358979323846;
 
 // (-PI, PI]
@@ -31,7 +30,5 @@ uint32_t float_to_uint(float input, float min, float max, size_t bits);
 
 // sgn
 int8_t sgn(float input);
-
-}  // namespace at
-
+}
 #endif  // AT__MATH_TOOLS_HPP

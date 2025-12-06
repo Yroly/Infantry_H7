@@ -44,9 +44,9 @@ void DM_Motor_Class::DM4310_fbdata(Joint_Motor_t *motor, uint8_t *rx_data,uint32
 	  motor->para.p_int=(rx_data[1]<<8)|rx_data[2];
 	  motor->para.v_int=(rx_data[3]<<4)|(rx_data[4]>>4);
 	  motor->para.t_int=((rx_data[4]&0xF)<<8)|rx_data[5];
-	  motor->para.POS.fdata = uint_to_float(motor->para.p_int, P_MIN, P_MAX, 16); // (-12.5,12.5)
-	  motor->para.VEL.fdata = uint_to_float(motor->para.v_int, V_MIN, V_MAX, 12); // (-30.0,30.0)
-	  motor->para.Torque.fdata = uint_to_float(motor->para.t_int, T_MIN, T_MAX, 12);  // (-10.0,10.0)
+	  motor->para.POS = uint_to_float(motor->para.p_int, P_MIN, P_MAX, 16); // (-12.5,12.5)
+	  motor->para.VEL = uint_to_float(motor->para.v_int, V_MIN, V_MAX, 12); // (-30.0,30.0)
+	  motor->para.Torque = uint_to_float(motor->para.t_int, T_MIN, T_MAX, 12);  // (-10.0,10.0)
 	  motor->para.Tmos = (float)(rx_data[6]);
 	  motor->para.Tcoil = (float)(rx_data[7]);
 	}
@@ -62,9 +62,9 @@ void DM_Motor_Class::DM6215_fbdata(Wheel_Motor_t *motor, uint8_t *rx_data,uint32
 	  motor->para.p_int=(rx_data[1]<<8)|rx_data[2];
 	  motor->para.v_int=(rx_data[3]<<4)|(rx_data[4]>>4);
 	  motor->para.t_int=((rx_data[4]&0xF)<<8)|rx_data[5];
-	  motor->para.POS.fdata = uint_to_float(motor->para.p_int, P_MIN2, P_MAX2, 16); // (-12.0,12.0)
-	  motor->para.VEL.fdata = uint_to_float(motor->para.v_int, V_MIN2, V_MAX2, 12); // (-30.0,30.0)
-	  motor->para.Torque.fdata = uint_to_float(motor->para.t_int, T_MIN2, T_MAX2, 12);  // (-18.0,18.0)
+	  motor->para.POS = uint_to_float(motor->para.p_int, P_MIN2, P_MAX2, 16); // (-12.0,12.0)
+	  motor->para.VEL = uint_to_float(motor->para.v_int, V_MIN2, V_MAX2, 12); // (-30.0,30.0)
+	  motor->para.Torque = uint_to_float(motor->para.t_int, T_MIN2, T_MAX2, 12);  // (-18.0,18.0)
 	  motor->para.Tmos = (float)(rx_data[6]);
 	  motor->para.Tcoil = (float)(rx_data[7]);
 	}

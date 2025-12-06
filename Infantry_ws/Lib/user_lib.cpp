@@ -1,19 +1,7 @@
-/**
-  ******************************************************************************
-  * @file	 user_lib.c
-  * @author  Wang Hongxi
-  * @version V1.0.0
-  * @date    2021/2/18
-  * @brief   
-  ******************************************************************************
-  * @attention
-  *
-  ******************************************************************************
-  */
 #include "stdlib.h"
 #include "string.h"
 #include "user_lib.h"
-#include "math.h"
+#include "math.h"     
 #include "main.h"
 
 #ifdef _CMSIS_OS_H
@@ -142,18 +130,15 @@ float float_deadband(float Value, float minValue, float maxValue)
 }
 
 //int26死区
-int16_t int16_deadline(int16_t Value, int16_t minValue, int16_t maxValue)
-{
+int16_t int16_deadline(int16_t Value, int16_t minValue, int16_t maxValue){
     if (Value < maxValue && Value > minValue)
     {
         Value = 0;
     }
     return Value;
 }
-
 //限幅函数
-float float_constrain(float Value, float minValue, float maxValue)
-{
+float float_constrain(float Value, float minValue, float maxValue){
     if (Value < minValue)
         return minValue;
     else if (Value > maxValue)

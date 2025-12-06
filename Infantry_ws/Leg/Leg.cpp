@@ -7,66 +7,55 @@
 
 LegClass  Leg_Ctrl;
 
-LegClass::LegClass()
-{
-	  Vmc_Ctrl[0].Leg_DWT_Count=Vmc_Ctrl[1].Leg_DWT_Count=0;
-	  Vmc_Ctrl[0].KF_DWT_Count =Vmc_Ctrl[0].KF_DWT_Count=0;
-	
-	  Mw_Wheel=0.648;    //1kg
-		Ml_leg  =2.033f;   //µ¥Î»£ºkg
-	  Rl      =0.44/2.0f;//Çý¶¯ÂÖ¼ä¾à
-		Kn      =0;
-	
-    Vmc_Ctrl[0].l1 =Vmc_Ctrl[1].l1 = 0.13597f;  
-    Vmc_Ctrl[0].l2 =Vmc_Ctrl[1].l2 = 0.27739f;
-    Vmc_Ctrl[0].l3 =Vmc_Ctrl[1].l3 = 0.27739f;
-    Vmc_Ctrl[0].l4 =Vmc_Ctrl[1].l4 = 0.13597f;
-    Vmc_Ctrl[0].l5 =Vmc_Ctrl[1].l5 = 0.200f;
-	
-	  Vmc_Ctrl[0].xc = Vmc_Ctrl[1].xc=0.0f,
-	  Vmc_Ctrl[0].yc = Vmc_Ctrl[1].yc=0.0f;
-	  Vmc_Ctrl[0].angle1=Vmc_Ctrl[1].angle1=PI/3*2;
-	  Vmc_Ctrl[0].angle4=Vmc_Ctrl[1].angle4=PI/3;
-	  Vmc_Ctrl[0].WBR.angle0.now=Vmc_Ctrl[1].WBR.angle0.now=0.0f;
-		 
-	  Vmc_Ctrl[0].Leg_out.F_out =0;
-	  Vmc_Ctrl[0].Leg_out.F_Init_out= LEG_GRAVITY*g_HENGYANG ;
-		
-	  Leg_fdb.Pitch_fdb=0;
-		Vmc_Ctrl[0].Distance_Observe_fdb=Vmc_Ctrl[1].Distance_Observe_fdb=0;
-		Vmc_Ctrl[0].Wheel_Speed_fdb=Vmc_Ctrl[1].Wheel_Speed_fdb=0;
-		Leg_fdb.Pitch_Gyro_fdb=0;
-		Leg_fdb.Yaw_fdb=0;
-		Leg_fdb.Yaw_Gyro_fdb=0;
-		
-    Vmc_Ctrl[0].Zjie();
-		Vmc_Ctrl[1].Zjie();
-	
-    Leg_set.L0_set = 0.23;//³õÖµ
-		K_filter_gyro=0.6;
+LegClass::LegClass(){
+	Vmc_Ctrl[0].Leg_DWT_Count=Vmc_Ctrl[1].Leg_DWT_Count=0;
+	Vmc_Ctrl[0].KF_DWT_Count =Vmc_Ctrl[0].KF_DWT_Count=0;
 
+	Mw_Wheel=0.648;    //1kg
+	Ml_leg  =2.033f;   //å•ä½kg
+	Rl      =0.44/2.0f;//é©±åŠ¨è½®é—´è·
+	Kn      =0;
+
+	Vmc_Ctrl[0].l1 =Vmc_Ctrl[1].l1 = 0.13597f;  
+	Vmc_Ctrl[0].l2 =Vmc_Ctrl[1].l2 = 0.27739f;
+	Vmc_Ctrl[0].l3 =Vmc_Ctrl[1].l3 = 0.27739f;
+	Vmc_Ctrl[0].l4 =Vmc_Ctrl[1].l4 = 0.13597f;
+	Vmc_Ctrl[0].l5 =Vmc_Ctrl[1].l5 = 0.200f;
+
+	Vmc_Ctrl[0].xc = Vmc_Ctrl[1].xc=0.0f,
+	Vmc_Ctrl[0].yc = Vmc_Ctrl[1].yc=0.0f;
+	Vmc_Ctrl[0].angle1=Vmc_Ctrl[1].angle1=PI/3*2;
+	Vmc_Ctrl[0].angle4=Vmc_Ctrl[1].angle4=PI/3;
+	Vmc_Ctrl[0].WBR.angle0.now=Vmc_Ctrl[1].WBR.angle0.now=0.0f;
+	 
+	Vmc_Ctrl[0].Leg_out.F_out =0;
+	Vmc_Ctrl[0].Leg_out.F_Init_out= LEG_GRAVITY*g_SHIJIAZHUANG ;
+
+	Leg_fdb.Pitch_fdb=0;
+	Vmc_Ctrl[0].Distance_Observe_fdb=Vmc_Ctrl[1].Distance_Observe_fdb=0;
+	Vmc_Ctrl[0].Wheel_Speed_fdb=Vmc_Ctrl[1].Wheel_Speed_fdb=0;
+	Leg_fdb.Pitch_Gyro_fdb=0;
+	Leg_fdb.Yaw_fdb=0;
+	Leg_fdb.Yaw_Gyro_fdb=0;
+
+	Vmc_Ctrl[0].Zjie();
+	Vmc_Ctrl[1].Zjie();
+
+	Leg_set.L0_set = 0.23;//è…¿é•¿åˆå€¼
+	K_filter_gyro=0.6;
 }
-
-
-
-void VmcClass::K_Matching()//£¬¸üÐÂKÔöÒæ
-{
-
-	Zjie();//£¬ÏÈÕý½â¸üÐÂ³öL0£¬ÔÙ¸üÐÂKÔöÒæ
-	Support_Force_resolving();//,Ö§³ÖÁ¦½âËã£¬·ÅÔÚÕý½âºóÃæ£¬ÒòÎªÐèÒªÓÃµ½L0,angle0£¬angle1£¬angle2£¬angle3£¬angle4
-
-	
-}
-
+void VmcClass::K_Matching(){//æ›´æ–°kå¢žç›Šå€¼
+	Zjie();//å…ˆæ­£è§£å‡ºL0çš„å€¼å†æ›´æ–°Kå€¼
+	Support_Force_resolving();//æ”¯æŒåŠ›è§£ç®—
+}	
 /**
- * @brief: ÔË¶¯Ñ§Äæ½â
+ * @brief: è¿åŠ¨å­¦é€†è§£
  * @author: Dandelion
- * @param {float} xc£¬ÎåÁ¬¸ËÄ©¶Ë×ø±ê
- * @param {float} yc£¬ÎåÁ¬¸ËÄ©¶Ë×ø±ê£¬¿ÉÒÔ×÷ÎªÄ¿±êÖµÊäÈë£¬È»ºó½âËã³öËùÐèµÄ¹Ø½Ú½Ç¶È
+ * @param {float} xcäº”è¿žæ†æœ«ç«¯åæ ‡
+ * @param {float} ycäº”è¿žæ†ç›®æ ‡æœ«ç«¯åæ ‡å¯ä»¥è§£ç®—å‡ºæ‰€éœ€å…³èŠ‚è§’åº¦
  * @return {*}
  */
-void VmcClass::Njie(const float xc, const float yc)
-{
+void VmcClass::Njie(const float xc, const float yc){
     this->xc = xc;
     this->yc = yc;
 
@@ -80,32 +69,31 @@ void VmcClass::Njie(const float xc, const float yc)
     if (angle1 < 0)
         angle1 += 2 * PI;
 
-    // nije_5(&angle1, (void *)0, x, y, l1, l6, l3, l4, l5); //ÀûÓÃL1,L6¼ÆËãc1;
+    // nije_5(&angle1, (void *)0, x, y, l1, l6, l3, l4, l5); //åˆ©ç”¨l1å’Œl6è®¡ç®—c1;
     m = l1 * cos(angle1);
     n = l1 * sin(angle1);
     b = 0;
     // x1 = l2 / l6 * ((x - m) * cos(b) - (y - n) * sin(b)) + m;
-    // y1 = l2 / l6 * ((x - m) * sin(b) + (y - n) * cos(b)) + n; //µÃµ½±ÕÁ´Îå¸Ë¶ËµãµÄ×ø±ê
+    // y1 = l2 / l6 * ((x - m) * sin(b) + (y - n) * cos(b)) + n;å¾—åˆ°é—­é“¾äº”è¿žæ†ç«¯ç‚¹åæ ‡
     x1 = ((xc - m) * cos(b) - (yc - n) * sin(b)) + m;
-    y1 = ((xc - m) * sin(b) + (yc - n) * cos(b)) + n; // µÃµ½±ÕÁ´Îå¸Ë¶ËµãµÄ×ø±ê
+    y1 = ((xc - m) * sin(b) + (yc - n) * cos(b)) + n; //å¾—åˆ°é—­é“¾äº”è¿žæ†ç«¯ç‚¹åæ ‡
 
     A = 2 * y1 * l4;
     B = 2 * l4 * (x1 - l5 / 2);
     // c = l3 * l3 + 2 * l5 * x1 - l4 * l4 - l5 * l5 - x1 * x1 - y1 * y1;
     C = l3 * l3 + l5 * x1 - l4 * l4 - l5 * l5 / 4 - x1 * x1 - y1 * y1;
     angle4 = 2 * atan((A - sqrt(A * A + B * B - C * C)) / (B - C));
-    // nije_5((void *)0, &angle2, x1, y1, l1, l2, l3, l4, l5);        //¼ÆËãc4 ,
+    // nije_5((void *)0, &angle2, x1, y1, l1, l2, l3, l4, l5); è®¡ç®—c4
 }
 /**
- * @brief: ÔË¶¯Ñ§Õý½â
+ * @brief: è¿åŠ¨å­¦æ­£è§£
  * @author: Dandelion
- * @param {float} angle1£¬Ç°¹Ø½Úµç»ú½Ç¶È
- * @param {float} angle4£¬ºó¹Ø½Úµç»ú½Ç¶È
- * @param {float} pitch %rad£¬ÉÏ²ã»ú¹¹Æ«ÒÆ
+ * @param {float} angle1å‰å…³èŠ‚è§’åº¦
+ * @param {float} angle4åŽå…³èŠ‚è§’åº¦
+ * @param {float} pitch %radä¸Šå±‚æœºæž„åç§»
  * @return {*}
  */
-void VmcClass::Zjie()
-{
+void VmcClass::Zjie(){
 	  xb = l1 * cos(angle1);
     yb = l1 * sin(angle1);
 	  xd = l5 + l4 * cos(angle4);
@@ -125,19 +113,18 @@ void VmcClass::Zjie()
     WBR.angle0.last = WBR.angle0.now;
     WBR.angle0.now = atan2(yc,xc-l5/2);
 	
-    WBR.Tilt_angle_0.now=WBR.angle0.now-PI/2+Leg_Ctrl.Leg_fdb.Pitch_fdb;//ÂÖÍÈÄ£ÐÍÏÂ×ª»»×ø±êÏµ
+    WBR.Tilt_angle_0.now=WBR.angle0.now-PI/2+Leg_Ctrl.Leg_fdb.Pitch_fdb;//è½®è…¿æ¨¡åž‹ä¸‹è½¬æ¢åæ ‡ç³»
 }
 /**
- * @brief: VMC_Positive£¨ÐéÄâÁ¦Ëã·¨,Õý½â£©
+ * @brief: VMC_Positiveè™šæ‹ŸåŠ›ç®—æ³•æ­£è§£
  * @author: Dandelion
- * @param {float} TP_H_Q ¹Ø½Úµç»úÁ¦¾Ø,£¬°´ÕÕçôÀÐÍ¼£¬ÕâÁ½¸öÊä³ö¶¼ÊÇÏò×ó
- * @param {float} F  ÑØ¸Ë·½ÏòµÄÊÜÁ¦£¬£¬ÎåÁ¬¸ËÄ©¶ËÏòÉÏµÄÍÆÁ¦
- * @param {float} Tp ¸ËËùÊÜµÄÁ¦¾Ø£¬£¬Êä³öÏò×ó
+ * @param {float} TP_H_Q 
+ * @param {float} F 
+ * @param {float} Tp æ†æ‰€å—åŠ›çŸ©å‘å·¦
  * @return {*}
  */
 float TP_limit=0.5;
-void VmcClass::VMC_Positive()
-{
+void VmcClass::VMC_Positive(){
 
 	 Leg_out.TP_1_out=
 										 l1 * sin(WBR.angle0.now - angle3) * sin(angle1 - angle2) 
@@ -158,16 +145,14 @@ void VmcClass::VMC_Positive()
 	#endif
 }
 /**
- * @brief: VMC_Negative£¨ÐéÄâÁ¦Ëã·¨£¬Äæ½â£©
+ * @brief: VMC_Negativeè™šæ‹ŸåŠ›ç®—æ³•é€†è§£
  * @author: Dandelion
- * @param {float} TP_H_Q ¹Ø½Úµç»úÁ¦¾Ø,°´ÕÕçôÀÐÍ¼£¬ÕâÁ½¸öÊä³ö¶¼ÊÇÏò×ó
- * @param {float} F ÑØ¸Ë·½ÏòµÄÊÜÁ¦,ÎåÁ¬¸ËÄ©¶ËÏòÉÏµÄÍÆÁ¦
- * @param {float} Tp ¸ËËùÊÜµÄÁ¦¾Ø,Êä³öÏò×ó
+ * @param {float} TP_H_Q 
+ * @param {float} F
+ * @param {float} Tp 
  * @return {*}
  */
-//,¹Ø½Úµç»ú·´À¡Å¤¾Ø->×ã¶Ë·´À¡Á¦
- void VmcClass::VMC_Negative()
-{
+ void VmcClass::VMC_Negative(){
 	  WBR.F_fdb=(
 										-((cos(WBR.angle0.now - angle2)
 										*sin(angle2 - angle3))
@@ -197,46 +182,34 @@ void VmcClass::VMC_Positive()
 									*sin(WBR.angle0.now - angle2)*sin(angle3 - angle4)))
 									*WBR.TP_2_fdb;
 }
-
-//ÎåÁ¬¸ËµÄËÙ¶ÈÔË¶¯Ñ§½áËã,´«Èëw1ºÍw4½ÇËÙ¶È,¹Ø½Úµç»ú·´À¡µÄ½ÇËÙ¶È------>×ã¶ËµÄËÙ¶È(·Ç³£ÍêÃÀµÄ¼ÆËã)
-void VmcClass::VMC_Positive_Kinematics()//£¬ÐèÏÈÕýÔË¶¯½â(Öªangle1£¬angle2£¬angle3£¬angle4)
-{
-   Leg_dt=DWT_GetDeltaT(&Leg_DWT_Count);
-	
+void VmcClass::VMC_Positive_Kinematics(){
+	Leg_dt=DWT_GetDeltaT(&Leg_DWT_Count);
 	/*********************************************/
-	 WBR.L0_fdb.dot_last=WBR.L0_fdb.dot_now;
-	 
-	 WBR.L0_fdb.dot_now=l1*sin(WBR.angle0.now - angle3) * sin(angle1 - angle2)/sin(angle3 - angle2)*angle1_dot +l4 * sin(WBR.angle0.now - angle2) * sin(angle3 - angle4) / sin(angle3 - angle2)*angle4_dot;
-	 
-	 WBR.L0_fdb.ddot=(WBR.L0_fdb.dot_now-WBR.L0_fdb.dot_last)/Leg_dt;
+	WBR.L0_fdb.dot_last=WBR.L0_fdb.dot_now;
 
-	 WBR.angle0.dot_now=+l1*cos(WBR.angle0.now-angle3)*sin(angle1 - angle2)/(WBR.L0_fdb.now * sin(angle3 - angle2))*angle1_dot+l4 * cos(WBR.angle0.now - angle2) * sin(angle3 - angle4) /(WBR.L0_fdb.now * sin(angle3 - angle2))*angle4_dot; 
+	WBR.L0_fdb.dot_now=l1*sin(WBR.angle0.now - angle3) * sin(angle1 - angle2)/sin(angle3 - angle2)*angle1_dot +l4 * sin(WBR.angle0.now - angle2) * sin(angle3 - angle4) / sin(angle3 - angle2)*angle4_dot;
+
+	WBR.L0_fdb.ddot=(WBR.L0_fdb.dot_now-WBR.L0_fdb.dot_last)/Leg_dt;
+
+	WBR.angle0.dot_now=+l1*cos(WBR.angle0.now-angle3)*sin(angle1 - angle2)/(WBR.L0_fdb.now * sin(angle3 - angle2))*angle1_dot+l4 * cos(WBR.angle0.now - angle2) * sin(angle3 - angle4) /(WBR.L0_fdb.now * sin(angle3 - angle2))*angle4_dot; 
 	/*********************************************/
+	WBR.Tilt_angle_0.dot_last=WBR.Tilt_angle_0.dot_now;
+	WBR.Tilt_angle_0.dot_now =WBR.angle0.dot_now;
 
-		WBR.Tilt_angle_0.dot_last=WBR.Tilt_angle_0.dot_now;
-		WBR.Tilt_angle_0.dot_now =WBR.angle0.dot_now;
-
-		WBR.Tilt_angle_0.ddot=(WBR.Tilt_angle_0.dot_now-WBR.Tilt_angle_0.dot_last)/Leg_dt;
-	
+	WBR.Tilt_angle_0.ddot=(WBR.Tilt_angle_0.dot_now-WBR.Tilt_angle_0.dot_last)/Leg_dt;
 }
-
-//Ö§³ÖÁ¦½âËã
-void VmcClass::Support_Force_resolving()//£¬·ÅÔÚÕý½âºó
-{
-	VMC_Negative();  //·´À¡¸üÐÂÄ©¶ËÁ¦ºÍ°Ú×ª¾Ø
-	
-	VMC_Positive_Kinematics();//¸üÐÂL0ºÍangle0µÄÒ»½×Î¢·ÖºÍ¶þ½×Î¢·Ö
-	
+void VmcClass::Support_Force_resolving(){
+	VMC_Negative();
+	VMC_Positive_Kinematics();
   WBR.FN_fdb= WBR.F_fdb *cos(WBR.Tilt_angle_0.now)
 						 +WBR.Tp_fdb*sin(WBR.Tilt_angle_0.now)/WBR.L0_fdb.now
-						 +Leg_Ctrl.Mw_Wheel*(g_HENGYANG+Leg_Ctrl.Leg_fdb.Accel_Z-WBR.L0_fdb.ddot*cos(WBR.Tilt_angle_0.now)
+						 +Leg_Ctrl.Mw_Wheel*(g_SHIJIAZHUANG+Leg_Ctrl.Leg_fdb.Accel_Z-WBR.L0_fdb.ddot*cos(WBR.Tilt_angle_0.now)
 						 +2*WBR.L0_fdb.dot_now*WBR.Tilt_angle_0.dot_now*sin(WBR.Tilt_angle_0.now)
 						 +WBR.L0_fdb.now*WBR.Tilt_angle_0.ddot*sin(WBR.Tilt_angle_0.now)
 						 +WBR.L0_fdb.now*pow(WBR.Tilt_angle_0.dot_now,2)*cos(WBR.Tilt_angle_0.now));
 }
-void VmcClass::Absolute_Speed_KF_Init()//ÏÈÅÜÒ»±éKF_Feedback_Update³õÊ¼»¯¹Û²âÖµ
-{
-	Leg_KF.xhat_data[0]=Leg_KF.z_data[0]=Distance_Observe_fdb;//,ÏÈ³õÊ¼»¯¹À¼ÆÖµÎª¹Û²âÖµ
+void VmcClass::Absolute_Speed_KF_Init(){
+	Leg_KF.xhat_data[0]=Leg_KF.z_data[0]=Distance_Observe_fdb;//
 	Leg_KF.xhat_data[1]=Leg_KF.z_data[1]=Wheel_Speed_Forecast;//
 	
 	Leg_KF.A_data[0]=1;
@@ -249,7 +222,7 @@ void VmcClass::Absolute_Speed_KF_Init()//ÏÈÅÜÒ»±éKF_Feedback_Update³õÊ¼»¯¹Û²âÖµ
 	Leg_KF.B_data[1]=KF_dt*KF_dt/2;
 	
 	
-	Leg_KF.W_AAccel_date=Wheel_Accel_Forecast;//¼ÓËÙ¶È¹Û²âÖµ
+	Leg_KF.W_AAccel_date=Wheel_Accel_Forecast;
 
 	Leg_KF.H_data[0]=1;
 	Leg_KF.H_data[1]=0;
@@ -284,7 +257,7 @@ void VmcClass::Absolute_Speed_KF_Init()//ÏÈÅÜÒ»±éKF_Feedback_Update³õÊ¼»¯¹Û²âÖµ
 	
   //matrix_value2 = F->A.pData[1];
 }
-void VmcClass::KF_Feedback_Update()//,¼ÆËãÂÖ×Ó¾ø¶ÔËÙ¶È
+void VmcClass::KF_Feedback_Update()
 {
 	 KF_dt=DWT_GetDeltaT(&KF_DWT_Count);
 	 Last_Wheel_Speed_Forecast=Wheel_Speed_Forecast;
@@ -292,7 +265,7 @@ void VmcClass::KF_Feedback_Update()//,¼ÆËãÂÖ×Ó¾ø¶ÔËÙ¶È
 	
 	 Last_Wheel_Accel_Forecast=Wheel_Accel_Forecast;
 
-	 Wheel_Accel_Forecast=INS.Accel[1];//,¼ÓËÙ¶È¹Û²âÖµ
+	 Wheel_Accel_Forecast=INS.Accel[1];
 
 	Leg_KF.Q_data[0]=Leg_KF.Q_melody;
 	Leg_KF.Q_data[1]=Leg_KF.Q_melody;
@@ -305,8 +278,7 @@ void VmcClass::KF_Feedback_Update()//,¼ÆËãÂÖ×Ó¾ø¶ÔËÙ¶È
 	Leg_KF.R_data[3]=Leg_KF.R1_melody;
 }
 
-void VmcClass::Absolute_Speed_KF_Forecast()//,¿¨¶ûÂü¸üÐÂËÙ¶ÈÎ»ÒÆ
-{
+void VmcClass::Absolute_Speed_KF_Forecast(){
 	float TEMP_data[4]   = {0, 0, 0, 0};
 	float TEMP_data21[2] = {0, 0};
   mat TEMP, TEMP21;
@@ -323,7 +295,7 @@ void VmcClass::Absolute_Speed_KF_Forecast()//,¿¨¶ûÂü¸üÐÂËÙ¶ÈÎ»ÒÆ
 	Leg_KF.B_data[1]=KF_dt;
 
 
-	Leg_KF.W_AAccel_date=INS.Accel[1];//,¼ÓËÙ¶È¹Û²âÖµ
+	Leg_KF.W_AAccel_date=INS.Accel[1];
 	
 	if(
 //		Chassis.Mode == CHASSIS_NO_MOVE
@@ -331,17 +303,16 @@ void VmcClass::Absolute_Speed_KF_Forecast()//,¿¨¶ûÂü¸üÐÂËÙ¶ÈÎ»ÒÆ
 //	  ||Chassis.Flags.Liftoff_Flag[1]
 //		||Chassis.Mode==REVERSE_LITTLE_TOP
 //	  ||Chassis.Mode==CHASSIS_LITTLE_TOP
-//	||Chassis.Flags.Collapse_Flag
+//		||Chassis.Flags.Collapse_Flag
 //	  ||
 	(Leg_Ctrl.Leg_set.Wheel_Speed_set)
 	  )
 		Leg_KF.xhat.pData[0]=0;
 	
-	Leg_KF.z.pData[0]=Leg_KF.xhat.pData[0];//,Î»ÒÆ¹Û²â
-	Leg_KF.z.pData[1]=Wheel_Speed_Forecast;//,ËÙ¶È¹Û²âÖµ
+	Leg_KF.z.pData[0]=Leg_KF.xhat.pData[0];
+	Leg_KF.z.pData[1]=Wheel_Speed_Forecast;
 	
 	mat_trans(&Leg_KF.A, &Leg_KF.AT);
-	//,ÐèÏÈ³õÊ¼»¯¹À¼ÆÖµÎª¹Û²âÖµ
   //1. xhat'(k)= A xhat(k-1)
   mat_mult(&Leg_KF.A, &Leg_KF.xhat, &Leg_KF.xhatminus);   //  x(k|k-1) = A*X(k-1|k-1)+B*U(k)+W(K)
   mat_mult(&Leg_KF.B, &Leg_KF.W_aaccel, &TEMP);           //  p(k|k-1) = A*p(k-1|k-1)*A'+Q
