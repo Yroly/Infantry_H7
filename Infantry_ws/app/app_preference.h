@@ -356,9 +356,6 @@
 //µ×ÅÌ6020×î´ócan·¢ËÍµçÑ¹Öµ
 #define MAX_MOTOR_6020_CAN_CURRENT 30000.0f
 
-//³µÂÖ°ë¾¶
-#define WHEEL_RADIUS           0.062f
-
 #define J8009_MOTOR_REDUCATION 9.0f
 
 //m3508µç»úµÄ¼õËÙ±È
@@ -370,13 +367,10 @@
 //Á¦¾Ø×ª»¯ÎªËÙ¶È£¬v=w*r*dt=M*r/I*dt
 #define CHASSIS_MOTOR_TORQUE_TO_VECTOR_SEN 112.0364128083924041f
 
-//m3508×ª×Ó×ªËÙ(rpm)×ª»»ÎªÊä³öÖá½ÇËÙ¶È(rad/s)µÄ±ÈÀý
-#define CHASSIS_MOTOR_RPM_TO_OMG_SEN       0.0066426710345771f
 
-//m3508×ª×Ó×ªËÙ(rpm)×ª»¯³Éµ×ÅÌËÙ¶È(m/s)µÄ±ÈÀý
+#define WHEEL_RADIUS           0.03f
+#define CHASSIS_MOTOR_RPM_TO_OMG_SEN      0.0523598333333333f
 #define CHASSIS_MOTOR_RPM_TO_VECTOR_SEN    CHASSIS_MOTOR_RPM_TO_OMG_SEN*WHEEL_RADIUS
-
-
 //m3508×ª¾ØµçÁ÷(-16384~16384)×ªÎª³Éµç»úÊä³ö×ª¾Ø(N.m)µÄ±ÈÀý
 //c=20/16384*0.246£¬0.246Îª×ª¾Ø³£Êý(N.m/A),×î´óµçÁ÷20A*0.246=×î´ó×ª¾Ø4.92N.m,È»ºó³ý×î´ó·¢ËÍµçÁ÷Öµ16384
 #define CHASSIS_MOTOR_CURRENT_TO_TORQUE_SEN   0.00030029296875f //µçÁ÷Öµ³ËÕâ¸ö×ª»¯ÎªÁ¦¾Ø
@@ -434,6 +428,10 @@
 #define LEG_ANGLE0_ERR_PID_MAX_OUT  90.0f
 #define LEG_ANGLE0_ERR_PID_MAX_IOUT 0.0f
 #define LEG_ANGLE0_ERR_PID_BAND_I   0.0f
+/*轮足PID*/
+#define WHEEL_SPEED_MAX_OUT		4.792f
+#define WHEEL_SPEED_MAX_IOUT	0.0f
+#define WHEEL_SPEED_BAND_I		0.0f
 /*起立腿部旋转位置控制PID*/
 #define LEG_Position_PID_KP       0.0f
 #define LEG_Position_PID_KI       0.0f

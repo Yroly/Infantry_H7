@@ -39,6 +39,7 @@ public:
 	Stand_t stand;
 	float stand_delay_time;
 	float wheel_T[2];
+
 	leg_flag_t leg_flag;
 	VMC_Class vmc[2];
 	leg_set_t leg_set;

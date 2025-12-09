@@ -10,21 +10,29 @@
 #define Left_Leg 0
 #define Right_Leg 1
 #define All 2
-float k1 = 80, k2 = 60;
+float k1 = 8, k2 = 6;//80 60 
 
 bool need_Stand = true;
 bool need_enabled_loop_flag = true;
 
 Chassis_Class Chassis;
-bool need_stand = true;
 bool need_enable_loop_flag = true;
 
 PidTypeDef Leg[2];
 uint32_t CHASSIS_TIME = 1;
-float LQR_K[12]={
--4.4237,  -0.77482,  -0.98832,  -2.103,  5.2872,  0.74637,  
-5.4468,  2.2148,  0.76191,  1.9448,  13.3541,  1.7109};
-
+//float LQR_K[12]={
+//-4.4237,  -0.77482,  -0.98832,  -2.103,  5.2872,  0.74637,  
+//5.4468,  2.2148,  0.76191,  1.9448,  13.3541,  1.7109};
+//float LQR_K[12]={
+//-4.8659,  -0.93005,  -0.97895,  -1.5761,  2.6692,  0.40909,  
+//8.4018,  1.9796,  1.0204,  1.7732,  15.015,  1.7961};
+/*1N限幅下较为完美 QRQ=diag([1 0.07 10 5 300 0.6]); R=[20 0;0,1];*/
+float LQR_K[12] = {
+-2.5227,  -0.33168,  -0.70417,  -0.81357,  1.3517,  0.16209,  
+2.7157,  0.13116,  0.28785,  0.32196,  19.0702,  0.8354};
+//float LQR_K[12] = {
+//-2.7063,  -0.3377,  -0.70618,  -0.83709,  0.85732,  0.14044,  
+//2.0583,  -0.016977,  -0.072426,  -0.092516,  10.0593,  0.47682};
 extern "C" void Chassis_Task(){
 	while(INS.ins_flag == 0){
 		osDelay(1);
@@ -41,62 +49,76 @@ extern "C" void Chassis_Task(){
 			osDelay(CHASSIS_TIME);
 			DM_Class.mit_ctrl(&hfdcan2,Chassis.Joint_Motor[2].para.id,0.0f,0.0f,0.0f,0.0f,0.0f);
 			osDelay(CHASSIS_TIME);
-			RM_Class.rm3508_ctrl(&hfdcan2,Chassis.Wheel_Motor[0].tx_id,0);
-			osDelay(CHASSIS_TIME);
+
 			DM_Class.mit_ctrl(&hfdcan1,Chassis.Joint_Motor[1].para.id,0.0f,0.0f,0.0f,0.0f,0.0f);
 			osDelay(CHASSIS_TIME);
 			DM_Class.mit_ctrl(&hfdcan1,Chassis.Joint_Motor[3].para.id,0.0f,0.0f,0.0f,0.0f,0.0f);
 			osDelay(CHASSIS_TIME);
-			RM_Class.rm3508_ctrl(&hfdcan1,Chassis.Wheel_Motor[1].tx_id,0);
-			osDelay(CHASSIS_TIME);
+			
+			RM_Class.rm3508_ctrl(&hfdcan3,0x200,Chassis.Wheel_Motor[0].give_current,Chassis.Wheel_Motor[1].give_current);
 		}else{
 			DM_Class.mit_ctrl(&hfdcan2,Chassis.Joint_Motor[0].para.id,0.0f,0.0f,0.0f,0.0f,leg.vmc[0].torque_set[0]);
 			osDelay(CHASSIS_TIME);
 			DM_Class.mit_ctrl(&hfdcan2,Chassis.Joint_Motor[2].para.id,0.0f,0.0f,0.0f,0.0f,leg.vmc[0].torque_set[1]);
 			osDelay(CHASSIS_TIME);
-			RM_Class.rm3508_ctrl(&hfdcan2,Chassis.Wheel_Motor[0].tx_id,&leg.wheel_T[0]);
-			osDelay(CHASSIS_TIME);
+
 			DM_Class.mit_ctrl(&hfdcan1,Chassis.Joint_Motor[1].para.id,0.0f,0.0f,0.0f,0.0f,-leg.vmc[1].torque_set[0]);
 			osDelay(CHASSIS_TIME);
 			DM_Class.mit_ctrl(&hfdcan1,Chassis.Joint_Motor[3].para.id,0.0f,0.0f,0.0f,0.0f,-leg.vmc[1].torque_set[1]);
 			osDelay(CHASSIS_TIME);
-			RM_Class.rm3508_ctrl(&hfdcan2,Chassis.Wheel_Motor[1].tx_id,&leg.wheel_T[1]);
-			osDelay(CHASSIS_TIME);
+			RM_Class.rm3508_ctrl(&hfdcan3,0x200,Chassis.Wheel_Motor[0].give_current,Chassis.Wheel_Motor[1].give_current);
 		}
 	}
 }
 
 void Chassis_Class::Chassis_Init(void){
 	Mode = CHASSIS_STOP;
-	
+	k[0] = 0;
+	k[1] = 0;
 	Chassis_Task_DWT_dt = 0;
 	Chassis_Task_DWT_Count = 0;
 	
 	Leg_Init();
 
-{PID.Init(&Leg_Angle0_err_Pid, POSITION,
-			 LEG_ANGLE0_ERR_PID_KP,
-			 LEG_ANGLE0_ERR_PID_KI,
-			 LEG_ANGLE0_ERR_PID_KD,
-			 LEG_ANGLE0_ERR_PID_MAX_OUT,
-			 LEG_ANGLE0_ERR_PID_MAX_IOUT,
-			 LEG_ANGLE0_ERR_PID_BAND_I);
+{ PID.Init(&Wheel_Speed_Pid[0],
+		POSITION,
+		wheel_pid[0],
+		wheel_pid[1],
+		wheel_pid[2],
+		WHEEL_SPEED_MAX_OUT,
+		WHEEL_SPEED_MAX_IOUT,
+		WHEEL_SPEED_BAND_I);
+  PID.Init(&Wheel_Speed_Pid[1],
+		POSITION,
+		wheel_pid[0],
+		wheel_pid[1],
+		wheel_pid[2],
+		WHEEL_SPEED_MAX_OUT,
+		WHEEL_SPEED_MAX_IOUT,
+		WHEEL_SPEED_BAND_I);
+	PID.Init(&Leg_Angle0_err_Pid, POSITION,
+		LEG_ANGLE0_ERR_PID_KP,
+		LEG_ANGLE0_ERR_PID_KI,
+		LEG_ANGLE0_ERR_PID_KD,
+		LEG_ANGLE0_ERR_PID_MAX_OUT,
+		LEG_ANGLE0_ERR_PID_MAX_IOUT,
+		LEG_ANGLE0_ERR_PID_BAND_I);
 	PID.Init(&Stand_Position_Pid[0],
-			 POSITION,
-			 LEG_Position_PID_KP,
-			 LEG_Position_PID_KI,
-			 LEG_Position_PID_KD,
-			 LEG_Position_PID_MAX_OUT,
-			 LEG_Position_PID_MAX_IOUT,
-			 LEG_Position_PID_BAND_I);
+		POSITION,
+		LEG_Position_PID_KP,
+		LEG_Position_PID_KI,
+		LEG_Position_PID_KD,
+		LEG_Position_PID_MAX_OUT,
+		LEG_Position_PID_MAX_IOUT,
+		LEG_Position_PID_BAND_I);
 	PID.Init(&Stand_Position_Pid[1],
-			 POSITION,
-			 LEG_Position_PID_KP,
-			 LEG_Position_PID_KI,
-			 LEG_Position_PID_KD,
-			 LEG_Position_PID_MAX_OUT,
-			 LEG_Position_PID_MAX_IOUT,
-			 LEG_Position_PID_BAND_I);
+		POSITION,
+		LEG_Position_PID_KP,
+		LEG_Position_PID_KI,
+		LEG_Position_PID_KD,
+		LEG_Position_PID_MAX_OUT,
+		LEG_Position_PID_MAX_IOUT,
+		LEG_Position_PID_BAND_I);
 	PID.Init(&Stand_Speed_Pid[0],
 			 POSITION,
 			 LEG_Speed_PID_KP,
@@ -139,18 +161,15 @@ void Chassis_Class::Chassis_Init(void){
 	
 	DM_Class.Joint_Motor_Init(&Chassis.Joint_Motor[1],6,MIT_MODE);
 	DM_Class.Joint_Motor_Init(&Chassis.Joint_Motor[3],8,MIT_MODE);
-	for(int j=0;j<10;j++){
-		/*left leg 0 2*/
-		DM_Class.enable_motor_mode(&hfdcan2,Chassis.Joint_Motor[0].para.id,Chassis.Joint_Motor[0].mode);
-		osDelay(3);
-		DM_Class.enable_motor_mode(&hfdcan2,Chassis.Joint_Motor[2].para.id,Chassis.Joint_Motor[2].mode);
-		osDelay(3);
-		
-	  DM_Class.enable_motor_mode(&hfdcan1,Chassis.Joint_Motor[1].para.id,Chassis.Joint_Motor[1].mode);
-	  osDelay(3);
-	  DM_Class.enable_motor_mode(&hfdcan1,Chassis.Joint_Motor[3].para.id,Chassis.Joint_Motor[3].mode);
-	  osDelay(3);	
-	}
+	
+	DM_Class.enable_motor(&hfdcan2,Chassis.Joint_Motor[0].para.id,Chassis.Joint_Motor[0].mode);
+	osDelay(1);
+	DM_Class.enable_motor(&hfdcan2,Chassis.Joint_Motor[2].para.id,Chassis.Joint_Motor[2].mode);
+	osDelay(1);
+	DM_Class.enable_motor(&hfdcan1,Chassis.Joint_Motor[1].para.id,Chassis.Joint_Motor[1].mode);
+	osDelay(1);
+	DM_Class.enable_motor(&hfdcan1,Chassis.Joint_Motor[3].para.id,Chassis.Joint_Motor[3].mode);
+	osDelay(1);
 }
 void Chassis_Class::Feedback_Update(void){
 	if(need_enable_loop_flag){
@@ -173,7 +192,7 @@ void Chassis_Class::Feedback_Update(void){
 							pow(-1.0, i) * Joint_Motor[0 + i].para.VEL, 
 							pow(-1.0, i) * Joint_Motor[2 + i].para.VEL);
 
-		Wheel_Motor[i].speed = (Wheel_Motor[i].speed * WHEEL_RADIUS);
+		Wheel_Motor[i].speed = (Wheel_Motor[i].measure.speed * CHASSIS_MOTOR_RPM_TO_VECTOR_SEN);
 	}
 	Velocity.vx = (-Wheel_Motor[0].speed + Wheel_Motor[1].speed)/2.0f;
 	x_fdb = x_fdb + Velocity.vx * (1.0 / 1000.0);	
@@ -257,7 +276,7 @@ void Chassis_Class::Leg_Init(void){
 	/* 腿的位置 旋转速度 收腿速度*/
 	leg.stand.Stand_Speed = 1.0f;//
 	leg.stand.L0Speed = -0.4f;
-	leg.stand.Stand_Angle = 1.95f;
+	leg.stand.Stand_Angle = 1.57f;
 }
 void Chassis_Class::Flag_Control(){
 	if (Mode == CHASSIS_STOP){
@@ -289,10 +308,10 @@ void Chassis_Class::Flag_Control(){
 	}
 	if (need_Stand){
 		if (Last_Mode == CHASSIS_STOP && Mode != Last_Mode){
-			leg.leg_flag.Stand_flag = 1;
-			leg.leg_flag.Revolve_flag_L = true;
-			leg.leg_flag.Revolve_flag_R = true;
-			leg.leg_flag.Blance_flag = false;
+			leg.leg_flag.Stand_flag = 0;//1
+			leg.leg_flag.Revolve_flag_L = false;//true
+			leg.leg_flag.Revolve_flag_R = false;
+			leg.leg_flag.Blance_flag = true;
 			leg.stand.Stand_Sign[0] = 1;//sign((Stand_Angle - leg.vmc[0].point.phi0));
 			leg.stand.Stand_Sign[1] = 1;//sign((Stand_Angle - leg.vmc[1].point.phi0));
 		}
@@ -319,6 +338,11 @@ void Chassis_Class::Control(void){
 		Leg_Ctrl.Leg_set.yaw_Gyro_set = angle_set;
 	}
 	if (Mode == CHASSIS_STOP){
+		PID.Calc(&Wheel_Speed_Pid[0],Wheel_Motor[0].measure.torque,0);
+		PID.Calc(&Wheel_Speed_Pid[1],Wheel_Motor[1].measure.torque,0);
+		Wheel_Motor[0].give_current = (int16_t)(Wheel_Speed_Pid[0].out * CHASSIS_MOTOR_TORQUE_TO_CURRENT_SEN);
+		Wheel_Motor[1].give_current = (int16_t)(Wheel_Speed_Pid[1].out * CHASSIS_MOTOR_TORQUE_TO_CURRENT_SEN);
+				
 		Leg_Ctrl.Leg_set.Wheel_Speed_set = Leg_Ctrl.Leg_set.Wheel_Speed_set = 0;
 		Leg_Ctrl.Leg_set.Wheel_Collapse_V_set = Leg_Ctrl.Leg_set.Wheel_Collapse_V_set = 0;
 		Leg_Ctrl.Leg_set.yaw_Gyro_set = Leg_Ctrl.Leg_set.yaw_Gyro_set = 0;
@@ -387,7 +411,7 @@ void Chassis_Class::Control_Loop(void){
 			}
 			break;
 		case 4 :
-			leg.leg_set.L0_set = 0.25;
+			leg.leg_set.L0_set = 0.20;
 			for (i = 0; i < 2; i++){
 				leg.wheel_T[i] = LQR_K[0] * (leg.vmc[i].theta -0.0f) 
 											 + LQR_K[1] * (leg.vmc[i].d_theta - 0.0f);
@@ -417,14 +441,12 @@ void Chassis_Class::Control_Loop(void){
 										 + LQR_K[3] * (Velocity.vx - Leg_Ctrl.Leg_set.Wheel_Speed_set) 
 										 + LQR_K[4] * (-INS.Pitch - (-0.0f)) 
 										 + LQR_K[5] * (-INS.Gyro[0]- 0.0f);
-
 			leg.vmc[i].Tp = LQR_K[6] * (leg.vmc[i].theta - 0.0f) 
 										+ LQR_K[7] * (leg.vmc[i].d_theta - 0.0f) 
 										+ LQR_K[8] * (x_fdb - 0.0f) 
 										+ LQR_K[9] * (Velocity.vx - Leg_Ctrl.Leg_set.Wheel_Speed_set) 
 										+ LQR_K[10] * (-INS.Pitch - -0.0f) 
 										+ LQR_K[11] * (-INS.Gyro[0] - 0.0f);
-
 			PID.Calc(&Chassis.Leg_L0_Pid[i], leg.vmc[i].point.L0, leg.leg_set.L0_set);
 			PID.Calc(&Chassis.Leg_L0_Speed_Pid[i], leg.vmc[i].point.d_L0, 0.0f);
 		}
@@ -432,20 +454,27 @@ void Chassis_Class::Control_Loop(void){
 	leg.vmc[0].Tp += Leg_Angle0_err_Pid.out;
 	leg.vmc[1].Tp -= Leg_Angle0_err_Pid.out;
 	
-	leg.vmc[0].F0 = Leg_L0_Pid[0].out + Leg_L0_Speed_Pid[0].out + k1 *cos(leg.vmc[0].theta);
+	leg.vmc[0].F0 = Leg_L0_Pid[0].out + Leg_L0_Speed_Pid[0].out + k[0] *cos(leg.vmc[0].theta);
 	leg.vmc[0].vmc_forward();
 
-	leg.vmc[1].F0 = Leg_L0_Pid[1].out + Leg_L0_Speed_Pid[1].out + k2 *cos(leg.vmc[1].theta);
+	leg.vmc[1].F0 = Leg_L0_Pid[1].out + Leg_L0_Speed_Pid[1].out + k[1] *cos(leg.vmc[1].theta);
 	leg.vmc[1].vmc_forward();
 	}
-	Limit_min_max(&leg.vmc[0].torque_set[0], -7.0f, 7.0f);
-	Limit_min_max(&leg.vmc[0].torque_set[1], -7.0f, 7.0f);
+	Limit_min_max(&leg.vmc[0].torque_set[0], -1.5f, 1.5f);
+	Limit_min_max(&leg.vmc[0].torque_set[1], -1.0f, 1.0f);
 
-	Limit_min_max(&leg.vmc[1].torque_set[0], -7.0f, 7.0f);
-	Limit_min_max(&leg.vmc[1].torque_set[1], -7.0f, 7.0f);
+	Limit_min_max(&leg.vmc[1].torque_set[0], -1.5f, 1.5f);
+	Limit_min_max(&leg.vmc[1].torque_set[1], -1.0f, 1.0f);
 
-	Limit_min_max(&leg.wheel_T[0], -3.0f, 3.0f);
-	Limit_min_max(&leg.wheel_T[1], -3.0f, 3.0f);
+//	Limit_min_max(&leg.wheel_T[0], -MAX_WHEEL_TORQUE, MAX_WHEEL_TORQUE);
+//	Limit_min_max(&leg.wheel_T[1], -MAX_WHEEL_TORQUE, MAX_WHEEL_TORQUE);
+	Limit_min_max(&leg.wheel_T[0], -1.0f, 1.0f);
+	Limit_min_max(&leg.wheel_T[1], -1.0f, 1.0f);
+	
+	PID.Calc(&Wheel_Speed_Pid[0],Wheel_Motor[0].measure.torque,leg.wheel_T[0]);
+	PID.Calc(&Wheel_Speed_Pid[1],Wheel_Motor[1].measure.torque,leg.wheel_T[1]);
+	Wheel_Motor[0].give_current = (int16_t)(Wheel_Speed_Pid[0].out * CHASSIS_MOTOR_TORQUE_TO_CURRENT_SEN);
+	Wheel_Motor[1].give_current = (int16_t)(Wheel_Speed_Pid[1].out * CHASSIS_MOTOR_TORQUE_TO_CURRENT_SEN);	
 }
 
 void Chassis_Class::slope_following(float *target,float *set,float acc){

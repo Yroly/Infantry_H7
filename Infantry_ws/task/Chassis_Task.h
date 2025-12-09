@@ -80,6 +80,12 @@ typedef struct
 	bool jump_Flag;
 
 } Chassis_Ctrl_Flags_t;
+typedef struct{
+	RM3508_TypeDef measure;
+	fp32    speed;
+	fp32    speed_set;
+	int16_t give_current;
+}Chassis_Wheel_t;
 class Chassis_Class{
 public:
 	/*PID*/
@@ -88,23 +94,27 @@ public:
 	PidTypeDef Leg_Angle0_err_Pid;
 	PidTypeDef Leg_L0_Pid[2];
 	PidTypeDef Leg_L0_Speed_Pid[2];
-	PidTypeDef Stand_Position_Pid[2];
-	PidTypeDef Stand_Speed_Pid[2];
+	PidTypeDef Stand_Position_Pid[2];//起立位置环PID
+	PidTypeDef Stand_Speed_Pid[2];	 //起立速度环PID
 	PidTypeDef L0_Speed_Pid[2];
+
+	PidTypeDef Wheel_Speed_Pid[2];
+	float wheel_pid[3];
 
 	float x_fdb;
 	chassis_mode_t Mode;
 	chassis_mode_t Last_Mode;
 	Chassis_Ctrl_Flags_t Flags;
-
+	float k[2];
 	uint32_t Chassis_Task_DWT_Count;
 	float Chassis_Task_DWT_dt;
 	uint32_t Chassis_DWT_Count;
 	float Chassis_DWT_dt;
 
 	Joint_Motor_t Joint_Motor[4];
-	RM3508_TypeDef Wheel_Motor[2];
-	
+	Chassis_Wheel_t Wheel_Motor[2];
+	float tor_cur;
+
 	fp32 Chassis_Q;
 	fp32 Chassis_R1;
 	fp32 Chassis_R0;
@@ -146,24 +156,10 @@ public:
 	float roll_target;
 	float now_roll_set;
 
-	float v_filter;
-	float x_filter;
-	
-	float myPithR;
-	float myPithGyroR;
-	float myPithL;
-	float myPithGyroL;
 	float roll;
 	float total_yaw;
 	float theta_err;
-		
-	float turn_T;
-	float leg_tp;
-	
-	uint8_t start_flag;
-	
-	uint8_t recover_flag;
-	
+
 	uint32_t count_key;
 	uint8_t jump_flag;
 	float jump_leg;

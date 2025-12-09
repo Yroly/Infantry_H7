@@ -69,7 +69,7 @@ void DM_Motor_Class::DM6215_fbdata(Wheel_Motor_t *motor, uint8_t *rx_data,uint32
 	  motor->para.Tcoil = (float)(rx_data[7]);
 	}
 }
-void DM_Motor_Class::enable_motor_mode(hfdcan_t* hfdcan, uint16_t motor_id, uint16_t mode_id)
+void DM_Motor_Class::enable_motor(hfdcan_t* hfdcan, uint16_t motor_id, uint16_t mode_id)
 {
 	uint8_t data[8];
 	uint16_t id = motor_id + mode_id;
@@ -101,7 +101,7 @@ void DM_Motor_Class::disable_motor_mode(hfdcan_t* hfdcan, uint16_t motor_id, uin
 	
 	canx_send_data(hfdcan, id, data, 8);
 }
-void DM_Motor_Class::set_motor_zero(hfdcan_t* hfdcan, uint16_t motor_id, uint16_t mode_id)
+void DM_Motor_Class::set_zero(hfdcan_t* hfdcan, uint16_t motor_id, uint16_t mode_id)
 {
 	uint8_t data[8];
 	uint16_t id = motor_id + mode_id;
