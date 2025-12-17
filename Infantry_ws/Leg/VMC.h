@@ -5,7 +5,6 @@
 #include "arm_math.h"
 #include "bsp_dwt.h"
 
-#define pi 3.1415926f
 #define LEG_PID_KP  350.0f
 #define LEG_PID_KI  0.0f
 #define LEG_PID_KD  3000.0f
@@ -102,11 +101,9 @@ public:
 	void kinematics_forward();
 	void kinematics_reverse();
 	
-	void vmc_calc(float pitch ,float pitch_Gyro ,float dt ,float Joint_motor_front_vel /*Ç°µç»úËÙ¶È*/ ,float Joint_motor_rear_vel /*ºóµç»úËÙ¶È*/);
+	void vmc_calc(float pitch ,float pitch_Gyro ,float dt ,float Joint_motor_front_vel,float Joint_motor_rear_vel);
   void vmc_forward();
-  void vmc_reverse();
-	float LQR_K_Calc(float *coe,float len);
-	
+  void vmc_reverse();	
 	uint8_t leg_flag;
 };
 void Limit_min_max(float *in,float min,float max);

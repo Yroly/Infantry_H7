@@ -136,7 +136,7 @@ uint8_t BMI088_init(SPI_HandleTypeDef *bmi088_SPI, uint8_t calibrate)
 			
         BMI088.gNorm = gNORM;
         BMI088.AccelScale = 9.81f / BMI088.gNorm;
-        BMI088.TempWhenCali = 40;
+        BMI088.TempWhenCali = 45;
     }
 
     return error;
@@ -163,7 +163,7 @@ void Calibrate_MPU_Offset(IMU_Data_t *bmi088)
             bmi088->GyroOffset[1] = GyOFFSET;
             bmi088->GyroOffset[2] = GzOFFSET;
             bmi088->gNorm = gNORM;
-            bmi088->TempWhenCali = 40;
+            bmi088->TempWhenCali = 45;
             break;
         }
 

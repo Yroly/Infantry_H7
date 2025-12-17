@@ -24,7 +24,7 @@ void INS_Task(void)
 {
 	 INS_Init();
 	 while(1)
-	 {  
+	 {
 		ins_dt = DWT_GetDeltaT(&INS_DWT_Count);
     
 		mahony.dt = ins_dt;

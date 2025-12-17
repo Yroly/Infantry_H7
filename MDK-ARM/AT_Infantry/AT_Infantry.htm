@@ -3,9 +3,9 @@
 <title>Static Call Graph - [AT_Infantry\AT_Infantry.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image AT_Infantry\AT_Infantry.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6160001: Last Updated: Mon Dec  8 22:45:18 2025
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6160001: Last Updated: Tue Dec 16 22:47:37 2025
 <BR><P>
-<H3>Maximum Stack Usage =        928 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =        936 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
 Chassis_Task &rArr; Chassis_Class::Chassis_Init() &rArr; Chassis_Class::Feedback_Update() &rArr; VMC_Class::vmc_calc(float, float, float, float, float) &rArr; VMC_Class::kinematics_forward() &rArr; __hardfp_pow &rArr; sqrt &rArr; __set_errno
 <P>
@@ -989,8 +989,8 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> freertos.o(.text.MX_FREERTOS_Init)
 </UL>
-<P><STRONG><a name="[9d]"></a>Chassis_Task</STRONG> (Thumb, 624 bytes, Stack size 72 bytes, chassis_task.o(.text.Chassis_Task))
-<BR><BR>[Stack]<UL><LI>Max Depth = 928<LI>Call Chain = Chassis_Task &rArr; Chassis_Class::Chassis_Init() &rArr; Chassis_Class::Feedback_Update() &rArr; VMC_Class::vmc_calc(float, float, float, float, float) &rArr; VMC_Class::kinematics_forward() &rArr; __hardfp_pow &rArr; sqrt &rArr; __set_errno
+<P><STRONG><a name="[9d]"></a>Chassis_Task</STRONG> (Thumb, 616 bytes, Stack size 72 bytes, chassis_task.o(.text.Chassis_Task))
+<BR><BR>[Stack]<UL><LI>Max Depth = 936<LI>Call Chain = Chassis_Task &rArr; Chassis_Class::Chassis_Init() &rArr; Chassis_Class::Feedback_Update() &rArr; VMC_Class::vmc_calc(float, float, float, float, float) &rArr; VMC_Class::kinematics_forward() &rArr; __hardfp_pow &rArr; sqrt &rArr; __set_errno
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RM_Motor_Class::rm3508_ctrl(FDCAN_HandleTypeDef*, unsigned short, short, short)
 <LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DM_Motor_Class::mit_ctrl(FDCAN_HandleTypeDef*, unsigned short, float, float, float, float, float)
@@ -2387,8 +2387,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[1c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WatchDog::FeedBack(WatchDog_TypeDef*)
 </UL>
 
-<P><STRONG><a name="[e9]"></a>Chassis_Class::Chassis_Init()</STRONG> (Thumb, 660 bytes, Stack size 80 bytes, chassis_task.o(.text._ZN13Chassis_Class12Chassis_InitEv))
-<BR><BR>[Stack]<UL><LI>Max Depth = 856<LI>Call Chain = Chassis_Class::Chassis_Init() &rArr; Chassis_Class::Feedback_Update() &rArr; VMC_Class::vmc_calc(float, float, float, float, float) &rArr; VMC_Class::kinematics_forward() &rArr; __hardfp_pow &rArr; sqrt &rArr; __set_errno
+<P><STRONG><a name="[e9]"></a>Chassis_Class::Chassis_Init()</STRONG> (Thumb, 860 bytes, Stack size 88 bytes, chassis_task.o(.text._ZN13Chassis_Class12Chassis_InitEv))
+<BR><BR>[Stack]<UL><LI>Max Depth = 864<LI>Call Chain = Chassis_Class::Chassis_Init() &rArr; Chassis_Class::Feedback_Update() &rArr; VMC_Class::vmc_calc(float, float, float, float, float) &rArr; VMC_Class::kinematics_forward() &rArr; __hardfp_pow &rArr; sqrt &rArr; __set_errno
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PID_Ctrl::Init(PidTypeDef*, PidMode, float, float, float, float, float, float)
 <LI><a href="#[1ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DM_Motor_Class::Joint_Motor_Init(Joint_Motor_t*, unsigned short, unsigned short)
@@ -2400,8 +2400,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Chassis_Task
 </UL>
 
-<P><STRONG><a name="[ed]"></a>Chassis_Class::Control_Loop()</STRONG> (Thumb, 2272 bytes, Stack size 248 bytes, chassis_task.o(.text._ZN13Chassis_Class12Control_LoopEv))
-<BR><BR>[Stack]<UL><LI>Max Depth = 364<LI>Call Chain = Chassis_Class::Control_Loop() &rArr; osDelay &rArr; vTaskDelay &rArr; xTaskResumeAll &rArr; xTaskIncrementTick &rArr; vListInsertEnd
+<P><STRONG><a name="[ed]"></a>Chassis_Class::Control_Loop()</STRONG> (Thumb, 2272 bytes, Stack size 256 bytes, chassis_task.o(.text._ZN13Chassis_Class12Control_LoopEv))
+<BR><BR>[Stack]<UL><LI>Max Depth = 372<LI>Call Chain = Chassis_Class::Control_Loop() &rArr; osDelay &rArr; vTaskDelay &rArr; xTaskResumeAll &rArr; xTaskIncrementTick &rArr; vListInsertEnd
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;leg_class::leg_data_clear(unsigned char)
 <LI><a href="#[1af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VMC_Class::vmc_forward()
@@ -2414,7 +2414,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Chassis_Task
 </UL>
 
-<P><STRONG><a name="[1b3]"></a>Chassis_Class::Flag_Control()</STRONG> (Thumb, 386 bytes, Stack size 40 bytes, chassis_task.o(.text._ZN13Chassis_Class12Flag_ControlEv))
+<P><STRONG><a name="[1b3]"></a>Chassis_Class::Flag_Control()</STRONG> (Thumb, 388 bytes, Stack size 40 bytes, chassis_task.o(.text._ZN13Chassis_Class12Flag_ControlEv))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = Chassis_Class::Flag_Control() &rArr; leg_class::leg_data_clear(unsigned char)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;leg_class::leg_data_clear(unsigned char)
@@ -2440,7 +2440,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Chassis_Task
 </UL>
 
-<P><STRONG><a name="[eb]"></a>Chassis_Class::Feedback_Update()</STRONG> (Thumb, 732 bytes, Stack size 136 bytes, chassis_task.o(.text._ZN13Chassis_Class15Feedback_UpdateEv))
+<P><STRONG><a name="[eb]"></a>Chassis_Class::Feedback_Update()</STRONG> (Thumb, 812 bytes, Stack size 136 bytes, chassis_task.o(.text._ZN13Chassis_Class15Feedback_UpdateEv))
 <BR><BR>[Stack]<UL><LI>Max Depth = 776<LI>Call Chain = Chassis_Class::Feedback_Update() &rArr; VMC_Class::vmc_calc(float, float, float, float, float) &rArr; VMC_Class::kinematics_forward() &rArr; __hardfp_pow &rArr; sqrt &rArr; __set_errno
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VMC_Class::vmc_calc(float, float, float, float, float)
@@ -2459,7 +2459,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Chassis_Class::Control()
 </UL>
 
-<P><STRONG><a name="[ec]"></a>Chassis_Class::Control()</STRONG> (Thumb, 336 bytes, Stack size 56 bytes, chassis_task.o(.text._ZN13Chassis_Class7ControlEv))
+<P><STRONG><a name="[ec]"></a>Chassis_Class::Control()</STRONG> (Thumb, 288 bytes, Stack size 56 bytes, chassis_task.o(.text._ZN13Chassis_Class7ControlEv))
 <BR><BR>[Stack]<UL><LI>Max Depth = 152<LI>Call Chain = Chassis_Class::Control() &rArr; Chassis_Class::Behaviour_Control(float*, float*, float*) &rArr; Chassis_Class::RC_to_Control(float*, float*) &rArr; float_constrain(float, float, float)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PID_Ctrl::Calc(PidTypeDef*, float, float)
@@ -2470,7 +2470,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Chassis_Task
 </UL>
 
-<P><STRONG><a name="[1a9]"></a>Chassis_Class::Leg_Init()</STRONG> (Thumb, 184 bytes, Stack size 4 bytes, chassis_task.o(.text._ZN13Chassis_Class8Leg_InitEv))
+<P><STRONG><a name="[1a9]"></a>Chassis_Class::Leg_Init()</STRONG> (Thumb, 152 bytes, Stack size 4 bytes, chassis_task.o(.text._ZN13Chassis_Class8Leg_InitEv))
 <BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = Chassis_Class::Leg_Init()
 </UL>
 <BR>[Called By]<UL><LI><a href="#[e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Chassis_Class::Chassis_Init()
@@ -2528,7 +2528,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Chassis_Task
 </UL>
 
-<P><STRONG><a name="[11d]"></a>RM_Motor_Class::rm3508_read(RM3508_TypeDef*, unsigned char*, unsigned int)</STRONG> (Thumb, 252 bytes, Stack size 20 bytes, drv_dji_motor.o(.text._ZN14RM_Motor_Class11rm3508_readEP14RM3508_TypeDefPhj))
+<P><STRONG><a name="[11d]"></a>RM_Motor_Class::rm3508_read(RM3508_TypeDef*, unsigned char*, unsigned int)</STRONG> (Thumb, 204 bytes, Stack size 20 bytes, drv_dji_motor.o(.text._ZN14RM_Motor_Class11rm3508_readEP14RM3508_TypeDefPhj))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = RM_Motor_Class::rm3508_read(RM3508_TypeDef*, unsigned char*, unsigned int)
 </UL>
 <BR>[Called By]<UL><LI><a href="#[106]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_FDCAN_RxFifo0Callback
@@ -2756,7 +2756,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Chassis_Class::Control_Loop()
 </UL>
 
-<P><STRONG><a name="[1cc]"></a>VMC_Class::kinematics_forward()</STRONG> (Thumb, 1564 bytes, Stack size 376 bytes, vmc.o(.text._ZN9VMC_Class18kinematics_forwardEv))
+<P><STRONG><a name="[1cc]"></a>VMC_Class::kinematics_forward()</STRONG> (Thumb, 1544 bytes, Stack size 376 bytes, vmc.o(.text._ZN9VMC_Class18kinematics_forwardEv))
 <BR><BR>[Stack]<UL><LI>Max Depth = 600<LI>Call Chain = VMC_Class::kinematics_forward() &rArr; __hardfp_pow &rArr; sqrt &rArr; __set_errno
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_sqrt
@@ -2784,13 +2784,13 @@ Global Symbols
 <LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Chassis_Class::Control_Loop()
 </UL>
 
-<P><STRONG><a name="[1d0]"></a>leg_class::leg_class()</STRONG> (Thumb, 108 bytes, Stack size 4 bytes, legs.o(.text._ZN9leg_classC2Ev))
+<P><STRONG><a name="[1d0]"></a>leg_class::leg_class()</STRONG> (Thumb, 112 bytes, Stack size 4 bytes, legs.o(.text._ZN9leg_classC2Ev))
 <BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = leg_class::leg_class()
 </UL>
 <BR>[Called By]<UL><LI><a href="#[1a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__cxx_global_var_init
 </UL>
 
-<P><STRONG><a name="[269]"></a>leg_class::leg_class__sub_object()</STRONG> (Thumb, 108 bytes, Stack size 4 bytes, legs.o(.text._ZN9leg_classC2Ev), UNUSED)
+<P><STRONG><a name="[269]"></a>leg_class::leg_class__sub_object()</STRONG> (Thumb, 112 bytes, Stack size 4 bytes, legs.o(.text._ZN9leg_classC2Ev), UNUSED)
 
 <P><STRONG><a name="[dc]"></a>bmi088_accel_init</STRONG> (Thumb, 444 bytes, Stack size 48 bytes, bmi088driver.o(.text.bmi088_accel_init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 184<LI>Call Chain = bmi088_accel_init &rArr; BMI088_write_single_reg &rArr; BMI088_read_write_byte &rArr; HAL_SPI_TransmitReceive &rArr; SPI_WaitOnFlagUntilTimeout

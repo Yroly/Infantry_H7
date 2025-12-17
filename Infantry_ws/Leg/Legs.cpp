@@ -18,13 +18,13 @@ leg_class::leg_class(){
 
   vmc[0].five_link.L1 =vmc[1].five_link.L1 = 0.105f;//大腿
   vmc[0].five_link.L2 =vmc[1].five_link.L2 = 0.125f;//小腿
-  vmc[0].five_link.L3 =vmc[1].five_link.L3 = 0.105f;
-  vmc[0].five_link.L4 =vmc[1].five_link.L4 = 0.125f;
+  vmc[0].five_link.L3 =vmc[1].five_link.L3 = 0.125f;
+  vmc[0].five_link.L4 =vmc[1].five_link.L4 = 0.105f;
   vmc[0].five_link.L5 =vmc[1].five_link.L5 = 0.0f;
 
-  leg_set.L0_set_max = 0.25f;
-  leg_set.L0_set_middle = 0.20f;
-  leg_set.L0_set_min = 0.15f;
+  leg_set.L0_set_max = 0.0327f;
+  leg_set.L0_set_middle = 0.020f;
+  leg_set.L0_set_min = 0.015f;
 }
 void leg_class::leg_data_clear(uint8_t count){
 	if(count == 2){

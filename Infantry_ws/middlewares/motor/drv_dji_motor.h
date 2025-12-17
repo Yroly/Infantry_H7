@@ -3,6 +3,7 @@
 #include <cstdint>
 #include "fdcan.h"
 #include "bsp_can.h"
+
 enum class motor_err : uint8_t{
 	NO_ERR = 0,
 	UN_ACCESS = 1,
@@ -14,18 +15,17 @@ enum class motor_err : uint8_t{
 	OVER_HOT = 8//125
 };
 typedef struct{
-	uint16_t mechanicalangle;//!<@brief 机械角度
-	int16_t speed;           //!<@brief 转速(转子转速RPM)
+	uint16_t mechangle;//!<@brief 机械角度
+	int16_t rotatespeed;     //!<@brief 转速(转子转速RPM)
 	int16_t current;				 //!<@brief 转矩电流
 	uint8_t temp;            //!<@brief 温度
 	motor_err err;					 //!<@brief 错误码
-	int32_t angle;              //!<@brief 连续化机械角度
+	int32_t continuemechanle;   //!<@brief 连续化机械角度
+	uint16_t lastmechangle;     //!<@brief 上一次的机械角度
 	float torque;      					//!<@brief 转矩
-	float Power;                //!<@brief 功率
-	uint16_t LsatAngle;         //!<@brief 上一次的机械角度
 	int16_t r;                  //!<@brief 圈数
-	float Angle_DEG;            //!<@brief 连续化角度制角度
-	uint8_t flag;               //!<@brief 统计连续机械角度标志位，用于解决一圈偏差的问题，用户使用时应忽略，不要对其进行赋值  
+	float angle;            		//!<@brief 连续化角度
+	float speed;
 	int16_t give_current;
 }RM3508_TypeDef;
 

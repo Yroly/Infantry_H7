@@ -9,9 +9,6 @@
 反馈值：pitch，angle1,angle4,L0和angle0(这两者由前三者正解得到)，roll,yaw，x,v,gyro
 K增益
 */
-#define LEG_GRAVITY        3.1/2
-#define LEG_GRAVITY_WHELL  -2.054
-
 #define PITCH_OFET 0
 #define ROLL_ZERO  0.00
 

@@ -112,7 +112,7 @@
 #define Yaw_Mouse_SEN    0.00035f
 #define Pitch_Mouse_SEN  0.0004f
 #define L0_SET_G_SEN     0.0008f
-#define L0_SET_RC_SEN    0.000275f
+#define L0_SET_RC_SEN    0.01f
 #define L0_SET_ROLL_SEN  0.00064f
 #define Yaw_RC_Sen      -0.003f
 
@@ -344,43 +344,30 @@
 
 #define MOTOR_DISTANCE_TO_CENTER 0.2f
 
-//µ×ÅÌÈÎÎñ¿ØÖÆ¼ä¸ô 1ms
 #define CHASSIS_CONTROL_TIME_MS   1
-//µ×ÅÌÈÎÎñ¿ØÖÆ¼ä¸ô
 #define CHASSIS_CONTROL_TIME      (0.001 * CHASSIS_CONTROL_TIME_MS)
-//µ×ÅÌÈÎÎñ¿ØÖÆÆµÂÊ
 #define CHASSIS_CONTROL_FREQUENCE (1000 / CHASSIS_CONTROL_TIME_MS)
-
-//µ×ÅÌ3508×î´ócan·¢ËÍµçÁ÷Öµ
 #define MAX_MOTOR_3508_CAN_CURRENT 16384.0f
-//µ×ÅÌ6020×î´ócan·¢ËÍµçÑ¹Öµ
 #define MAX_MOTOR_6020_CAN_CURRENT 30000.0f
 
 #define J8009_MOTOR_REDUCATION 9.0f
-
-//m3508µç»úµÄ¼õËÙ±È
 #define M3508_MOTOR_REDUCATION 15.76470588235294f
 
 
-//ËÙ¶È×ª»¯ÎªÁ¦¾Ø£¬
 #define CHASSIS_MOTOR_RPM_TO_TORQUE_SEN    0.000002824412704938f
-//Á¦¾Ø×ª»¯ÎªËÙ¶È£¬v=w*r*dt=M*r/I*dt
 #define CHASSIS_MOTOR_TORQUE_TO_VECTOR_SEN 112.0364128083924041f
 
 
 #define WHEEL_RADIUS           0.03f
+#define CHASSIS_MOTOR_RPM_TO_RAD	0.104719755 //2Π/60 rpm*2Π/60 = rad/s 
 #define CHASSIS_MOTOR_RPM_TO_OMG_SEN      0.0523598333333333f
-#define CHASSIS_MOTOR_RPM_TO_VECTOR_SEN    CHASSIS_MOTOR_RPM_TO_OMG_SEN*WHEEL_RADIUS
-//m3508×ª¾ØµçÁ÷(-16384~16384)×ªÎª³Éµç»úÊä³ö×ª¾Ø(N.m)µÄ±ÈÀý
-//c=20/16384*0.246£¬0.246Îª×ª¾Ø³£Êý(N.m/A),×î´óµçÁ÷20A*0.246=×î´ó×ª¾Ø4.92N.m,È»ºó³ý×î´ó·¢ËÍµçÁ÷Öµ16384
-#define CHASSIS_MOTOR_CURRENT_TO_TORQUE_SEN   0.00030029296875f //µçÁ÷Öµ³ËÕâ¸ö×ª»¯ÎªÁ¦¾Ø
-#define CHASSIS_MOTOR_TORQUE_TO_CURRENT_SEN   3330.081300813008f//Á¦¾Ø  ³ËÕâ¸ö×ª»¯ÎªµçÁ÷Öµ
+#define CHASSIS_MOTOR_RPM_TO_VECTOR_SEN    CHASSIS_MOTOR_RPM_TO_RAD*WHEEL_RADIUS //v=ωr
+//
+#define CHASSIS_MOTOR_CURRENT_TO_TORQUE_SEN   0.0000244140625f
+#define CHASSIS_MOTOR_TORQUE_TO_CURRENT_SEN   40960.0f
 
-//µ×ÅÌµç»ú×î´óÁ¦¾Ø
-#define MAX_WHEEL_TORQUE   4.92f
+#define MAX_WHEEL_TORQUE   0.4f
 
-
-//µ×ÅÌ¹¦ÂÊËÙ¶È¿ØÖÆPID
 #define POWER_BUFFER_PID_KP -1.5f
 #define POWER_BUFFER_PID_KI 0.0f
 #define POWER_BUFFER_PID_KD 0.0f
@@ -454,10 +441,10 @@
 #define LEG_L0Speed_PID_MAX_IOUT 0.0f
 #define LEG_L0Speed_PID_BAND_I   0.0f
 /*腿长L0控制PID*/
-#define LEG_L0_PID_KP             0.0f//600.0f
+#define LEG_L0_PID_KP             25000.0f//600.0f
 #define LEG_L0_PID_KI             0  //0.0f
 #define LEG_L0_PID_KD             0  //300
-#define LEG_L0_PID_MAX_OUT        90.0f
+#define LEG_L0_PID_MAX_OUT        160.0f
 #define LEG_L0_PID_MAX_IOUT       0.0f
 #define LEG_L0_PID_BAND_I         0.0f
 /*腿长L0控制PID*/

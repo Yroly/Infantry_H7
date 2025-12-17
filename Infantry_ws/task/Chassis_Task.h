@@ -37,6 +37,7 @@ typedef enum{
 	CHASSIS_STOP = 0,
 	CHASSIS_RUN,
 	CHASSIS_GYROSCOPE,
+	CHASSIS_NONE
 }chassis_mode_t;
 typedef struct{
 	fp32 vx;
@@ -88,6 +89,8 @@ typedef struct{
 }Chassis_Wheel_t;
 class Chassis_Class{
 public:
+	float offset[2];
+	float	K_filter_gyro[2];
 	/*PID*/
 	PidTypeDef Leg_Roll_Pid;
 	PidTypeDef Gyro_X_Pid;
@@ -100,7 +103,8 @@ public:
 
 	PidTypeDef Wheel_Speed_Pid[2];
 	float wheel_pid[3];
-
+	float last_Gyro[3];
+	float Gyro[3];
 	float x_fdb;
 	chassis_mode_t Mode;
 	chassis_mode_t Last_Mode;
@@ -138,7 +142,7 @@ public:
 
 	fp32 V_COLLAPSE;
 	fp32 FN_max;
-
+	float tau_damp[2];
 	float v_set;
 	float v_target;
 	float x_set;
