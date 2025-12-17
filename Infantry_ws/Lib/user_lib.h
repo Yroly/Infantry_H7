@@ -137,6 +137,4 @@ float OLS_Smooth(Ordinary_Least_Squares_t *OLS, float deltax, float y);
 float Get_OLS_Derivative(Ordinary_Least_Squares_t *OLS);
 float Get_OLS_Smooth(Ordinary_Least_Squares_t *OLS);
 
-
-void slope_following(float *target,float *set,float acc);
 #endif

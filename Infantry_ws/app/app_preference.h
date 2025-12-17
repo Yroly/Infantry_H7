@@ -112,7 +112,8 @@
 #define Yaw_Mouse_SEN    0.00035f
 #define Pitch_Mouse_SEN  0.0004f
 #define L0_SET_G_SEN     0.0008f
-#define L0_SET_RC_SEN    0.01f
+#define L0_SET_RC_SEN    0.009f
+#define ROLL_SET_TC_SEN  0.05f
 #define L0_SET_ROLL_SEN  0.00064f
 #define Yaw_RC_Sen      -0.003f
 
@@ -362,11 +363,11 @@
 #define CHASSIS_MOTOR_RPM_TO_RAD	0.104719755 //2Π/60 rpm*2Π/60 = rad/s 
 #define CHASSIS_MOTOR_RPM_TO_OMG_SEN      0.0523598333333333f
 #define CHASSIS_MOTOR_RPM_TO_VECTOR_SEN    CHASSIS_MOTOR_RPM_TO_RAD*WHEEL_RADIUS //v=ωr
-//
-#define CHASSIS_MOTOR_CURRENT_TO_TORQUE_SEN   0.0000244140625f
-#define CHASSIS_MOTOR_TORQUE_TO_CURRENT_SEN   40960.0f
+//c= 20/16384*0.3 0.3N.M/A 20*0.3 = 6 然后/16384 
+#define CHASSIS_MOTOR_CURRENT_TO_TORQUE_SEN   0.0003662109375f
+#define CHASSIS_MOTOR_TORQUE_TO_CURRENT_SEN   2730.666666666667f
 
-#define MAX_WHEEL_TORQUE   0.4f
+#define MAX_WHEEL_TORQUE   6.0f
 
 #define POWER_BUFFER_PID_KP -1.5f
 #define POWER_BUFFER_PID_KI 0.0f
@@ -393,7 +394,7 @@
 #define TOP_Frame_Period    0.07
 
 /*Roll轴补偿PID*/
-#define LEG_ROLL_PID_KP       0.0f
+#define LEG_ROLL_PID_KP       2500.0f
 #define LEG_ROLL_PID_KI       0.0f
 #define LEG_ROLL_PID_KD       0.0f
 #define LEG_ROLL_PID_MAX_OUT  90.0f
@@ -420,14 +421,14 @@
 #define WHEEL_SPEED_MAX_IOUT	0.0f
 #define WHEEL_SPEED_BAND_I		0.0f
 /*起立腿部旋转位置控制PID*/
-#define LEG_Position_PID_KP       0.0f
+#define LEG_Position_PID_KP       -5.0f
 #define LEG_Position_PID_KI       0.0f
 #define LEG_Position_PID_KD       0.0f
 #define LEG_Position_PID_MAX_OUT  3.0f
 #define LEG_Position_PID_MAX_IOUT 1.0f
 #define LEG_Position_PID_BAND_I   0.0f
 /*起立腿部旋转速度控制PID*/
-#define LEG_Speed_PID_KP       0.0f
+#define LEG_Speed_PID_KP       1.0f
 #define LEG_Speed_PID_KI       0.0f
 #define LEG_Speed_PID_KD       0.0f
 #define LEG_Speed_PID_MAX_OUT  3.0f

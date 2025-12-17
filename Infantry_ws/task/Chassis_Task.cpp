@@ -65,8 +65,8 @@ extern "C" void Chassis_Task(){
 
 void Chassis_Class::Chassis_Init(void){
 	Mode = CHASSIS_STOP;
-	offset[0] = 3.05f;//0.0-0.4
-	offset[1] = 3.10f;
+	offset[0] = 2.85f;//0.0-0.4
+	offset[1] = 2.85f;
 	k[0] = 0;
 	k[1] = 0;
 	Chassis_Task_DWT_dt = 0;
@@ -92,6 +92,13 @@ void Chassis_Class::Chassis_Init(void){
 		0.1f,
 		WHEEL_SPEED_MAX_IOUT,
 		WHEEL_SPEED_BAND_I);
+	PID.Init(&Leg_Roll_Pid, POSITION,
+		LEG_ROLL_PID_KP,
+		LEG_ROLL_PID_KI,
+		LEG_ROLL_PID_KD,
+		LEG_ROLL_PID_MAX_OUT,
+		LEG_ROLL_PID_MAX_IOUT,
+		LEG_ROLL_PID_BAND_I);
 	PID.Init(&Leg_Angle0_err_Pid, POSITION,
 		LEG_ANGLE0_ERR_PID_KP,
 		LEG_ANGLE0_ERR_PID_KI,
@@ -307,7 +314,8 @@ void Chassis_Class::Leg_Init(void){
 	/* 腿的位置 旋转速度 收腿速度*/
 	leg.stand.Stand_Speed = 0.5f;//
 	leg.stand.L0Speed = -0.3f;
-	leg.stand.Stand_Angle = 0.3f;
+	leg.stand.Stand_Angle[0] = -2.70f;
+	leg.stand.Stand_Angle[1] = -2.95f;
 }
 void Chassis_Class::Flag_Control(){
 	if (Mode == CHASSIS_STOP){
@@ -360,10 +368,11 @@ void Chassis_Class::Control(void){
 	if(Mode == CHASSIS_RUN){
 		leg.leg_set.L0_set_final = leg.leg_set.L0_set_middle + remote.Key_ch[3] * L0_SET_RC_SEN;
 		leg.leg_set.L0_set = ramp_float(leg.leg_set.L0_set_final, leg.leg_set.L0_set, 0.00065);
+		Roll_set = ramp_float(INS.Roll + remote.Key_ch[2] * ROLL_SET_TC_SEN,Roll_set,0.0075);
 		Limit_min_max(&leg.leg_set.L0_set, leg.leg_set.L0_set_min, leg.leg_set.L0_set_max);
-
-		Leg_Ctrl.Leg_set.Wheel_Speed_set = vx_set[0];
-		Leg_Ctrl.Leg_set.Wheel_Speed_set = vx_set[1];
+		
+		Leg_Ctrl.Leg_set.Wheel_Speed_set[0] = vx_set[0];
+		Leg_Ctrl.Leg_set.Wheel_Speed_set[1] = vx_set[1];
 		Leg_Ctrl.Leg_set.Wheel_Collapse_V_set = Leg_Ctrl.Leg_set.Wheel_Collapse_V_set = 0;
 		Leg_Ctrl.Leg_set.yaw_Gyro_set = angle_set;
 		Leg_Ctrl.Leg_set.yaw_Gyro_set = angle_set;
@@ -373,9 +382,9 @@ void Chassis_Class::Control(void){
 		PID.Calc(&Wheel_Speed_Pid[1],Wheel_Motor[1].measure.torque,0);
 //		Wheel_Motor[0].give_current = (int16_t)(Wheel_Speed_Pid[0].out * CHASSIS_MOTOR_TORQUE_TO_CURRENT_SEN);
 //		Wheel_Motor[1].give_current = (int16_t)(Wheel_Speed_Pid[1].out * CHASSIS_MOTOR_TORQUE_TO_CURRENT_SEN);
-		Wheel_Motor[1].give_current = 0;						
-		Wheel_Motor[0].give_current = 0;
-		Leg_Ctrl.Leg_set.Wheel_Speed_set = Leg_Ctrl.Leg_set.Wheel_Speed_set = 0;
+//		Wheel_Motor[1].give_current = 0;						
+//		Wheel_Motor[0].give_current = 0;
+		Leg_Ctrl.Leg_set.Wheel_Speed_set[0] = Leg_Ctrl.Leg_set.Wheel_Speed_set[1] = 0;
 		Leg_Ctrl.Leg_set.Wheel_Collapse_V_set = Leg_Ctrl.Leg_set.Wheel_Collapse_V_set = 0;
 		Leg_Ctrl.Leg_set.yaw_Gyro_set = Leg_Ctrl.Leg_set.yaw_Gyro_set = 0;
 	}
@@ -384,13 +393,13 @@ void Chassis_Class::Control(void){
 void Chassis_Class::Control_Loop(void){
 	uint8_t i = 0,j = 0;
 	switch(leg.leg_flag.Stand_flag){
-		case 1 : 
+		case 1 :
 			if(!(leg.leg_flag.Revolve_flag_L || leg.leg_flag.Revolve_flag_R)){
 				leg.leg_flag.Stand_flag = 3;
 				osDelay(10);
 			}
 			if(leg.leg_flag.Revolve_flag_L){
-				PID.Calc(&Chassis.Stand_Position_Pid[0], leg.vmc[0].point.phi0, leg.stand.Stand_Angle);
+				PID.Calc(&Chassis.Stand_Position_Pid[0], leg.vmc[0].point.phi0, leg.stand.Stand_Angle[1]);
 				Limit_min_max(&Chassis.Stand_Position_Pid[0].out,-2.0f,2.0f);
 				PID.Calc(&Chassis.Stand_Speed_Pid[0], leg.vmc[0].point.d_phi0, Chassis.Stand_Position_Pid[0].out);
 //				PID.Calc(&Chassis.Stand_Speed_Pid[0], leg.vmc[0].point.d_phi0, leg.stand.Stand_Sign[0] * leg.stand.Stand_Speed);
@@ -400,22 +409,22 @@ void Chassis_Class::Control_Loop(void){
 				Limit_min_max(&leg.vmc[0].torque_set[1],-3.0f,3.0f);
 			}
 			if(leg.leg_flag.Revolve_flag_R){
-//				PID.Calc(&Chassis.Stand_Position_Pid[1],leg.vmc[1].point.phi0,-leg.stand.Stand_Angle);
-//				Limit_min_max(&Chassis.Stand_Position_Pid[1].out, -2.0f, 2.0f);
-//				PID.Calc(&Chassis.Stand_Speed_Pid[1], leg.vmc[1].point.d_phi0, Chassis.Stand_Position_Pid[1].out);				
-				PID.Calc(&Chassis.Stand_Speed_Pid[1], leg.vmc[1].point.d_phi0, leg.stand.Stand_Sign[1] * leg.stand.Stand_Speed);
+				PID.Calc(&Chassis.Stand_Position_Pid[1],leg.vmc[1].point.phi0,leg.stand.Stand_Angle[1]);
+				Limit_min_max(&Chassis.Stand_Position_Pid[1].out, -2.0f, 2.0f);
+				PID.Calc(&Chassis.Stand_Speed_Pid[1], leg.vmc[1].point.d_phi0, Chassis.Stand_Position_Pid[1].out);				
+//				PID.Calc(&Chassis.Stand_Speed_Pid[1], leg.vmc[1].point.d_phi0, leg.stand.Stand_Sign[1] * leg.stand.Stand_Speed);
 				leg.vmc[1].Tp = Chassis.Stand_Speed_Pid[1].out;
 				leg.vmc[1].vmc_forward();
 				Limit_min_max(&leg.vmc[1].torque_set[0], -3.0f, 3.0f);
 				Limit_min_max(&leg.vmc[1].torque_set[1], -3.0f, 3.0f);
 			}
 			/*判断是否完成站立 完成后对左右腿进行数据清零*/
-			if(fabs(leg.stand.Stand_Angle - leg.vmc[0].point.phi0) <0.24386f){
+			if(fabs(leg.stand.Stand_Angle[0] - leg.vmc[0].point.phi0) <0.2f){
 				leg.leg_data_clear(Left_Leg);
 				PID.Clear(&Stand_Speed_Pid[0]);
 				leg.leg_flag.Revolve_flag_L = false;		
 			}
-			if(fabs(leg.stand.Stand_Angle - leg.vmc[1].point.phi0) <0.24386f){
+			if(fabs(leg.stand.Stand_Angle[1] - leg.vmc[1].point.phi0) <0.2f){
 				leg.leg_data_clear(Right_Leg);
 				PID.Clear(&Stand_Speed_Pid[1]);
 				leg.leg_flag.Revolve_flag_R = false;				
@@ -437,13 +446,13 @@ void Chassis_Class::Control_Loop(void){
 			Limit_min_max(&leg.vmc[1].torque_set[0], -2.0f, 2.0f);
 			Limit_min_max(&leg.vmc[1].torque_set[1], -2.0f, 2.0f);
 			
-			if(leg.vmc[0].point.L0 <0.3 && leg.vmc[1].point.L0 <0.3){
+			if(leg.vmc[0].point.L0 <0.025 && leg.vmc[1].point.L0 <0.025){
 				osDelay(50);
 				leg.leg_flag.Stand_flag ++;;
 			}
 			break;
 		case 4 :
-			leg.leg_set.L0_set = 0.20;
+			leg.leg_set.L0_set = 0.020f;
 			for (i = 0; i < 2; i++){
 				leg.wheel_T[i] = LQR_K[0] * (leg.vmc[i].theta -0.0f) 
 											 + LQR_K[1] * (leg.vmc[i].d_theta - 0.0f);
@@ -470,26 +479,27 @@ void Chassis_Class::Control_Loop(void){
 			leg.wheel_T[i] = LQR_K[0] * (leg.vmc[i].theta - offset[0]) 
 										 + LQR_K[1] * (leg.vmc[i].d_theta - 0.0f) 
 										 + LQR_K[2] * (x_fdb - 0.0f) 
-										 + LQR_K[3] * (Velocity.vx - Leg_Ctrl.Leg_set.Wheel_Speed_set) 
+										 + LQR_K[3] * (Velocity.vx - Leg_Ctrl.Leg_set.Wheel_Speed_set[0]) 
 										 + LQR_K[4] * (-INS.Pitch - (-0.0f)) 
 										 + LQR_K[5] * (-Gyro[0]- 0.0f);
 			leg.vmc[i].Tp = LQR_K[6] * (leg.vmc[i].theta - offset[1]) 
 										+ LQR_K[7] * (leg.vmc[i].d_theta - 0.0f) 
 										+ LQR_K[8] * (x_fdb - 0.0f) 
-										+ LQR_K[9] * (Velocity.vx - Leg_Ctrl.Leg_set.Wheel_Speed_set) 
+										+ LQR_K[9] * (Velocity.vx - Leg_Ctrl.Leg_set.Wheel_Speed_set[1]) 
 										+ LQR_K[10] * (-INS.Pitch - -0.0f) 
 										+ LQR_K[11] * (-Gyro[0] - 0.0f);
 			PID.Calc(&Chassis.Leg_L0_Pid[i], leg.vmc[i].point.L0, leg.leg_set.L0_set);
 			PID.Calc(&Chassis.Leg_L0_Speed_Pid[i], leg.vmc[i].point.d_L0, 0.0f);
+			PID.Calc(&Chassis.Leg_Roll_Pid,INS.Roll,Chassis.Roll_set);
 		}
 	PID.Calc(&Chassis.Leg_Angle0_err_Pid, leg.vmc[0].point.phi0 - leg.vmc[1].point.phi0, 0.0f);
 	leg.vmc[0].Tp += Leg_Angle0_err_Pid.out;
 	leg.vmc[1].Tp -= Leg_Angle0_err_Pid.out;
 	
-	leg.vmc[0].F0 = Leg_L0_Pid[0].out + Leg_L0_Speed_Pid[0].out + k[0] *cos(leg.vmc[0].theta);
+	leg.vmc[0].F0 = Leg_L0_Pid[0].out + Leg_L0_Speed_Pid[0].out + Leg_Roll_Pid.out + k[0] *cos(leg.vmc[0].theta);
 	leg.vmc[0].vmc_forward();
 
-	leg.vmc[1].F0 = Leg_L0_Pid[1].out + Leg_L0_Speed_Pid[1].out + k[1] *cos(leg.vmc[1].theta);
+	leg.vmc[1].F0 = Leg_L0_Pid[1].out + Leg_L0_Speed_Pid[1].out - Leg_Roll_Pid.out + k[1] *cos(leg.vmc[1].theta);
 	leg.vmc[1].vmc_forward();
 	}
 	Limit_min_max(&leg.vmc[0].torque_set[0], -5.0f, 5.0f);
@@ -498,26 +508,17 @@ void Chassis_Class::Control_Loop(void){
 	Limit_min_max(&leg.vmc[1].torque_set[0], -5.0f, 5.0f);
 	Limit_min_max(&leg.vmc[1].torque_set[1], -5.0f, 5.0f);
 
-	Limit_min_max(&leg.wheel_T[0], -MAX_WHEEL_TORQUE, MAX_WHEEL_TORQUE);
-	Limit_min_max(&leg.wheel_T[1], -MAX_WHEEL_TORQUE, MAX_WHEEL_TORQUE);
-
+//	Limit_min_max(&leg.wheel_T[0], -MAX_WHEEL_TORQUE, MAX_WHEEL_TORQUE);
+//	Limit_min_max(&leg.wheel_T[1], -MAX_WHEEL_TORQUE, MAX_WHEEL_TORQUE);
+	Limit_min_max(&leg.wheel_T[0], -0.1f, 0.1f);
+	Limit_min_max(&leg.wheel_T[1], -0.1f, 0.1f);
 	PID.Calc(&Wheel_Speed_Pid[0],Wheel_Motor[0].measure.torque,leg.wheel_T[0]);
 	PID.Calc(&Wheel_Speed_Pid[1],Wheel_Motor[1].measure.torque,leg.wheel_T[1]);
 	Wheel_Motor[0].give_current = (int16_t)(Wheel_Speed_Pid[0].out * CHASSIS_MOTOR_TORQUE_TO_CURRENT_SEN);
 	Wheel_Motor[1].give_current = (int16_t)(-Wheel_Speed_Pid[1].out * CHASSIS_MOTOR_TORQUE_TO_CURRENT_SEN);	
 }
+void Chassis_Class::Ground_detection(){
 
-void Chassis_Class::slope_following(float *target,float *set,float acc){
-	if(*target > *set){
-		*set = *set + acc;
-		if(*set >= *target)
-		*set = *target;
-	}
-	else if(*target < *set){
-		*set = *set - acc;
-		if(*set <= *target)
-		*set = *target;
-	}
 }
 fp32 ramp_float(fp32 final, fp32 now, fp32 ramp){
 	fp32 buffer = 0;

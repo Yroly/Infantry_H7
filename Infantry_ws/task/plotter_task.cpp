@@ -7,7 +7,7 @@ at::Plotter plotter(&huart10);
 
 extern "C" void plotter_task(){
 	while(true){
-		plotter.plot(leg.vmc[0].point.phi0,leg.stand.Stand_Angle);
+		plotter.plot(leg.vmc[0].point.phi0,leg.stand.Stand_Angle[0]);
 		osDelay(1);
 	}
 }

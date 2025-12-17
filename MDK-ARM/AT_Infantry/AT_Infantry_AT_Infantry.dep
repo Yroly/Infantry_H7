@@ -53,7 +53,7 @@ I (E:\Keil_V5\ARM\ARMCLANG\include\float.h)(0x6035A4A0)
 I (E:\Keil_V5\ARM\ARMCLANG\include\limits.h)(0x6035A4A6)
 I (E:\Keil_V5\ARM\ARMCLANG\include\stdlib.h)(0x6035A4A8)
 I (..\Infantry_ws\Controller\controller.h)(0x69258B13)
-I (..\Infantry_ws\Lib\user_lib.h)(0x692EF29B)
+I (..\Infantry_ws\Lib\user_lib.h)(0x6942C620)
 I (..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS_V2\cmsis_os.h)(0x6915933B)
 I (..\Middlewares\Third_Party\FreeRTOS\Source\include\FreeRTOS.h)(0x6915933C)
 I (..\Core\Inc\FreeRTOSConfig.h)(0x69258C83)
@@ -66,8 +66,8 @@ I (..\Middlewares\Third_Party\FreeRTOS\Source\include\task.h)(0x6915933C)
 I (..\Middlewares\Third_Party\FreeRTOS\Source\include\list.h)(0x6915933C)
 I (..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS_V2\cmsis_os2.h)(0x6915933B)
 I (..\Infantry_ws\Algorithm\mahony\mahony_filter.h)(0x6929802A)
-F (..\Infantry_ws\task\Chassis_Task.cpp)(0x69417063)(-xc++ -std=c++17 --target=arm-arm-none-eabi -mcpu=cortex-m7 -mfpu=fpv5-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar -fno-exceptions-gdwarf-3 -O0 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../Core/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/ARM/DSP/Inc -I ../Infantry_ws -I ../Infantry_ws/bsp -I ../Infantry_ws/Lib -I ../Infantry_ws/devices/DM_Motor -I ../Infantry_ws/devices/BMI088 -I ../Infantry_ws/Controller -I ../Infantry_ws/task -I ../Infantry_ws/Algorithm -I ../Infantry_ws/Algorithm/EKF -I ../Infantry_ws/Algorithm/kalman -I ../Infantry_ws/Algorithm/mahony -I ../Infantry_ws/Algorithm/PID -I ../Infantry_ws/Algorithm/VMC -I ../Infantry_ws/app -I ../Infantry_ws/Leg -I ../Infantry_ws/middlewares/io/buzzer -I ../Infantry_ws/middlewares/io/plotter -I ../Infantry_ws/middlewares/io/dbus -I ../Infantry_ws/middlewares/io/watchdog -I ../Infantry_ws/middlewares/io/bmi088 -I ../Infantry_ws/middlewares/tools/math_tools -I ../Infantry_ws/middlewares/tools/mahony -I ../Infantry_ws/middlewares/tools/low_pass_filter -I ../Infantry_ws/middlewares/tools/pid -I ../Infantry_ws/middlewares/motor -I ../Infantry_ws/middlewares/io/sbus -I ../Infantry_ws/Eigen/Eigen-I./RTE/_AT_Infantry-IC:/Users/34085/AppData/Local/Arm/Packs/ARM/CMSIS/5.7.0/CMSIS/Core/Include-D__UVISION_VERSION="534" -D_RTE_ -DSTM32H723xx -D_RTE_ -DUSE_PWR_LDO_SUPPLY -DUSE_HAL_DRIVER -DSTM32H723xx-o at_infantry/chassis_task.o -MD)
-I (..\Infantry_ws\task\Chassis_Task.h)(0x69417063)
+F (..\Infantry_ws\task\Chassis_Task.cpp)(0x6942CA57)(-xc++ -std=c++17 --target=arm-arm-none-eabi -mcpu=cortex-m7 -mfpu=fpv5-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar -fno-exceptions-gdwarf-3 -O0 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../Core/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/ARM/DSP/Inc -I ../Infantry_ws -I ../Infantry_ws/bsp -I ../Infantry_ws/Lib -I ../Infantry_ws/devices/DM_Motor -I ../Infantry_ws/devices/BMI088 -I ../Infantry_ws/Controller -I ../Infantry_ws/task -I ../Infantry_ws/Algorithm -I ../Infantry_ws/Algorithm/EKF -I ../Infantry_ws/Algorithm/kalman -I ../Infantry_ws/Algorithm/mahony -I ../Infantry_ws/Algorithm/PID -I ../Infantry_ws/Algorithm/VMC -I ../Infantry_ws/app -I ../Infantry_ws/Leg -I ../Infantry_ws/middlewares/io/buzzer -I ../Infantry_ws/middlewares/io/plotter -I ../Infantry_ws/middlewares/io/dbus -I ../Infantry_ws/middlewares/io/watchdog -I ../Infantry_ws/middlewares/io/bmi088 -I ../Infantry_ws/middlewares/tools/math_tools -I ../Infantry_ws/middlewares/tools/mahony -I ../Infantry_ws/middlewares/tools/low_pass_filter -I ../Infantry_ws/middlewares/tools/pid -I ../Infantry_ws/middlewares/motor -I ../Infantry_ws/middlewares/io/sbus -I ../Infantry_ws/Eigen/Eigen-I./RTE/_AT_Infantry-IC:/Users/34085/AppData/Local/Arm/Packs/ARM/CMSIS/5.7.0/CMSIS/Core/Include-D__UVISION_VERSION="534" -D_RTE_ -DSTM32H723xx -D_RTE_ -DUSE_PWR_LDO_SUPPLY -DUSE_HAL_DRIVER -DSTM32H723xx-o at_infantry/chassis_task.o -MD)
+I (..\Infantry_ws\task\Chassis_Task.h)(0x6942C8F9)
 I (..\Core\Inc\main.h)(0x69258C85)
 I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal.h)(0x691593B1)
 I (..\Core\Inc\stm32h7xx_hal_conf.h)(0x69283A94)
@@ -96,7 +96,7 @@ I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\stdlib.h)(0x6035A4A4)
 I (E:\Keil_V5\ARM\ARMCLANG\include\stdlib.h)(0x6035A4A8)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\type_traits)(0x6035A4A6)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\cstddef)(0x5E88DAE4)
-I (..\Infantry_ws\Eigen\Eigen\version)(0x69332968)
+I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\version)(0x6035A4A6)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\limits)(0x5D1A73FE)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\__undef_macros)(0x5C439CDA)
 I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_rcc_ex.h)(0x691593B1)
@@ -141,15 +141,15 @@ I (E:\Keil_V5\ARM\ARMCLANG\include\limits.h)(0x6035A4A6)
 I (..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS_V2\cmsis_os2.h)(0x6915933B)
 I (..\Infantry_ws\Leg\VMC.h)(0x694121F7)
 I (..\Infantry_ws\Algorithm\PID\pid.h)(0x693171F2)
-I (..\Infantry_ws\app\app_preference.h)(0x69417063)
-I (..\Infantry_ws\Leg\Legs.h)(0x693E17DC)
-I (..\Infantry_ws\Leg\Leg.h)(0x693E17DC)
+I (..\Infantry_ws\app\app_preference.h)(0x6942CBD7)
+I (..\Infantry_ws\Leg\Legs.h)(0x6942A6EB)
+I (..\Infantry_ws\Leg\Leg.h)(0x69425C8B)
 I (..\Infantry_ws\Algorithm\kalman\algorithm_kalman.h)(0x69258B13)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\stdio.h)(0x5C439CDA)
 I (E:\Keil_V5\ARM\ARMCLANG\include\stdio.h)(0x6035A4A8)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\stdbool.h)(0x5C439CDA)
 I (E:\Keil_V5\ARM\ARMCLANG\include\stdbool.h)(0x6035A4A8)
-I (..\Infantry_ws\Lib\user_lib.h)(0x692EF29B)
+I (..\Infantry_ws\Lib\user_lib.h)(0x6942C620)
 I (..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS_V2\cmsis_os.h)(0x6915933B)
 I (..\Middlewares\Third_Party\FreeRTOS\Source\include\FreeRTOS.h)(0x6915933C)
 I (..\Core\Inc\FreeRTOSConfig.h)(0x69258C83)
@@ -164,7 +164,7 @@ I (..\Infantry_ws\task\remote_task.h)(0x693168BB)
 I (..\Infantry_ws\middlewares\io\sbus\sbus.h)(0x69316968)
 I (..\Core\Inc\usart.h)(0x69283A94)
 I (..\Infantry_ws\middlewares\io\watchdog\watchdog.h)(0x693165FD)
-F (..\Infantry_ws\task\plotter_task.cpp)(0x69329E52)(-xc++ -std=c++17 --target=arm-arm-none-eabi -mcpu=cortex-m7 -mfpu=fpv5-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar -fno-exceptions-gdwarf-3 -O0 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../Core/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/ARM/DSP/Inc -I ../Infantry_ws -I ../Infantry_ws/bsp -I ../Infantry_ws/Lib -I ../Infantry_ws/devices/DM_Motor -I ../Infantry_ws/devices/BMI088 -I ../Infantry_ws/Controller -I ../Infantry_ws/task -I ../Infantry_ws/Algorithm -I ../Infantry_ws/Algorithm/EKF -I ../Infantry_ws/Algorithm/kalman -I ../Infantry_ws/Algorithm/mahony -I ../Infantry_ws/Algorithm/PID -I ../Infantry_ws/Algorithm/VMC -I ../Infantry_ws/app -I ../Infantry_ws/Leg -I ../Infantry_ws/middlewares/io/buzzer -I ../Infantry_ws/middlewares/io/plotter -I ../Infantry_ws/middlewares/io/dbus -I ../Infantry_ws/middlewares/io/watchdog -I ../Infantry_ws/middlewares/io/bmi088 -I ../Infantry_ws/middlewares/tools/math_tools -I ../Infantry_ws/middlewares/tools/mahony -I ../Infantry_ws/middlewares/tools/low_pass_filter -I ../Infantry_ws/middlewares/tools/pid -I ../Infantry_ws/middlewares/motor -I ../Infantry_ws/middlewares/io/sbus -I ../Infantry_ws/Eigen/Eigen-I./RTE/_AT_Infantry-IC:/Users/34085/AppData/Local/Arm/Packs/ARM/CMSIS/5.7.0/CMSIS/Core/Include-D__UVISION_VERSION="534" -D_RTE_ -DSTM32H723xx -D_RTE_ -DUSE_PWR_LDO_SUPPLY -DUSE_HAL_DRIVER -DSTM32H723xx-o at_infantry/plotter_task.o -MD)
+F (..\Infantry_ws\task\plotter_task.cpp)(0x6942A74E)(-xc++ -std=c++17 --target=arm-arm-none-eabi -mcpu=cortex-m7 -mfpu=fpv5-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar -fno-exceptions-gdwarf-3 -O0 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../Core/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/ARM/DSP/Inc -I ../Infantry_ws -I ../Infantry_ws/bsp -I ../Infantry_ws/Lib -I ../Infantry_ws/devices/DM_Motor -I ../Infantry_ws/devices/BMI088 -I ../Infantry_ws/Controller -I ../Infantry_ws/task -I ../Infantry_ws/Algorithm -I ../Infantry_ws/Algorithm/EKF -I ../Infantry_ws/Algorithm/kalman -I ../Infantry_ws/Algorithm/mahony -I ../Infantry_ws/Algorithm/PID -I ../Infantry_ws/Algorithm/VMC -I ../Infantry_ws/app -I ../Infantry_ws/Leg -I ../Infantry_ws/middlewares/io/buzzer -I ../Infantry_ws/middlewares/io/plotter -I ../Infantry_ws/middlewares/io/dbus -I ../Infantry_ws/middlewares/io/watchdog -I ../Infantry_ws/middlewares/io/bmi088 -I ../Infantry_ws/middlewares/tools/math_tools -I ../Infantry_ws/middlewares/tools/mahony -I ../Infantry_ws/middlewares/tools/low_pass_filter -I ../Infantry_ws/middlewares/tools/pid -I ../Infantry_ws/middlewares/motor -I ../Infantry_ws/middlewares/io/sbus -I ../Infantry_ws/Eigen/Eigen-I./RTE/_AT_Infantry-IC:/Users/34085/AppData/Local/Arm/Packs/ARM/CMSIS/5.7.0/CMSIS/Core/Include-D__UVISION_VERSION="534" -D_RTE_ -DSTM32H723xx -D_RTE_ -DUSE_PWR_LDO_SUPPLY -DUSE_HAL_DRIVER -DSTM32H723xx-o at_infantry/plotter_task.o -MD)
 I (..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS_V2\cmsis_os.h)(0x6915933B)
 I (..\Middlewares\Third_Party\FreeRTOS\Source\include\FreeRTOS.h)(0x6915933C)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\stddef.h)(0x5E88DAF0)
@@ -206,7 +206,7 @@ I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\stdlib.h)(0x6035A4A4)
 I (E:\Keil_V5\ARM\ARMCLANG\include\stdlib.h)(0x6035A4A8)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\type_traits)(0x6035A4A6)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\cstddef)(0x5E88DAE4)
-I (..\Infantry_ws\Eigen\Eigen\version)(0x69332968)
+I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\version)(0x6035A4A6)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\limits)(0x5D1A73FE)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\__undef_macros)(0x5C439CDA)
 I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_rcc_ex.h)(0x691593B1)
@@ -243,7 +243,7 @@ I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\float.h)(0x5C439CDA)
 I (E:\Keil_V5\ARM\ARMCLANG\include\float.h)(0x6035A4A0)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\limits.h)(0x5C439CDC)
 I (E:\Keil_V5\ARM\ARMCLANG\include\limits.h)(0x6035A4A6)
-I (..\Infantry_ws\task\chassis_task.h)(0x69417063)
+I (..\Infantry_ws\task\chassis_task.h)(0x6942C8F9)
 I (..\Infantry_ws\devices\DM_Motor\dm_motor_drv.h)(0x6933F433)
 I (..\Core\Inc\fdcan.h)(0x69258C84)
 I (..\Infantry_ws\bsp\bsp_can.h)(0x69283A94)
@@ -251,15 +251,15 @@ I (..\Infantry_ws\middlewares\motor\drv_dji_motor.h)(0x693D5403)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\cstdint)(0x5C439CDA)
 I (..\Infantry_ws\Leg\VMC.h)(0x694121F7)
 I (..\Infantry_ws\Algorithm\PID\pid.h)(0x693171F2)
-I (..\Infantry_ws\app\app_preference.h)(0x69417063)
-I (..\Infantry_ws\Leg\Legs.h)(0x693E17DC)
-I (..\Infantry_ws\Leg\Leg.h)(0x693E17DC)
+I (..\Infantry_ws\app\app_preference.h)(0x6942CBD7)
+I (..\Infantry_ws\Leg\Legs.h)(0x6942A6EB)
+I (..\Infantry_ws\Leg\Leg.h)(0x69425C8B)
 I (..\Infantry_ws\Algorithm\kalman\algorithm_kalman.h)(0x69258B13)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\stdio.h)(0x5C439CDA)
 I (E:\Keil_V5\ARM\ARMCLANG\include\stdio.h)(0x6035A4A8)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\stdbool.h)(0x5C439CDA)
 I (E:\Keil_V5\ARM\ARMCLANG\include\stdbool.h)(0x6035A4A8)
-I (..\Infantry_ws\Lib\user_lib.h)(0x692EF29B)
+I (..\Infantry_ws\Lib\user_lib.h)(0x6942C620)
 I (..\Infantry_ws\task\remote_task.h)(0x693168BB)
 I (..\Infantry_ws\middlewares\io\sbus\sbus.h)(0x69316968)
 I (..\Infantry_ws\middlewares\io\watchdog\watchdog.h)(0x693165FD)
@@ -295,7 +295,7 @@ I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\stdlib.h)(0x6035A4A4)
 I (E:\Keil_V5\ARM\ARMCLANG\include\stdlib.h)(0x6035A4A8)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\type_traits)(0x6035A4A6)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\cstddef)(0x5E88DAE4)
-I (..\Infantry_ws\Eigen\Eigen\version)(0x69332968)
+I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\version)(0x6035A4A6)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\limits)(0x5D1A73FE)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\__undef_macros)(0x5C439CDA)
 I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_rcc_ex.h)(0x691593B1)
@@ -353,7 +353,7 @@ I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\stdlib.h)(0x6035A4A4)
 I (E:\Keil_V5\ARM\ARMCLANG\include\stdlib.h)(0x6035A4A8)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\type_traits)(0x6035A4A6)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\cstddef)(0x5E88DAE4)
-I (..\Infantry_ws\Eigen\Eigen\version)(0x69332968)
+I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\version)(0x6035A4A6)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\limits)(0x5D1A73FE)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\__undef_macros)(0x5C439CDA)
 I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_rcc_ex.h)(0x691593B1)
@@ -420,7 +420,7 @@ I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\stdlib.h)(0x6035A4A4)
 I (E:\Keil_V5\ARM\ARMCLANG\include\stdlib.h)(0x6035A4A8)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\type_traits)(0x6035A4A6)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\cstddef)(0x5E88DAE4)
-I (..\Infantry_ws\Eigen\Eigen\version)(0x69332968)
+I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\version)(0x6035A4A6)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\limits)(0x5D1A73FE)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\__undef_macros)(0x5C439CDA)
 I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_rcc_ex.h)(0x691593B1)
@@ -475,7 +475,7 @@ I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\stdlib.h)(0x6035A4A4)
 I (E:\Keil_V5\ARM\ARMCLANG\include\stdlib.h)(0x6035A4A8)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\type_traits)(0x6035A4A6)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\cstddef)(0x5E88DAE4)
-I (..\Infantry_ws\Eigen\Eigen\version)(0x69332968)
+I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\version)(0x6035A4A6)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\limits)(0x5D1A73FE)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\__undef_macros)(0x5C439CDA)
 I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_rcc_ex.h)(0x691593B1)
@@ -505,7 +505,7 @@ I (..\Infantry_ws\devices\DM_Motor\dm_motor_drv.h)(0x6933F433)
 I (..\Core\Inc\fdcan.h)(0x69258C84)
 I (..\Infantry_ws\middlewares\motor\drv_dji_motor.h)(0x693D5403)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\cstdint)(0x5C439CDA)
-I (..\Infantry_ws\task\Chassis_Task.h)(0x69417063)
+I (..\Infantry_ws\task\Chassis_Task.h)(0x6942C8F9)
 I (..\Infantry_ws\task\INS_Task.h)(0x692EEB97)
 I (..\Infantry_ws\devices\BMI088\BMI088driver.h)(0x69258B13)
 I (..\Infantry_ws\Algorithm\EKF\QuaternionEKF.h)(0x69258B13)
@@ -520,15 +520,15 @@ I (E:\Keil_V5\ARM\ARMCLANG\include\limits.h)(0x6035A4A6)
 I (..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS_V2\cmsis_os2.h)(0x6915933B)
 I (..\Infantry_ws\Leg\VMC.h)(0x694121F7)
 I (..\Infantry_ws\Algorithm\PID\pid.h)(0x693171F2)
-I (..\Infantry_ws\app\app_preference.h)(0x69417063)
-I (..\Infantry_ws\Leg\Legs.h)(0x693E17DC)
-I (..\Infantry_ws\Leg\Leg.h)(0x693E17DC)
+I (..\Infantry_ws\app\app_preference.h)(0x6942CBD7)
+I (..\Infantry_ws\Leg\Legs.h)(0x6942A6EB)
+I (..\Infantry_ws\Leg\Leg.h)(0x69425C8B)
 I (..\Infantry_ws\Algorithm\kalman\algorithm_kalman.h)(0x69258B13)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\stdio.h)(0x5C439CDA)
 I (E:\Keil_V5\ARM\ARMCLANG\include\stdio.h)(0x6035A4A8)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\stdbool.h)(0x5C439CDA)
 I (E:\Keil_V5\ARM\ARMCLANG\include\stdbool.h)(0x6035A4A8)
-I (..\Infantry_ws\Lib\user_lib.h)(0x692EF29B)
+I (..\Infantry_ws\Lib\user_lib.h)(0x6942C620)
 I (..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS_V2\cmsis_os.h)(0x6915933B)
 I (..\Middlewares\Third_Party\FreeRTOS\Source\include\FreeRTOS.h)(0x6915933C)
 I (..\Core\Inc\FreeRTOSConfig.h)(0x69258C83)
@@ -663,7 +663,7 @@ I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\stdlib.h)(0x6035A4A4)
 I (E:\Keil_V5\ARM\ARMCLANG\include\stdlib.h)(0x6035A4A8)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\type_traits)(0x6035A4A6)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\cstddef)(0x5E88DAE4)
-I (..\Infantry_ws\Eigen\Eigen\version)(0x69332968)
+I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\version)(0x6035A4A6)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\limits)(0x5D1A73FE)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\__undef_macros)(0x5C439CDA)
 I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_rcc_ex.h)(0x691593B1)
@@ -730,7 +730,7 @@ I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\stdlib.h)(0x6035A4A4)
 I (E:\Keil_V5\ARM\ARMCLANG\include\stdlib.h)(0x6035A4A8)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\type_traits)(0x6035A4A6)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\cstddef)(0x5E88DAE4)
-I (..\Infantry_ws\Eigen\Eigen\version)(0x69332968)
+I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\version)(0x6035A4A6)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\limits)(0x5D1A73FE)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\__undef_macros)(0x5C439CDA)
 I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_rcc_ex.h)(0x691593B1)
@@ -814,7 +814,7 @@ I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\stdlib.h)(0x6035A4A4)
 I (E:\Keil_V5\ARM\ARMCLANG\include\stdlib.h)(0x6035A4A8)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\type_traits)(0x6035A4A6)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\cstddef)(0x5E88DAE4)
-I (..\Infantry_ws\Eigen\Eigen\version)(0x69332968)
+I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\version)(0x6035A4A6)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\limits)(0x5D1A73FE)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\__undef_macros)(0x5C439CDA)
 I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_rcc_ex.h)(0x691593B1)
@@ -862,7 +862,7 @@ I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\stdlib.h)(0x6035A4A4)
 I (E:\Keil_V5\ARM\ARMCLANG\include\stdlib.h)(0x6035A4A8)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\type_traits)(0x6035A4A6)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\cstddef)(0x5E88DAE4)
-I (..\Infantry_ws\Eigen\Eigen\version)(0x69332968)
+I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\version)(0x6035A4A6)
 I (E:\Keil_V5\ARM\ARMCLANG\include\stddef.h)(0x6035A4A8)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\__nullptr)(0x5C439CDA)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\limits)(0x5D1A73FE)
@@ -918,7 +918,7 @@ I (..\Middlewares\ST\ARM\DSP\Inc\arm_math.h)(0x6915923A)
 I (E:\Keil_V5\ARM\ARMCLANG\include\string.h)(0x6035A4A8)
 I (E:\Keil_V5\ARM\ARMCLANG\include\float.h)(0x6035A4A0)
 I (E:\Keil_V5\ARM\ARMCLANG\include\limits.h)(0x6035A4A6)
-F (..\Infantry_ws\Leg\LQR.cpp)(0x693E135E)(-xc++ -std=c++17 --target=arm-arm-none-eabi -mcpu=cortex-m7 -mfpu=fpv5-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar -fno-exceptions-gdwarf-3 -O0 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../Core/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/ARM/DSP/Inc -I ../Infantry_ws -I ../Infantry_ws/bsp -I ../Infantry_ws/Lib -I ../Infantry_ws/devices/DM_Motor -I ../Infantry_ws/devices/BMI088 -I ../Infantry_ws/Controller -I ../Infantry_ws/task -I ../Infantry_ws/Algorithm -I ../Infantry_ws/Algorithm/EKF -I ../Infantry_ws/Algorithm/kalman -I ../Infantry_ws/Algorithm/mahony -I ../Infantry_ws/Algorithm/PID -I ../Infantry_ws/Algorithm/VMC -I ../Infantry_ws/app -I ../Infantry_ws/Leg -I ../Infantry_ws/middlewares/io/buzzer -I ../Infantry_ws/middlewares/io/plotter -I ../Infantry_ws/middlewares/io/dbus -I ../Infantry_ws/middlewares/io/watchdog -I ../Infantry_ws/middlewares/io/bmi088 -I ../Infantry_ws/middlewares/tools/math_tools -I ../Infantry_ws/middlewares/tools/mahony -I ../Infantry_ws/middlewares/tools/low_pass_filter -I ../Infantry_ws/middlewares/tools/pid -I ../Infantry_ws/middlewares/motor -I ../Infantry_ws/middlewares/io/sbus -I ../Infantry_ws/Eigen/Eigen-I./RTE/_AT_Infantry-IC:/Users/34085/AppData/Local/Arm/Packs/ARM/CMSIS/5.7.0/CMSIS/Core/Include-D__UVISION_VERSION="534" -D_RTE_ -DSTM32H723xx -D_RTE_ -DUSE_PWR_LDO_SUPPLY -DUSE_HAL_DRIVER -DSTM32H723xx-o at_infantry/lqr.o -MD)
+F (..\Infantry_ws\Leg\LQR.cpp)(0x69425CB1)(-xc++ -std=c++17 --target=arm-arm-none-eabi -mcpu=cortex-m7 -mfpu=fpv5-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar -fno-exceptions-gdwarf-3 -O0 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../Core/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/ARM/DSP/Inc -I ../Infantry_ws -I ../Infantry_ws/bsp -I ../Infantry_ws/Lib -I ../Infantry_ws/devices/DM_Motor -I ../Infantry_ws/devices/BMI088 -I ../Infantry_ws/Controller -I ../Infantry_ws/task -I ../Infantry_ws/Algorithm -I ../Infantry_ws/Algorithm/EKF -I ../Infantry_ws/Algorithm/kalman -I ../Infantry_ws/Algorithm/mahony -I ../Infantry_ws/Algorithm/PID -I ../Infantry_ws/Algorithm/VMC -I ../Infantry_ws/app -I ../Infantry_ws/Leg -I ../Infantry_ws/middlewares/io/buzzer -I ../Infantry_ws/middlewares/io/plotter -I ../Infantry_ws/middlewares/io/dbus -I ../Infantry_ws/middlewares/io/watchdog -I ../Infantry_ws/middlewares/io/bmi088 -I ../Infantry_ws/middlewares/tools/math_tools -I ../Infantry_ws/middlewares/tools/mahony -I ../Infantry_ws/middlewares/tools/low_pass_filter -I ../Infantry_ws/middlewares/tools/pid -I ../Infantry_ws/middlewares/motor -I ../Infantry_ws/middlewares/io/sbus -I ../Infantry_ws/Eigen/Eigen-I./RTE/_AT_Infantry-IC:/Users/34085/AppData/Local/Arm/Packs/ARM/CMSIS/5.7.0/CMSIS/Core/Include-D__UVISION_VERSION="534" -D_RTE_ -DSTM32H723xx -D_RTE_ -DUSE_PWR_LDO_SUPPLY -DUSE_HAL_DRIVER -DSTM32H723xx-o at_infantry/lqr.o -MD)
 I (..\Infantry_ws\Leg\LQR.h)(0x692D84DC)
 I (..\Middlewares\ST\ARM\DSP\Inc\arm_math.h)(0x6915923A)
 I (..\Drivers\CMSIS\Include\cmsis_compiler.h)(0x6915933F)
@@ -936,7 +936,7 @@ I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\stdlib.h)(0x6035A4A4)
 I (E:\Keil_V5\ARM\ARMCLANG\include\stdlib.h)(0x6035A4A8)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\type_traits)(0x6035A4A6)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\cstddef)(0x5E88DAE4)
-I (..\Infantry_ws\Eigen\Eigen\version)(0x69332968)
+I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\version)(0x6035A4A6)
 I (E:\Keil_V5\ARM\ARMCLANG\include\stddef.h)(0x6035A4A8)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\__nullptr)(0x5C439CDA)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\limits)(0x5D1A73FE)
@@ -945,7 +945,7 @@ I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\float.h)(0x5C439CDA)
 I (E:\Keil_V5\ARM\ARMCLANG\include\float.h)(0x6035A4A0)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\limits.h)(0x5C439CDC)
 I (E:\Keil_V5\ARM\ARMCLANG\include\limits.h)(0x6035A4A6)
-I (..\Infantry_ws\Leg\Leg.h)(0x693E17DC)
+I (..\Infantry_ws\Leg\Leg.h)(0x69425C8B)
 I (..\Infantry_ws\bsp\bsp_dwt.h)(0x69298753)
 I (..\Core\Inc\main.h)(0x69258C85)
 I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal.h)(0x691593B1)
@@ -990,8 +990,8 @@ I (E:\Keil_V5\ARM\ARMCLANG\include\stdbool.h)(0x6035A4A8)
 I (..\Infantry_ws\Leg\Mpc.h)(0x69258B13)
 I (..\Infantry_ws\Algorithm\EKF\QuaternionEKF.h)(0x69258B13)
 I (..\Infantry_ws\Algorithm\kalman\kalman_filter.h)(0x69258B13)
-I (..\Infantry_ws\app\app_preference.h)(0x69417063)
-F (..\Infantry_ws\Leg\Mpc.cpp)(0x692D85FE)(-xc++ -std=c++17 --target=arm-arm-none-eabi -mcpu=cortex-m7 -mfpu=fpv5-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar -fno-exceptions-gdwarf-3 -O0 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../Core/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/ARM/DSP/Inc -I ../Infantry_ws -I ../Infantry_ws/bsp -I ../Infantry_ws/Lib -I ../Infantry_ws/devices/DM_Motor -I ../Infantry_ws/devices/BMI088 -I ../Infantry_ws/Controller -I ../Infantry_ws/task -I ../Infantry_ws/Algorithm -I ../Infantry_ws/Algorithm/EKF -I ../Infantry_ws/Algorithm/kalman -I ../Infantry_ws/Algorithm/mahony -I ../Infantry_ws/Algorithm/PID -I ../Infantry_ws/Algorithm/VMC -I ../Infantry_ws/app -I ../Infantry_ws/Leg -I ../Infantry_ws/middlewares/io/buzzer -I ../Infantry_ws/middlewares/io/plotter -I ../Infantry_ws/middlewares/io/dbus -I ../Infantry_ws/middlewares/io/watchdog -I ../Infantry_ws/middlewares/io/bmi088 -I ../Infantry_ws/middlewares/tools/math_tools -I ../Infantry_ws/middlewares/tools/mahony -I ../Infantry_ws/middlewares/tools/low_pass_filter -I ../Infantry_ws/middlewares/tools/pid -I ../Infantry_ws/middlewares/motor -I ../Infantry_ws/middlewares/io/sbus -I ../Infantry_ws/Eigen/Eigen-I./RTE/_AT_Infantry-IC:/Users/34085/AppData/Local/Arm/Packs/ARM/CMSIS/5.7.0/CMSIS/Core/Include-D__UVISION_VERSION="534" -D_RTE_ -DSTM32H723xx -D_RTE_ -DUSE_PWR_LDO_SUPPLY -DUSE_HAL_DRIVER -DSTM32H723xx-o at_infantry/mpc.o -MD)
+I (..\Infantry_ws\app\app_preference.h)(0x6942CBD7)
+F (..\Infantry_ws\Leg\Mpc.cpp)(0x69425CBE)(-xc++ -std=c++17 --target=arm-arm-none-eabi -mcpu=cortex-m7 -mfpu=fpv5-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar -fno-exceptions-gdwarf-3 -O0 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../Core/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/ARM/DSP/Inc -I ../Infantry_ws -I ../Infantry_ws/bsp -I ../Infantry_ws/Lib -I ../Infantry_ws/devices/DM_Motor -I ../Infantry_ws/devices/BMI088 -I ../Infantry_ws/Controller -I ../Infantry_ws/task -I ../Infantry_ws/Algorithm -I ../Infantry_ws/Algorithm/EKF -I ../Infantry_ws/Algorithm/kalman -I ../Infantry_ws/Algorithm/mahony -I ../Infantry_ws/Algorithm/PID -I ../Infantry_ws/Algorithm/VMC -I ../Infantry_ws/app -I ../Infantry_ws/Leg -I ../Infantry_ws/middlewares/io/buzzer -I ../Infantry_ws/middlewares/io/plotter -I ../Infantry_ws/middlewares/io/dbus -I ../Infantry_ws/middlewares/io/watchdog -I ../Infantry_ws/middlewares/io/bmi088 -I ../Infantry_ws/middlewares/tools/math_tools -I ../Infantry_ws/middlewares/tools/mahony -I ../Infantry_ws/middlewares/tools/low_pass_filter -I ../Infantry_ws/middlewares/tools/pid -I ../Infantry_ws/middlewares/motor -I ../Infantry_ws/middlewares/io/sbus -I ../Infantry_ws/Eigen/Eigen-I./RTE/_AT_Infantry-IC:/Users/34085/AppData/Local/Arm/Packs/ARM/CMSIS/5.7.0/CMSIS/Core/Include-D__UVISION_VERSION="534" -D_RTE_ -DSTM32H723xx -D_RTE_ -DUSE_PWR_LDO_SUPPLY -DUSE_HAL_DRIVER -DSTM32H723xx-o at_infantry/mpc.o -MD)
 I (..\Infantry_ws\Leg\Mpc.h)(0x69258B13)
 I (..\Infantry_ws\bsp\bsp_dwt.h)(0x69298753)
 I (..\Core\Inc\main.h)(0x69258C85)
@@ -1022,7 +1022,7 @@ I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\stdlib.h)(0x6035A4A4)
 I (E:\Keil_V5\ARM\ARMCLANG\include\stdlib.h)(0x6035A4A8)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\type_traits)(0x6035A4A6)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\cstddef)(0x5E88DAE4)
-I (..\Infantry_ws\Eigen\Eigen\version)(0x69332968)
+I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\version)(0x6035A4A6)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\limits)(0x5D1A73FE)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\__undef_macros)(0x5C439CDA)
 I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_rcc_ex.h)(0x691593B1)
@@ -1062,10 +1062,10 @@ I (E:\Keil_V5\ARM\ARMCLANG\include\limits.h)(0x6035A4A6)
 I (..\Infantry_ws\Algorithm\EKF\QuaternionEKF.h)(0x69258B13)
 I (..\Infantry_ws\Algorithm\kalman\kalman_filter.h)(0x69258B13)
 I (..\Infantry_ws\Leg\LQR.h)(0x692D84DC)
-I (..\Infantry_ws\Leg\Leg.h)(0x693E17DC)
-I (..\Infantry_ws\Leg\Legs.h)(0x693E17DC)
+I (..\Infantry_ws\Leg\Leg.h)(0x69425C8B)
+I (..\Infantry_ws\Leg\Legs.h)(0x6942A6EB)
 I (..\Infantry_ws\Leg\vmc.h)(0x694121F7)
-I (..\Infantry_ws\app\app_preference.h)(0x69417063)
+I (..\Infantry_ws\app\app_preference.h)(0x6942CBD7)
 F (..\Infantry_ws\Leg\VMC.cpp)(0x69416058)(-xc++ -std=c++17 --target=arm-arm-none-eabi -mcpu=cortex-m7 -mfpu=fpv5-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar -fno-exceptions-gdwarf-3 -O0 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../Core/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/ARM/DSP/Inc -I ../Infantry_ws -I ../Infantry_ws/bsp -I ../Infantry_ws/Lib -I ../Infantry_ws/devices/DM_Motor -I ../Infantry_ws/devices/BMI088 -I ../Infantry_ws/Controller -I ../Infantry_ws/task -I ../Infantry_ws/Algorithm -I ../Infantry_ws/Algorithm/EKF -I ../Infantry_ws/Algorithm/kalman -I ../Infantry_ws/Algorithm/mahony -I ../Infantry_ws/Algorithm/PID -I ../Infantry_ws/Algorithm/VMC -I ../Infantry_ws/app -I ../Infantry_ws/Leg -I ../Infantry_ws/middlewares/io/buzzer -I ../Infantry_ws/middlewares/io/plotter -I ../Infantry_ws/middlewares/io/dbus -I ../Infantry_ws/middlewares/io/watchdog -I ../Infantry_ws/middlewares/io/bmi088 -I ../Infantry_ws/middlewares/tools/math_tools -I ../Infantry_ws/middlewares/tools/mahony -I ../Infantry_ws/middlewares/tools/low_pass_filter -I ../Infantry_ws/middlewares/tools/pid -I ../Infantry_ws/middlewares/motor -I ../Infantry_ws/middlewares/io/sbus -I ../Infantry_ws/Eigen/Eigen-I./RTE/_AT_Infantry-IC:/Users/34085/AppData/Local/Arm/Packs/ARM/CMSIS/5.7.0/CMSIS/Core/Include-D__UVISION_VERSION="534" -D_RTE_ -DSTM32H723xx -D_RTE_ -DUSE_PWR_LDO_SUPPLY -DUSE_HAL_DRIVER -DSTM32H723xx-o at_infantry/vmc.o -MD)
 I (..\Infantry_ws\Leg\vmc.h)(0x694121F7)
 I (..\Core\Inc\main.h)(0x69258C85)
@@ -1096,7 +1096,7 @@ I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\stdlib.h)(0x6035A4A4)
 I (E:\Keil_V5\ARM\ARMCLANG\include\stdlib.h)(0x6035A4A8)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\type_traits)(0x6035A4A6)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\cstddef)(0x5E88DAE4)
-I (..\Infantry_ws\Eigen\Eigen\version)(0x69332968)
+I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\version)(0x6035A4A6)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\limits)(0x5D1A73FE)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\__undef_macros)(0x5C439CDA)
 I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_rcc_ex.h)(0x691593B1)
@@ -1129,8 +1129,8 @@ I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\float.h)(0x5C439CDA)
 I (E:\Keil_V5\ARM\ARMCLANG\include\float.h)(0x6035A4A0)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\limits.h)(0x5C439CDC)
 I (E:\Keil_V5\ARM\ARMCLANG\include\limits.h)(0x6035A4A6)
-F (..\Infantry_ws\Leg\Legs.cpp)(0x69417108)(-xc++ -std=c++17 --target=arm-arm-none-eabi -mcpu=cortex-m7 -mfpu=fpv5-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar -fno-exceptions-gdwarf-3 -O0 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../Core/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/ARM/DSP/Inc -I ../Infantry_ws -I ../Infantry_ws/bsp -I ../Infantry_ws/Lib -I ../Infantry_ws/devices/DM_Motor -I ../Infantry_ws/devices/BMI088 -I ../Infantry_ws/Controller -I ../Infantry_ws/task -I ../Infantry_ws/Algorithm -I ../Infantry_ws/Algorithm/EKF -I ../Infantry_ws/Algorithm/kalman -I ../Infantry_ws/Algorithm/mahony -I ../Infantry_ws/Algorithm/PID -I ../Infantry_ws/Algorithm/VMC -I ../Infantry_ws/app -I ../Infantry_ws/Leg -I ../Infantry_ws/middlewares/io/buzzer -I ../Infantry_ws/middlewares/io/plotter -I ../Infantry_ws/middlewares/io/dbus -I ../Infantry_ws/middlewares/io/watchdog -I ../Infantry_ws/middlewares/io/bmi088 -I ../Infantry_ws/middlewares/tools/math_tools -I ../Infantry_ws/middlewares/tools/mahony -I ../Infantry_ws/middlewares/tools/low_pass_filter -I ../Infantry_ws/middlewares/tools/pid -I ../Infantry_ws/middlewares/motor -I ../Infantry_ws/middlewares/io/sbus -I ../Infantry_ws/Eigen/Eigen-I./RTE/_AT_Infantry-IC:/Users/34085/AppData/Local/Arm/Packs/ARM/CMSIS/5.7.0/CMSIS/Core/Include-D__UVISION_VERSION="534" -D_RTE_ -DSTM32H723xx -D_RTE_ -DUSE_PWR_LDO_SUPPLY -DUSE_HAL_DRIVER -DSTM32H723xx-o at_infantry/legs.o -MD)
-I (..\Infantry_ws\Leg\legs.h)(0x693E17DC)
+F (..\Infantry_ws\Leg\Legs.cpp)(0x6942B6B0)(-xc++ -std=c++17 --target=arm-arm-none-eabi -mcpu=cortex-m7 -mfpu=fpv5-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar -fno-exceptions-gdwarf-3 -O0 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../Core/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/ARM/DSP/Inc -I ../Infantry_ws -I ../Infantry_ws/bsp -I ../Infantry_ws/Lib -I ../Infantry_ws/devices/DM_Motor -I ../Infantry_ws/devices/BMI088 -I ../Infantry_ws/Controller -I ../Infantry_ws/task -I ../Infantry_ws/Algorithm -I ../Infantry_ws/Algorithm/EKF -I ../Infantry_ws/Algorithm/kalman -I ../Infantry_ws/Algorithm/mahony -I ../Infantry_ws/Algorithm/PID -I ../Infantry_ws/Algorithm/VMC -I ../Infantry_ws/app -I ../Infantry_ws/Leg -I ../Infantry_ws/middlewares/io/buzzer -I ../Infantry_ws/middlewares/io/plotter -I ../Infantry_ws/middlewares/io/dbus -I ../Infantry_ws/middlewares/io/watchdog -I ../Infantry_ws/middlewares/io/bmi088 -I ../Infantry_ws/middlewares/tools/math_tools -I ../Infantry_ws/middlewares/tools/mahony -I ../Infantry_ws/middlewares/tools/low_pass_filter -I ../Infantry_ws/middlewares/tools/pid -I ../Infantry_ws/middlewares/motor -I ../Infantry_ws/middlewares/io/sbus -I ../Infantry_ws/Eigen/Eigen-I./RTE/_AT_Infantry-IC:/Users/34085/AppData/Local/Arm/Packs/ARM/CMSIS/5.7.0/CMSIS/Core/Include-D__UVISION_VERSION="534" -D_RTE_ -DSTM32H723xx -D_RTE_ -DUSE_PWR_LDO_SUPPLY -DUSE_HAL_DRIVER -DSTM32H723xx-o at_infantry/legs.o -MD)
+I (..\Infantry_ws\Leg\legs.h)(0x6942A6EB)
 I (..\Infantry_ws\Leg\vmc.h)(0x694121F7)
 I (..\Core\Inc\main.h)(0x69258C85)
 I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal.h)(0x691593B1)
@@ -1160,7 +1160,7 @@ I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\stdlib.h)(0x6035A4A4)
 I (E:\Keil_V5\ARM\ARMCLANG\include\stdlib.h)(0x6035A4A8)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\type_traits)(0x6035A4A6)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\cstddef)(0x5E88DAE4)
-I (..\Infantry_ws\Eigen\Eigen\version)(0x69332968)
+I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\version)(0x6035A4A6)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\limits)(0x5D1A73FE)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\__undef_macros)(0x5C439CDA)
 I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_rcc_ex.h)(0x691593B1)
@@ -1193,8 +1193,8 @@ I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\float.h)(0x5C439CDA)
 I (E:\Keil_V5\ARM\ARMCLANG\include\float.h)(0x6035A4A0)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\limits.h)(0x5C439CDC)
 I (E:\Keil_V5\ARM\ARMCLANG\include\limits.h)(0x6035A4A6)
-F (..\Infantry_ws\Leg\Leg.cpp)(0x69314393)(-xc++ -std=c++17 --target=arm-arm-none-eabi -mcpu=cortex-m7 -mfpu=fpv5-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar -fno-exceptions-gdwarf-3 -O0 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../Core/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/ARM/DSP/Inc -I ../Infantry_ws -I ../Infantry_ws/bsp -I ../Infantry_ws/Lib -I ../Infantry_ws/devices/DM_Motor -I ../Infantry_ws/devices/BMI088 -I ../Infantry_ws/Controller -I ../Infantry_ws/task -I ../Infantry_ws/Algorithm -I ../Infantry_ws/Algorithm/EKF -I ../Infantry_ws/Algorithm/kalman -I ../Infantry_ws/Algorithm/mahony -I ../Infantry_ws/Algorithm/PID -I ../Infantry_ws/Algorithm/VMC -I ../Infantry_ws/app -I ../Infantry_ws/Leg -I ../Infantry_ws/middlewares/io/buzzer -I ../Infantry_ws/middlewares/io/plotter -I ../Infantry_ws/middlewares/io/dbus -I ../Infantry_ws/middlewares/io/watchdog -I ../Infantry_ws/middlewares/io/bmi088 -I ../Infantry_ws/middlewares/tools/math_tools -I ../Infantry_ws/middlewares/tools/mahony -I ../Infantry_ws/middlewares/tools/low_pass_filter -I ../Infantry_ws/middlewares/tools/pid -I ../Infantry_ws/middlewares/motor -I ../Infantry_ws/middlewares/io/sbus -I ../Infantry_ws/Eigen/Eigen-I./RTE/_AT_Infantry-IC:/Users/34085/AppData/Local/Arm/Packs/ARM/CMSIS/5.7.0/CMSIS/Core/Include-D__UVISION_VERSION="534" -D_RTE_ -DSTM32H723xx -D_RTE_ -DUSE_PWR_LDO_SUPPLY -DUSE_HAL_DRIVER -DSTM32H723xx-o at_infantry/leg.o -MD)
-I (..\Infantry_ws\Leg\Leg.h)(0x693E17DC)
+F (..\Infantry_ws\Leg\Leg.cpp)(0x69425CB1)(-xc++ -std=c++17 --target=arm-arm-none-eabi -mcpu=cortex-m7 -mfpu=fpv5-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar -fno-exceptions-gdwarf-3 -O0 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../Core/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/ARM/DSP/Inc -I ../Infantry_ws -I ../Infantry_ws/bsp -I ../Infantry_ws/Lib -I ../Infantry_ws/devices/DM_Motor -I ../Infantry_ws/devices/BMI088 -I ../Infantry_ws/Controller -I ../Infantry_ws/task -I ../Infantry_ws/Algorithm -I ../Infantry_ws/Algorithm/EKF -I ../Infantry_ws/Algorithm/kalman -I ../Infantry_ws/Algorithm/mahony -I ../Infantry_ws/Algorithm/PID -I ../Infantry_ws/Algorithm/VMC -I ../Infantry_ws/app -I ../Infantry_ws/Leg -I ../Infantry_ws/middlewares/io/buzzer -I ../Infantry_ws/middlewares/io/plotter -I ../Infantry_ws/middlewares/io/dbus -I ../Infantry_ws/middlewares/io/watchdog -I ../Infantry_ws/middlewares/io/bmi088 -I ../Infantry_ws/middlewares/tools/math_tools -I ../Infantry_ws/middlewares/tools/mahony -I ../Infantry_ws/middlewares/tools/low_pass_filter -I ../Infantry_ws/middlewares/tools/pid -I ../Infantry_ws/middlewares/motor -I ../Infantry_ws/middlewares/io/sbus -I ../Infantry_ws/Eigen/Eigen-I./RTE/_AT_Infantry-IC:/Users/34085/AppData/Local/Arm/Packs/ARM/CMSIS/5.7.0/CMSIS/Core/Include-D__UVISION_VERSION="534" -D_RTE_ -DSTM32H723xx -D_RTE_ -DUSE_PWR_LDO_SUPPLY -DUSE_HAL_DRIVER -DSTM32H723xx-o at_infantry/leg.o -MD)
+I (..\Infantry_ws\Leg\Leg.h)(0x69425C8B)
 I (..\Middlewares\ST\ARM\DSP\Inc\arm_math.h)(0x6915923A)
 I (..\Drivers\CMSIS\Include\cmsis_compiler.h)(0x6915933F)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\stdint.h)(0x5D0C0FA4)
@@ -1211,7 +1211,7 @@ I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\stdlib.h)(0x6035A4A4)
 I (E:\Keil_V5\ARM\ARMCLANG\include\stdlib.h)(0x6035A4A8)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\type_traits)(0x6035A4A6)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\cstddef)(0x5E88DAE4)
-I (..\Infantry_ws\Eigen\Eigen\version)(0x69332968)
+I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\version)(0x6035A4A6)
 I (E:\Keil_V5\ARM\ARMCLANG\include\stddef.h)(0x6035A4A8)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\__nullptr)(0x5C439CDA)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\limits)(0x5D1A73FE)
@@ -1261,12 +1261,12 @@ I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\stdio.h)(0x5C439CDA)
 I (E:\Keil_V5\ARM\ARMCLANG\include\stdio.h)(0x6035A4A8)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\stdbool.h)(0x5C439CDA)
 I (E:\Keil_V5\ARM\ARMCLANG\include\stdbool.h)(0x6035A4A8)
-I (..\Infantry_ws\app\app_preference.h)(0x69417063)
+I (..\Infantry_ws\app\app_preference.h)(0x6942CBD7)
 I (..\Infantry_ws\Leg\LQR.h)(0x692D84DC)
 I (..\Infantry_ws\Leg\Mpc.h)(0x69258B13)
 I (..\Infantry_ws\Algorithm\EKF\QuaternionEKF.h)(0x69258B13)
 I (..\Infantry_ws\Algorithm\kalman\kalman_filter.h)(0x69258B13)
-I (..\Infantry_ws\task\Chassis_Task.h)(0x69417063)
+I (..\Infantry_ws\task\Chassis_Task.h)(0x6942C8F9)
 I (..\Infantry_ws\devices\DM_Motor\dm_motor_drv.h)(0x6933F433)
 I (..\Core\Inc\fdcan.h)(0x69258C84)
 I (..\Infantry_ws\bsp\bsp_can.h)(0x69283A94)
@@ -1277,8 +1277,8 @@ I (..\Infantry_ws\devices\BMI088\BMI088driver.h)(0x69258B13)
 I (..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS_V2\cmsis_os2.h)(0x6915933B)
 I (..\Infantry_ws\Leg\VMC.h)(0x694121F7)
 I (..\Infantry_ws\Algorithm\PID\pid.h)(0x693171F2)
-I (..\Infantry_ws\Leg\Legs.h)(0x693E17DC)
-I (..\Infantry_ws\Lib\user_lib.h)(0x692EF29B)
+I (..\Infantry_ws\Leg\Legs.h)(0x6942A6EB)
+I (..\Infantry_ws\Lib\user_lib.h)(0x6942C620)
 I (..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS_V2\cmsis_os.h)(0x6915933B)
 I (..\Middlewares\Third_Party\FreeRTOS\Source\include\FreeRTOS.h)(0x6915933C)
 I (..\Core\Inc\FreeRTOSConfig.h)(0x69258C83)
@@ -1299,7 +1299,7 @@ I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\__config)(0x6035A4A0)
 I (E:\Keil_V5\ARM\ARMCLANG\include\stdlib.h)(0x6035A4A8)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\string.h)(0x5C439CDA)
 I (E:\Keil_V5\ARM\ARMCLANG\include\string.h)(0x6035A4A8)
-I (..\Infantry_ws\Lib\user_lib.h)(0x692EF29B)
+I (..\Infantry_ws\Lib\user_lib.h)(0x6942C620)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\stdint.h)(0x5D0C0FA4)
 I (E:\Keil_V5\ARM\ARMCLANG\include\stdint.h)(0x6035A4A8)
 I (..\Core\Inc\main.h)(0x69258C85)
@@ -1325,7 +1325,7 @@ I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\math.h)(0x6035A4A6)
 I (E:\Keil_V5\ARM\ARMCLANG\include\math.h)(0x6035A4A8)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\type_traits)(0x6035A4A6)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\cstddef)(0x5E88DAE4)
-I (..\Infantry_ws\Eigen\Eigen\version)(0x69332968)
+I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\version)(0x6035A4A6)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\limits)(0x5D1A73FE)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\__undef_macros)(0x5C439CDA)
 I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_rcc_ex.h)(0x691593B1)
@@ -1363,8 +1363,8 @@ I (..\Middlewares\Third_Party\FreeRTOS\Source\include\task.h)(0x6915933C)
 I (..\Middlewares\Third_Party\FreeRTOS\Source\include\list.h)(0x6915933C)
 I (..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS_V2\cmsis_os2.h)(0x6915933B)
 F (..\Infantry_ws\app\app_preference.cpp)(0x69314926)(-xc++ -std=c++17 --target=arm-arm-none-eabi -mcpu=cortex-m7 -mfpu=fpv5-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar -fno-exceptions-gdwarf-3 -O0 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../Core/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/ARM/DSP/Inc -I ../Infantry_ws -I ../Infantry_ws/bsp -I ../Infantry_ws/Lib -I ../Infantry_ws/devices/DM_Motor -I ../Infantry_ws/devices/BMI088 -I ../Infantry_ws/Controller -I ../Infantry_ws/task -I ../Infantry_ws/Algorithm -I ../Infantry_ws/Algorithm/EKF -I ../Infantry_ws/Algorithm/kalman -I ../Infantry_ws/Algorithm/mahony -I ../Infantry_ws/Algorithm/PID -I ../Infantry_ws/Algorithm/VMC -I ../Infantry_ws/app -I ../Infantry_ws/Leg -I ../Infantry_ws/middlewares/io/buzzer -I ../Infantry_ws/middlewares/io/plotter -I ../Infantry_ws/middlewares/io/dbus -I ../Infantry_ws/middlewares/io/watchdog -I ../Infantry_ws/middlewares/io/bmi088 -I ../Infantry_ws/middlewares/tools/math_tools -I ../Infantry_ws/middlewares/tools/mahony -I ../Infantry_ws/middlewares/tools/low_pass_filter -I ../Infantry_ws/middlewares/tools/pid -I ../Infantry_ws/middlewares/motor -I ../Infantry_ws/middlewares/io/sbus -I ../Infantry_ws/Eigen/Eigen-I./RTE/_AT_Infantry-IC:/Users/34085/AppData/Local/Arm/Packs/ARM/CMSIS/5.7.0/CMSIS/Core/Include-D__UVISION_VERSION="534" -D_RTE_ -DSTM32H723xx -D_RTE_ -DUSE_PWR_LDO_SUPPLY -DUSE_HAL_DRIVER -DSTM32H723xx-o at_infantry/app_preference.o -MD)
-I (..\Infantry_ws\app\app_preference.h)(0x69417063)
-F (..\Infantry_ws\app\app_preference.h)(0x69417063)()
+I (..\Infantry_ws\app\app_preference.h)(0x6942CBD7)
+F (..\Infantry_ws\app\app_preference.h)(0x6942CBD7)()
 F (../Core/Src/main.c)(0x69283A94)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m7 -mfpu=fpv5-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-gdwarf-3 -O0 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../Core/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/ST/ARM/DSP/Inc -I ../Infantry_ws -I ../Infantry_ws/bsp -I ../Infantry_ws/Lib -I ../Infantry_ws/devices/DM_Motor -I ../Infantry_ws/devices/BMI088 -I ../Infantry_ws/Controller -I ../Infantry_ws/task -I ../Infantry_ws/Algorithm -I ../Infantry_ws/Algorithm/EKF -I ../Infantry_ws/Algorithm/kalman -I ../Infantry_ws/Algorithm/mahony -I ../Infantry_ws/Algorithm/PID -I ../Infantry_ws/Algorithm/VMC -I ../Infantry_ws/app -I ../Infantry_ws/Leg -I ../Infantry_ws/middlewares/io/buzzer -I ../Infantry_ws/middlewares/io/plotter -I ../Infantry_ws/middlewares/io/dbus -I ../Infantry_ws/middlewares/io/watchdog -I ../Infantry_ws/middlewares/io/bmi088 -I ../Infantry_ws/middlewares/tools/math_tools -I ../Infantry_ws/middlewares/tools/mahony -I ../Infantry_ws/middlewares/tools/low_pass_filter -I ../Infantry_ws/middlewares/tools/pid -I ../Infantry_ws/middlewares/motor -I ../Infantry_ws/middlewares/io/sbus -I ../Infantry_ws/Eigen/Eigen-I./RTE/_AT_Infantry-IC:/Users/34085/AppData/Local/Arm/Packs/ARM/CMSIS/5.7.0/CMSIS/Core/Include-D__UVISION_VERSION="534" -D_RTE_ -DSTM32H723xx -D_RTE_ -DUSE_PWR_LDO_SUPPLY -DUSE_HAL_DRIVER -DSTM32H723xx-o at_infantry/main.o -MD)
 I (..\Core\Inc\main.h)(0x69258C85)
 I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal.h)(0x691593B1)
@@ -3081,7 +3081,7 @@ I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\stdlib.h)(0x6035A4A4)
 I (E:\Keil_V5\ARM\ARMCLANG\include\stdlib.h)(0x6035A4A8)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\type_traits)(0x6035A4A6)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\cstddef)(0x5E88DAE4)
-I (..\Infantry_ws\Eigen\Eigen\version)(0x69332968)
+I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\version)(0x6035A4A6)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\limits)(0x5D1A73FE)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\__undef_macros)(0x5C439CDA)
 I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_rcc_ex.h)(0x691593B1)
@@ -3138,7 +3138,7 @@ I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\stdlib.h)(0x6035A4A4)
 I (E:\Keil_V5\ARM\ARMCLANG\include\stdlib.h)(0x6035A4A8)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\type_traits)(0x6035A4A6)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\cstddef)(0x5E88DAE4)
-I (..\Infantry_ws\Eigen\Eigen\version)(0x69332968)
+I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\version)(0x6035A4A6)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\limits)(0x5D1A73FE)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\__undef_macros)(0x5C439CDA)
 I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_rcc_ex.h)(0x691593B1)
@@ -3205,7 +3205,7 @@ I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\stdlib.h)(0x6035A4A4)
 I (E:\Keil_V5\ARM\ARMCLANG\include\stdlib.h)(0x6035A4A8)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\type_traits)(0x6035A4A6)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\cstddef)(0x5E88DAE4)
-I (..\Infantry_ws\Eigen\Eigen\version)(0x69332968)
+I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\version)(0x6035A4A6)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\limits)(0x5D1A73FE)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\__undef_macros)(0x5C439CDA)
 I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_rcc_ex.h)(0x691593B1)
@@ -3264,7 +3264,7 @@ I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\stdlib.h)(0x6035A4A4)
 I (E:\Keil_V5\ARM\ARMCLANG\include\stdlib.h)(0x6035A4A8)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\type_traits)(0x6035A4A6)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\cstddef)(0x5E88DAE4)
-I (..\Infantry_ws\Eigen\Eigen\version)(0x69332968)
+I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\version)(0x6035A4A6)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\limits)(0x5D1A73FE)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\__undef_macros)(0x5C439CDA)
 I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_rcc_ex.h)(0x691593B1)
@@ -3313,7 +3313,7 @@ I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\stdlib.h)(0x6035A4A4)
 I (E:\Keil_V5\ARM\ARMCLANG\include\stdlib.h)(0x6035A4A8)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\type_traits)(0x6035A4A6)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\cstddef)(0x5E88DAE4)
-I (..\Infantry_ws\Eigen\Eigen\version)(0x69332968)
+I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\version)(0x6035A4A6)
 I (E:\Keil_V5\ARM\ARMCLANG\include\stddef.h)(0x6035A4A8)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\__nullptr)(0x5C439CDA)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\limits)(0x5D1A73FE)
@@ -3327,7 +3327,7 @@ I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\stdlib.h)(0x6035A4A4)
 I (E:\Keil_V5\ARM\ARMCLANG\include\stdlib.h)(0x6035A4A8)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\type_traits)(0x6035A4A6)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\cstddef)(0x5E88DAE4)
-I (..\Infantry_ws\Eigen\Eigen\version)(0x69332968)
+I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\version)(0x6035A4A6)
 I (E:\Keil_V5\ARM\ARMCLANG\include\stddef.h)(0x6035A4A8)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\__nullptr)(0x5C439CDA)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\limits)(0x5D1A73FE)
@@ -3365,7 +3365,7 @@ I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\stdlib.h)(0x6035A4A4)
 I (E:\Keil_V5\ARM\ARMCLANG\include\stdlib.h)(0x6035A4A8)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\type_traits)(0x6035A4A6)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\cstddef)(0x5E88DAE4)
-I (..\Infantry_ws\Eigen\Eigen\version)(0x69332968)
+I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\version)(0x6035A4A6)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\limits)(0x5D1A73FE)
 I (E:\Keil_V5\ARM\ARMCLANG\include\libcxx\__undef_macros)(0x5C439CDA)
 I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_rcc_ex.h)(0x691593B1)

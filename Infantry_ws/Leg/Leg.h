@@ -72,7 +72,7 @@ typedef struct
     float L0_set;                //L0期望值
 	  float L0_MAX_set;                //L0期望值
 	  float Tilt_angle_0_set;      //坐标转换下的L0期望值
-		float Distance_set,Wheel_Speed_set,Wheel_Collapse_V_set;//,速度，位移期望值
+		float Distance_set,Wheel_Speed_set[2],Wheel_Collapse_V_set;//,速度，位移期望值
 	  float Carload_Distance_set;
 		float yaw_set;						    //偏航角期望值
 		float yaw_Gyro_set;					  //偏航角期望值

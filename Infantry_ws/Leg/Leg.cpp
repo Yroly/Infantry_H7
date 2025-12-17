@@ -305,7 +305,7 @@ void VmcClass::Absolute_Speed_KF_Forecast(){
 //	  ||Chassis.Mode==CHASSIS_LITTLE_TOP
 //		||Chassis.Flags.Collapse_Flag
 //	  ||
-	(Leg_Ctrl.Leg_set.Wheel_Speed_set)
+	(Leg_Ctrl.Leg_set.Wheel_Speed_set[0])
 	  )
 		Leg_KF.xhat.pData[0]=0;
 	

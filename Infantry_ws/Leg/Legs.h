@@ -6,7 +6,7 @@ typedef struct {
 	/*旋转速度 收腿速度 预置角度*/
 	float Stand_Speed;
 	float L0Speed;
-	float Stand_Angle;
+	float Stand_Angle[2];
 
 	int8_t Stand_Sign[2];
 }Stand_t;

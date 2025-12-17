@@ -122,7 +122,7 @@ public:
 	fp32 Chassis_Q;
 	fp32 Chassis_R1;
 	fp32 Chassis_R0;
-	fp32 ROLL_set;
+	fp32 Roll_set;
 	fp32 Blance_Turn_Kp;
 	fp32 ROLL_MAX_set;
 
@@ -144,33 +144,6 @@ public:
 	fp32 FN_max;
 	float tau_damp[2];
 	float v_set;
-	float v_target;
-	float x_set;
-	float turn_set;
-	float target_turn;
-	float leg_set;
-	float leg_lx_set;
-	float target_leg_lx_set;
-	float leg_left_set;
-	float leg_right_set;
-	float last_leg_set;
-	float last_leg_left_set;
-	float last_leg_right_set;
-	float roll_set;
-	float roll_target;
-	float now_roll_set;
-
-	float roll;
-	float total_yaw;
-	float theta_err;
-
-	uint32_t count_key;
-	uint8_t jump_flag;
-	float jump_leg;
-	uint32_t jump_time_r;
-	uint32_t jump_time_l;
-	uint8_t jump_status_r;
-	uint8_t jump_status_l;
 	
 	Chassis_Velocity_t Velocity;
 	
@@ -180,7 +153,7 @@ public:
 	void Feedback_Update(void);
 	void Control(void);
 	void Control_Loop(void);
-	void slope_following(float *target,float *set,float acc);
+	void Ground_detection();
 private:
 	void Behaviour_Control(fp32 *vx_set, fp32 *vy_set, fp32 *angle_set);
 	void RC_to_Control(fp32 *vx_set, fp32 *vy_set);

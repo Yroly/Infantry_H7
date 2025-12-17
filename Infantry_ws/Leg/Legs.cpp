@@ -5,7 +5,8 @@ leg_class leg;
 leg_class::leg_class(){
   stand.Stand_Speed = 0.0f;
   stand.L0Speed = 0.0f;
-  stand.Stand_Angle = 0.0f;
+  stand.Stand_Angle[0] = 0.0f;
+  stand.Stand_Angle[1] = 0.0f;
   stand.Stand_Sign[0] = 0;
   stand.Stand_Sign[1] = 0;
   wheel_T[0] = 0;
@@ -22,9 +23,9 @@ leg_class::leg_class(){
   vmc[0].five_link.L4 =vmc[1].five_link.L4 = 0.105f;
   vmc[0].five_link.L5 =vmc[1].five_link.L5 = 0.0f;
 
-  leg_set.L0_set_max = 0.0327f;
+  leg_set.L0_set_max = 0.0290f;
   leg_set.L0_set_middle = 0.020f;
-  leg_set.L0_set_min = 0.015f;
+  leg_set.L0_set_min = 0.020f;
 }
 void leg_class::leg_data_clear(uint8_t count){
 	if(count == 2){
