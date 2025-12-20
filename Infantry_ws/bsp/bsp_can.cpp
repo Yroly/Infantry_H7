@@ -47,8 +47,8 @@ extern "C" void HAL_FDCAN_RxFifo0Callback(FDCAN_HandleTypeDef *hfdcan, uint32_t 
 			memset(g_Can3RxData, 0, sizeof(g_Can3RxData));
       HAL_FDCAN_GetRxMessage(hfdcan, FDCAN_RX_FIFO0, &RxHeader3, g_Can3RxData);
 			switch(RxHeader3.Identifier){
-				case 0x202 :RM_Class.rm3508_read(&Chassis.Wheel_Motor[0].measure,g_Can3RxData,RxHeader3.DataLength);break;
-				case 0x203 :RM_Class.rm3508_read(&Chassis.Wheel_Motor[1].measure,g_Can3RxData,RxHeader3.DataLength);break;
+				case 0 :DM_Class.DM3510_fbdata(&Chassis.Wheel_Motor[0], g_Can3RxData,RxHeader3.DataLength);break;
+				case 1 :DM_Class.DM3510_fbdata(&Chassis.Wheel_Motor[1], g_Can3RxData,RxHeader3.DataLength);break;
 			}
 		}
   }

@@ -21,7 +21,6 @@
 "at_infantry\legs.o"
 "at_infantry\leg.o"
 "at_infantry\user_lib.o"
-"at_infantry\app_preference.o"
 "at_infantry\main.o"
 "at_infantry\gpio.o"
 "at_infantry\freertos.o"

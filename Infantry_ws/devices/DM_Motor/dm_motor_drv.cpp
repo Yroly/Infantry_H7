@@ -35,10 +35,8 @@ void DM_Motor_Class::Wheel_Motor_Init(Wheel_Motor_t *motor,uint16_t id,uint16_t 
 	motor->para.id = id;
 }
 
-void DM_Motor_Class::DM4310_fbdata(Joint_Motor_t *motor, uint8_t *rx_data,uint32_t data_len)
-{ 
-	if(data_len==FDCAN_DLC_BYTES_8)
-	{
+void DM_Motor_Class::DM4310_fbdata(Joint_Motor_t *motor, uint8_t *rx_data,uint32_t data_len){ 
+	if(data_len==FDCAN_DLC_BYTES_8){
 	  motor->para.id = (rx_data[0])&0x0F;
 	  motor->para.state = (rx_data[0])>>4;
 	  motor->para.p_int=(rx_data[1]<<8)|rx_data[2];
@@ -53,10 +51,8 @@ void DM_Motor_Class::DM4310_fbdata(Joint_Motor_t *motor, uint8_t *rx_data,uint32
 }
 
 
-void DM_Motor_Class::DM6215_fbdata(Wheel_Motor_t *motor, uint8_t *rx_data,uint32_t data_len)
-{ 
-	if(data_len==FDCAN_DLC_BYTES_8)
-	{
+void DM_Motor_Class::DM6215_fbdata(Wheel_Motor_t *motor, uint8_t *rx_data,uint32_t data_len){ 
+	if(data_len==FDCAN_DLC_BYTES_8){
 	  motor->para.id = (rx_data[0])&0x0F;
 	  motor->para.state = (rx_data[0])>>4;
 	  motor->para.p_int=(rx_data[1]<<8)|rx_data[2];
@@ -69,8 +65,21 @@ void DM_Motor_Class::DM6215_fbdata(Wheel_Motor_t *motor, uint8_t *rx_data,uint32
 	  motor->para.Tcoil = (float)(rx_data[7]);
 	}
 }
-void DM_Motor_Class::enable_motor(hfdcan_t* hfdcan, uint16_t motor_id, uint16_t mode_id)
-{
+void DM_Motor_Class::DM3510_fbdata(Wheel_Motor_t *motor, uint8_t *rx_data,uint32_t data_len){ 
+	if(data_len==FDCAN_DLC_BYTES_8){
+	  motor->para.id = (rx_data[0])&0x0F;
+	  motor->para.state = (rx_data[0])>>4;
+	  motor->para.p_int=(rx_data[1]<<8)|rx_data[2];
+	  motor->para.v_int=(rx_data[3]<<4)|(rx_data[4]>>4);
+	  motor->para.t_int=((rx_data[4]&0xF)<<8)|rx_data[5];
+	  motor->para.POS = uint_to_float(motor->para.p_int, P_MIN2, P_MAX2, 16); // (-12.0,12.0)
+	  motor->para.VEL = uint_to_float(motor->para.v_int, V_MIN2, V_MAX2, 12); // (-30.0,30.0)
+	  motor->para.Torque = uint_to_float(motor->para.t_int, T_MIN2, T_MAX2, 12);  // (-18.0,18.0)
+	  motor->para.Tmos = (float)(rx_data[6]);
+	  motor->para.Tcoil = (float)(rx_data[7]);
+	}
+}
+void DM_Motor_Class::enable_motor(hfdcan_t* hfdcan, uint16_t motor_id, uint16_t mode_id){
 	uint8_t data[8];
 	uint16_t id = motor_id + mode_id;
 	
@@ -85,8 +94,7 @@ void DM_Motor_Class::enable_motor(hfdcan_t* hfdcan, uint16_t motor_id, uint16_t 
 
 	canx_send_data(hfdcan, id, data, 8);
 }
-void DM_Motor_Class::disable_motor_mode(hfdcan_t* hfdcan, uint16_t motor_id, uint16_t mode_id)
-{
+void DM_Motor_Class::disable_motor_mode(hfdcan_t* hfdcan, uint16_t motor_id, uint16_t mode_id){
 	uint8_t data[8];
 	uint16_t id = motor_id + mode_id;
 	
@@ -101,8 +109,7 @@ void DM_Motor_Class::disable_motor_mode(hfdcan_t* hfdcan, uint16_t motor_id, uin
 	
 	canx_send_data(hfdcan, id, data, 8);
 }
-void DM_Motor_Class::set_zero(hfdcan_t* hfdcan, uint16_t motor_id, uint16_t mode_id)
-{
+void DM_Motor_Class::set_zero(hfdcan_t* hfdcan, uint16_t motor_id, uint16_t mode_id){
 	uint8_t data[8];
 	uint16_t id = motor_id + mode_id;
 	
@@ -116,8 +123,7 @@ void DM_Motor_Class::set_zero(hfdcan_t* hfdcan, uint16_t motor_id, uint16_t mode
 	data[7] = 0xFE;
 	
 	canx_send_data(hfdcan, id, data, 8);
-}void DM_Motor_Class::clear_motor_error(hfdcan_t* hfdcan, uint16_t motor_id, uint16_t mode_id)
-{
+}void DM_Motor_Class::clear_error(hfdcan_t* hfdcan, uint16_t motor_id, uint16_t mode_id){
 	uint8_t data[8];
 	uint16_t id = motor_id + mode_id;
 	
@@ -133,8 +139,7 @@ void DM_Motor_Class::set_zero(hfdcan_t* hfdcan, uint16_t motor_id, uint16_t mode
 	canx_send_data(hfdcan, id, data, 8);
 }
 
-void DM_Motor_Class::mit_ctrl(hfdcan_t* hfdcan, uint16_t motor_id, float pos, float vel,float kp, float kd, float torq)
-{
+void DM_Motor_Class::mit_ctrl(hfdcan_t* hfdcan, uint16_t motor_id, float pos, float vel,float kp, float kd, float torq){
 	uint8_t data[8];
 	uint16_t pos_tmp,vel_tmp,kp_tmp,kd_tmp,tor_tmp;
 	uint16_t id = motor_id + MIT_MODE;

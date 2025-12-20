@@ -63,7 +63,7 @@ class LQRClass
 	float Jump_KP,Jump_Speed_KP;
   float Jump_shou_KP,Jump_Speed_shou_KP;
 	float Jump_err,Jump_min;
-  float Inti_Lset,Middle_Lset,MAX_Lset;
+  float Init_Lset,Middle_Lset,MAX_Lset;
   float L0_set_max,L0_set_min;
 	
 	Blance_state   Leg_state;

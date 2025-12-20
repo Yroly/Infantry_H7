@@ -12,6 +12,7 @@
 #include "app_preference.h"
 #include "Legs.h"
 #include "Leg.h"
+#include "lqr.h"
 #include "user_lib.h"
 #include "remote_task.h"
 #include "bsp_can.h"
@@ -116,7 +117,7 @@ public:
 	float Chassis_DWT_dt;
 
 	Joint_Motor_t Joint_Motor[4];
-	Chassis_Wheel_t Wheel_Motor[2];
+	Wheel_Motor_t Wheel_Motor[2];
 	float tor_cur;
 
 	fp32 Chassis_Q;
@@ -154,13 +155,15 @@ public:
 	void Control(void);
 	void Control_Loop(void);
 	void Ground_detection();
+	void Turn_Dispose();
+	void Jump_Dispose();
 private:
 	void Behaviour_Control(fp32 *vx_set, fp32 *vy_set, fp32 *angle_set);
 	void RC_to_Control(fp32 *vx_set, fp32 *vy_set);
 	void Key_to_Control(fp32 *vx_set, fp32 *vy_set);
 	void Flag_Control();
 };
-
+void Clear_K(float Wheel[2][10], float Joint[2][10]);
 extern Chassis_Class Chassis;
 extern fp32 ramp_float( fp32  final, fp32  now, fp32  ramp );
 

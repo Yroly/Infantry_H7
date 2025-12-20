@@ -1,13 +1,11 @@
 #pragma once
 #include "vmc.h"
 #define LEG_GRAVITY 3.1/2
-
-typedef struct {
+typedef struct{
 	/*旋转速度 收腿速度 预置角度*/
 	float Stand_Speed;
 	float L0Speed;
 	float Stand_Angle[2];
-
 	int8_t Stand_Sign[2];
 }Stand_t;
 typedef struct{
@@ -15,28 +13,21 @@ typedef struct{
 	float L0_set_middle;
 	float L0_set_min;
 	float L0_set;
-
 	float L0_set_final;
 } leg_set_t;
-
 typedef struct{
 	bool Blance_flag;
 	bool Revolve_flag_L;
 	bool Revolve_flag_R;
-
 	uint8_t Stand_flag;
 }leg_flag_t;
-
-class leg_class
-{
-private:
+class leg_class{
 public:
-	Stand_t stand;
-	float stand_delay_time;
-	float wheel_T[2];
-
-	leg_flag_t leg_flag;
 	VMC_Class vmc[2];
+	float wheel_T[2];
+	Stand_t stand;
+	leg_flag_t leg_flag;
+	float stand_delay_time;
 	leg_set_t leg_set;
 	void leg_data_clear(uint8_t count);
 	leg_class();

@@ -61,7 +61,7 @@ public:
 	Key_t Lastkey;    //!<@brief 上一帧键盘数据
 	InputMode_e RemoteMode;
 	/*遥控器处理值*/
-	float Key_ch[4]   = {0};
+	float Key_ch[5]   = {0};
 	float Mouse_ch[3] = {0};
 	void init(UART_HandleTypeDef * huart, bool use_dma);
 	void request();

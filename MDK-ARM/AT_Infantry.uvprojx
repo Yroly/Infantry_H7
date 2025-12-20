@@ -524,11 +524,6 @@
           <GroupName>app</GroupName>
           <Files>
             <File>
-              <FileName>app_preference.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\Infantry_ws\app\app_preference.cpp</FilePath>
-            </File>
-            <File>
               <FileName>app_preference.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\Infantry_ws\app\app_preference.h</FilePath>

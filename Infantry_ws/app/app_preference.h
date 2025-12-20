@@ -112,8 +112,8 @@
 #define Yaw_Mouse_SEN    0.00035f
 #define Pitch_Mouse_SEN  0.0004f
 #define L0_SET_G_SEN     0.0008f
-#define L0_SET_RC_SEN    0.009f
-#define ROLL_SET_TC_SEN  0.05f
+#define L0_SET_RC_SEN    0.135f
+#define ROLL_SET_TC_SEN  0.005f
 #define L0_SET_ROLL_SEN  0.00064f
 #define Yaw_RC_Sen      -0.003f
 
@@ -367,7 +367,7 @@
 #define CHASSIS_MOTOR_CURRENT_TO_TORQUE_SEN   0.0003662109375f
 #define CHASSIS_MOTOR_TORQUE_TO_CURRENT_SEN   2730.666666666667f
 
-#define MAX_WHEEL_TORQUE   6.0f
+#define MAX_WHEEL_TORQUE   0.45f
 
 #define POWER_BUFFER_PID_KP -1.5f
 #define POWER_BUFFER_PID_KI 0.0f
@@ -407,8 +407,6 @@
 #define LEG_GYRO_X_PID_MAX_OUT  90.0f
 #define LEG_GYRO_X_PID_MAX_IOUT 0.0f
 #define LEG_GYRO_X_PID_BAND_I   0.0f
-
-
 /*Angle0防劈叉PID*/
 #define LEG_ANGLE0_ERR_PID_KP       0.0f
 #define LEG_ANGLE0_ERR_PID_KI       0.0f
@@ -417,7 +415,7 @@
 #define LEG_ANGLE0_ERR_PID_MAX_IOUT 0.0f
 #define LEG_ANGLE0_ERR_PID_BAND_I   0.0f
 /*轮足PID*/
-#define WHEEL_SPEED_MAX_OUT		4.792f
+#define WHEEL_SPEED_MAX_OUT		0.45f
 #define WHEEL_SPEED_MAX_IOUT	0.0f
 #define WHEEL_SPEED_BAND_I		0.0f
 /*起立腿部旋转位置控制PID*/
@@ -442,10 +440,10 @@
 #define LEG_L0Speed_PID_MAX_IOUT 0.0f
 #define LEG_L0Speed_PID_BAND_I   0.0f
 /*腿长L0控制PID*/
-#define LEG_L0_PID_KP             25000.0f//600.0f
+#define LEG_L0_PID_KP             200.0f//600.0f   25000
 #define LEG_L0_PID_KI             0  //0.0f
 #define LEG_L0_PID_KD             0  //300
-#define LEG_L0_PID_MAX_OUT        160.0f
+#define LEG_L0_PID_MAX_OUT        60.0f
 #define LEG_L0_PID_MAX_IOUT       0.0f
 #define LEG_L0_PID_BAND_I         0.0f
 /*腿长L0控制PID*/
@@ -463,55 +461,4 @@
 #define LEG_L0_SPEED_PID_MAX_IOUT 0.0f
 #define LEG_L0_SPEED_PID_BAND_I   0.0f
 
-
-
-#ifndef useMecanum
-#define useBalance
-#endif
-#ifdef useSteering
-#undef useMecanum
-#endif
-#ifdef useBalance
-#undef useSteering
-#endif
-
-#ifndef useInfantry
-#define useInfantry
-#endif
-#ifdef useHero
-#undef useInfantry
-#endif
-
-typedef enum
-{
-	FaultData = 0x00,
-	CanData1,
-	CanData2,
-	CanData3,
-	SerialData1,
-	SerialData3,
-	SerialData4,
-	SerialData7,
-	SerialData8,
-	RCData,
-	RefereeData,
-	GyroData,
-	MessageData,
-	GimbalData,
-	ChassisData,
-	UIdrawData,
-	CorrespondenceData,
-	SupercapData,
-	ID_e_count
-}ID_e;
-
-typedef struct 
-{
-	ID_e Data_ID;
-	void *Data_Ptr;
-}ID_Data_t;
-
-extern ID_Data_t ID_Data[ID_e_count];
-
-void Prefence_Init(void);
 #endif

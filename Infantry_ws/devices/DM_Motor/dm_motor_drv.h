@@ -34,8 +34,7 @@ extern "C"{
 #define KD_MAX2 5.0f
 #define T_MIN2 -18.0f
 #define T_MAX2 18.0f
-typedef struct 
-{
+typedef struct {
 	uint16_t id;
 	uint16_t state;
 	int p_int;
@@ -53,8 +52,7 @@ typedef struct
 }DM_motor_fbpara_t;
 
 
-typedef struct
-{
+typedef struct{
 	DM_motor_fbpara_t para;
 	uint16_t mode;
 }Joint_Motor_t;
@@ -71,11 +69,13 @@ class DM_Motor_Class{
 public:
 void DM4310_fbdata(Joint_Motor_t *motor, uint8_t *rx_data,uint32_t data_len);
 void DM6215_fbdata(Wheel_Motor_t *motor, uint8_t *rx_data,uint32_t data_len);
+void DM3510_fbdata(Wheel_Motor_t *motor, uint8_t *rx_data,uint32_t data_len);
 
 void enable_motor(hfdcan_t* hfdcan, uint16_t motor_id, uint16_t mode_id);
 void disable_motor_mode(hfdcan_t* hfdcan, uint16_t motor_id, uint16_t mode_id);
 void set_zero(hfdcan_t* hfdcan,uint16_t motor_id,uint16_t mode_id);
-void clear_motor_error(hfdcan_t* hfdcan,uint16_t motor_id,uint16_t mode_id);
+void clear_error(hfdcan_t* hfdcan,uint16_t motor_id,uint16_t mode_id);
+
 void mit_ctrl(hfdcan_t* hfdcan, uint16_t motor_id, float pos, float vel,float kp, float kd, float torq);
 void pos_speed_ctrl(hfdcan_t* hfdcan,uint16_t motor_id, float pos, float vel);
 void speed_ctrl(hfdcan_t* hfdcan,uint16_t motor_id, float _vel);
